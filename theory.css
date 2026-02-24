@@ -1,0 +1,733 @@
+/* ============================================================
+   English Hub — theory.css
+   Styles pour les pages de théorie
+   ============================================================ */
+
+/* ─── Barre de lecture ───────────────────────────────────── */
+
+.reading-bar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, #10b981, #3b82f6, #8b5cf6);
+    z-index: 300;
+    transition: width 0.1s linear;
+}
+
+/* ─── Navigation sticky ──────────────────────────────────── */
+
+.theory-nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(240, 244, 248, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.bloc-tabs {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: transparent;
+    border: 2px solid transparent;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.84rem;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.tab-btn:hover {
+    background: white;
+    color: var(--primary);
+    border-color: var(--border);
+}
+
+.tab-btn.active {
+    background: white;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.quiz-soon-btn {
+    background: #f1f5f9;
+    color: #94a3b8;
+    border: 2px solid var(--border);
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: not-allowed;
+    white-space: nowrap;
+}
+
+/* ─── Wrapper ────────────────────────────────────────────── */
+
+.theory-main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+}
+
+/* ─── Hero ───────────────────────────────────────────────── */
+
+.theory-hero {
+    text-align: center;
+    padding: 54px 20px 44px;
+}
+
+.hero-preps {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-prep-badge {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: white;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.theory-hero h1 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.theory-hero p {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    font-weight: 600;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* ─── Sections ───────────────────────────────────────────── */
+
+.theory-section {
+    scroll-margin-top: 68px;
+    padding: 16px 0 40px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--border);
+}
+
+.section-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.section-header h2 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 2px;
+}
+
+.section-header p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* ─── Grille des prépositions ────────────────────────────── */
+
+.prep-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.prep-card {
+    background: white;
+    border-radius: 20px;
+    padding: 26px 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    border-top: 4px solid var(--pc);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.prep-card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.prep-letter {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    background: var(--pc);
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px color-mix(in srgb, var(--pc) 40%, transparent);
+}
+
+.prep-card-label h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--pc);
+    margin-bottom: 2px;
+}
+
+.prep-card-label span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.prep-desc {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    line-height: 1.65;
+    font-weight: 600;
+}
+
+.usage-title {
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.examples-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.example-item {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 10px 13px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.ph {
+    /* prep-highlight: inline colored badge for the preposition */
+    display: inline-block;
+    background: var(--pc);
+    color: white;
+    padding: 1px 8px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.9em;
+}
+
+.example-note {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-top: 3px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* Memo tip */
+.memo-tip {
+    background: linear-gradient(135deg, #fef9c3, #fde68a);
+    border-left: 4px solid #f59e0b;
+    padding: 11px 14px;
+    border-radius: 0 10px 10px 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #78350f;
+    line-height: 1.5;
+    margin-top: auto;
+}
+
+.memo-tip span {
+    font-size: 1rem;
+}
+
+/* Trap warning */
+.trap-box {
+    background: #fff1f2;
+    border-left: 4px solid #ef4444;
+    padding: 12px 14px;
+    border-radius: 0 10px 10px 0;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #9f1239;
+    line-height: 1.6;
+}
+
+.trap-box strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+/* ─── Widget transports ──────────────────────────────────── */
+
+.transport-widget {
+    background: white;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    margin-top: 8px;
+}
+
+.transport-widget h4 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+    color: var(--text-dark);
+}
+
+.transport-rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.t-rule {
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.t-rule.on-rule {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 2px solid #3b82f6;
+}
+
+.t-rule.in-rule {
+    background: #f5f3ff;
+    color: #6d28d9;
+    border: 2px solid #8b5cf6;
+}
+
+.t-rule .prep-big {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.transport-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tc {
+    border-radius: 14px;
+    padding: 12px 18px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: default;
+    transition: transform 0.18s;
+}
+
+.tc:hover { transform: translateY(-2px); }
+
+.tc.on-t {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 2px solid #bfdbfe;
+}
+
+.tc.in-t {
+    background: #f5f3ff;
+    color: #6d28d9;
+    border: 2px solid #ddd6fe;
+}
+
+.tc .tc-prep {
+    font-size: 0.75rem;
+    background: currentColor;
+    color: white;
+    padding: 1px 6px;
+    border-radius: 5px;
+    opacity: 0.85;
+}
+
+/* ─── Pyramide du temps ──────────────────────────────────── */
+
+.time-table {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.time-row {
+    background: white;
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+    border-left: 6px solid var(--pc);
+}
+
+.time-prep {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--pc);
+    width: 56px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.time-info { flex: 1; }
+
+.time-info strong {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.time-examples {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.55;
+}
+
+.time-examples em {
+    color: var(--pc);
+    font-style: normal;
+    font-weight: 800;
+}
+
+.time-size {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 700;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* ─── Sections collapsibles ──────────────────────────────── */
+
+.nuances-bloc {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nuance-toggle {
+    width: 100%;
+    background: #f8fafc;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+    text-align: left;
+    color: var(--text-dark);
+}
+
+.nuance-toggle:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: white;
+}
+
+.nuance-toggle .toggle-icon {
+    transition: transform 0.25s;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.nuance-toggle.open { border-radius: 12px 12px 0 0; border-color: var(--primary); }
+.nuance-toggle.open .toggle-icon { transform: rotate(180deg); }
+
+.nuance-content {
+    background: white;
+    border: 2px solid var(--primary);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 18px 20px;
+    display: none;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.nuance-content.open { display: block; }
+
+.nuance-content .hl {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 1px 7px;
+    border-radius: 5px;
+    font-weight: 800;
+    font-family: monospace;
+}
+
+.nuance-content .hl-on { background: #eff6ff; color: #1d4ed8; }
+.nuance-content .hl-at { background: #f0fdf4; color: #166534; }
+
+/* ─── Cards FOR ──────────────────────────────────────────── */
+
+.for-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.for-card {
+    background: white;
+    border-radius: 20px;
+    padding: 26px 22px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    border-top: 4px solid #f59e0b;
+}
+
+.for-number {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.for-title {
+    font-size: 1.05rem;
+    font-weight: 900;
+    color: #92400e;
+    margin-bottom: 10px;
+}
+
+.for-subtitle {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #b45309;
+    background: #fef3c7;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.for-rule {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-light);
+    border: 2px dashed #fcd34d;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.for-examples {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.for-examples li {
+    background: #fffbeb;
+    border-radius: 9px;
+    padding: 8px 12px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text-dark);
+}
+
+.for-examples li .fph {
+    background: #f59e0b;
+    color: white;
+    padding: 1px 7px;
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 0.9em;
+}
+
+/* ─── Section Prérequis ──────────────────────────────────── */
+
+.prereqs-section {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    border-left: 6px solid #ef4444;
+}
+
+.prereq-intro {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #991b1b;
+    background: #fee2e2;
+    padding: 12px 18px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    line-height: 1.6;
+}
+
+.prereq-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.prereq-card {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 20px 22px;
+}
+
+.prereq-card h4 {
+    font-size: 1rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.prereq-card p {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    font-weight: 600;
+    line-height: 1.7;
+}
+
+.wrong-right {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.wrong {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.right {
+    background: #d1fae5;
+    color: #065f46;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.struct-formula {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* ─── CTA final ──────────────────────────────────────────── */
+
+.theory-cta {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+.theory-cta p {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.cta-soon {
+    display: inline-block;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    color: white;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 800;
+    padding: 16px 36px;
+    border-radius: 16px;
+    border: none;
+    opacity: 0.55;
+    cursor: not-allowed;
+    letter-spacing: 0.01em;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 620px) {
+    .theory-hero h1      { font-size: 1.8rem; }
+    .hero-prep-badge     { width: 52px; height: 52px; font-size: 1.35rem; }
+    .prep-grid           { grid-template-columns: 1fr; }
+    .for-grid            { grid-template-columns: 1fr; }
+    .transport-rules     { grid-template-columns: 1fr; }
+    .time-row            { flex-wrap: wrap; }
+    .theory-nav          { gap: 8px; }
+    .bloc-tabs           { justify-content: flex-start; overflow-x: auto; }
+    .prereqs-section     { padding: 22px 18px; }
+}

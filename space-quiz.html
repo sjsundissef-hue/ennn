@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz L'Espace — English Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* ── Niveau badge ──────────────────────────────────── */
+        .level-pill {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.88rem;
+            white-space: nowrap;
+        }
+        .level-pill.lv1 { background:#f0fdf4; color:#166534; border:2px solid #86efac; }
+        .level-pill.lv2 { background:#eff6ff; color:#1d4ed8; border:2px solid #93c5fd; }
+
+        /* ── Écran QCM ─────────────────────────────────────── */
+        .qcm-question {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin: 24px 0 32px;
+            line-height: 1.3;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .prep-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .prep-btn {
+            border: none;
+            border-radius: 18px;
+            padding: 26px 12px 22px;
+            font-family: inherit;
+            font-weight: 900;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s, opacity 0.25s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .prep-btn:not(:disabled):hover { transform: translateY(-3px); }
+        .prep-btn:not(:disabled):active { transform: scale(0.97); }
+        .prep-btn:disabled { cursor: default; }
+
+        .prep-btn .p-letter {
+            font-size: 2.2rem;
+            line-height: 1;
+        }
+
+        .prep-btn .p-sub {
+            font-size: 0.7rem;
+            font-weight: 700;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .prep-btn.at-btn { background: #10b981; box-shadow: 0 6px 18px rgba(16,185,129,.30); }
+        .prep-btn.on-btn { background: #3b82f6; box-shadow: 0 6px 18px rgba(59,130,246,.30); }
+        .prep-btn.in-btn { background: #8b5cf6; box-shadow: 0 6px 18px rgba(139,92,246,.30); }
+
+        .prep-btn.is-correct { animation: popCorrect 0.45s ease forwards; outline: 4px solid white; outline-offset: 3px; }
+        .prep-btn.is-wrong   { animation: shakeWrong 0.4s ease; opacity: 0.35; }
+        .prep-btn.highlight  { animation: popCorrect 0.45s ease 0.18s forwards; outline: 4px solid white; outline-offset: 3px; }
+
+        @keyframes popCorrect {
+            0%   { transform: scale(1); }
+            40%  { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes shakeWrong {
+            0%,100% { transform: translateX(0); }
+            25%     { transform: translateX(-9px) rotate(-1.5deg); }
+            75%     { transform: translateX(9px)  rotate(1.5deg);  }
+        }
+
+        /* Feedback QCM */
+        .qcm-feedback {
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: left;
+            animation: fadeIn 0.25s ease;
+            display: none;
+        }
+        .qcm-feedback.correct  { background:#d1fae5; color:#065f46; border-left:4px solid #10b981; }
+        .qcm-feedback.incorrect { background:#fee2e2; color:#991b1b; border-left:4px solid #ef4444; }
+
+        .qcm-hint {
+            margin-top: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            opacity: 0.85;
+        }
+
+        /* ── Écran transition ──────────────────────────────── */
+        .transition-icon { font-size: 4.5rem; margin-bottom: 12px; }
+
+        .transition-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin: 20px 0 28px;
+        }
+
+        .t-stat {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 18px 12px;
+        }
+
+        .t-stat-value {
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .t-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .level2-intro {
+            background: #eff6ff;
+            border: 2px solid #bfdbfe;
+            border-radius: 14px;
+            padding: 16px 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        /* ── Aide rapide ───────────────────────────────────── */
+        .help-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,.6);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 500;
+            padding: 20px;
+        }
+
+        .help-mini {
+            background: white;
+            border-radius: 22px;
+            padding: 28px;
+            max-width: 420px;
+            width: 100%;
+            position: relative;
+        }
+
+        .help-mini h3 { font-size: 1.1rem; font-weight: 900; margin-bottom: 18px; }
+
+        .help-mini-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .help-mini-row.at-row { background: #f0fdf4; }
+        .help-mini-row.on-row { background: #eff6ff; }
+        .help-mini-row.in-row { background: #f5f3ff; }
+
+        .help-badge {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .help-text { font-size: 0.88rem; font-weight: 700; line-height: 1.5; }
+        .help-text span { display: block; font-size: 0.8rem; font-weight: 600; opacity: 0.7; }
+
+        /* ── End screen ────────────────────────────────────── */
+        .end-grade { font-size: 1.5rem; font-weight: 900; margin-bottom: 8px; }
+
+        .end-stats-double {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 22px 0;
+        }
+
+        .end-stat-group {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 18px 14px;
+        }
+
+        .esg-label {
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .esg-score {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .esg-sub {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* ── Responsive ────────────────────────────────────── */
+        @media (max-width: 500px) {
+            .prep-buttons    { gap: 10px; }
+            .prep-btn        { padding: 20px 8px 16px; border-radius: 14px; }
+            .prep-btn .p-letter { font-size: 1.8rem; }
+            .qcm-question    { font-size: 1.5rem; }
+            .end-stats-double { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ── Header ─────────────────────────────────────────── -->
+    <div class="header">
+        <a href="theory-prepositions.html" class="back-btn">← Théorie</a>
+        <div class="header-right">
+            <span id="streak-display" class="streak-badge" style="display:none"></span>
+            <button id="sound-btn" class="icon-btn" onclick="toggleSound()" title="Son">🔊</button>
+            <button class="help-btn" onclick="openHelp()">💡 Rappel</button>
+            <div class="score-badge">
+                <span id="level-pill" class="level-pill lv1">Niveau 1</span>
+                &nbsp;
+                <span id="score-display">0</span> / <span id="total-display">15</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barre de progression -->
+    <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         NIVEAU 1 — QCM
+    ══════════════════════════════════════════════════════ -->
+    <div class="quiz-card" id="lv1-container">
+        <span class="progress-text">
+            Question <span id="l1-current">1</span> / <span id="l1-total">15</span>
+        </span>
+
+        <div class="qcm-question" id="qcm-question">Chargement…</div>
+
+        <div class="prep-buttons">
+            <button class="prep-btn at-btn" data-prep="AT" onclick="handleChoice('AT')">
+                <span class="p-letter">AT</span>
+                <span class="p-sub">Point précis</span>
+            </button>
+            <button class="prep-btn on-btn" data-prep="ON" onclick="handleChoice('ON')">
+                <span class="p-letter">ON</span>
+                <span class="p-sub">Surface / Ligne</span>
+            </button>
+            <button class="prep-btn in-btn" data-prep="IN" onclick="handleChoice('IN')">
+                <span class="p-letter">IN</span>
+                <span class="p-sub">Contenant</span>
+            </button>
+        </div>
+
+        <div class="qcm-feedback" id="qcm-feedback">
+            <span id="qcm-msg"></span>
+            <div class="qcm-hint" id="qcm-hint"></div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         TRANSITION
+    ══════════════════════════════════════════════════════ -->
+    <div class="quiz-card" id="transition-screen" style="display:none; text-align:center">
+
+        <div class="transition-icon">🎯</div>
+        <div class="question-text" style="margin-bottom:6px">Niveau 1 accompli !</div>
+        <p style="color:var(--text-light);font-weight:600;margin-bottom:20px">
+            Tu as reconnu la bonne préposition du premier coup :
+        </p>
+
+        <div class="transition-stats">
+            <div class="t-stat">
+                <div class="t-stat-value" id="l1-final-score">0/15</div>
+                <div class="t-stat-label">Bonnes réponses</div>
+            </div>
+            <div class="t-stat">
+                <div class="t-stat-value" id="l1-final-pct">0%</div>
+                <div class="t-stat-label">Réussite</div>
+            </div>
+        </div>
+
+        <div class="level2-intro">
+            ✏️ <strong>Niveau 2 — Rédaction</strong><br>
+            Même 15 phrases. Cette fois tu réécris la phrase anglaise complète de toi-même.
+        </div>
+
+        <button class="action-btn" onclick="startLevel2()">Commencer le Niveau 2 →</button>
+
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         NIVEAU 2 — RÉDACTION
+    ══════════════════════════════════════════════════════ -->
+    <div class="quiz-card" id="lv2-container" style="display:none">
+
+        <span class="progress-text">
+            Phrase <span id="l2-current">1</span> / <span id="l2-total">15</span>
+        </span>
+
+        <div class="question-text" id="l2-question">…</div>
+
+        <div class="input-group">
+            <input
+                type="text"
+                id="answer-input"
+                placeholder="Écris la phrase complète en anglais…"
+                autocomplete="off"
+                spellcheck="false"
+            >
+            <div id="live-feedback" class="live-feedback-container"></div>
+            <div class="action-buttons">
+                <button class="action-btn secondary-btn" id="skip-btn" onclick="showAnswer()">
+                    👀 Voir la réponse
+                </button>
+                <button class="action-btn" id="submit-btn" onclick="checkWriting()">
+                    Vérifier ✓
+                </button>
+            </div>
+        </div>
+
+        <div class="feedback" id="feedback-box">
+            <span id="feedback-msg"></span>
+            <span class="correction" id="feedback-correction"></span>
+        </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         ÉCRAN DE FIN
+    ══════════════════════════════════════════════════════ -->
+    <div class="quiz-card" id="end-screen" style="display:none; text-align:center">
+
+        <div class="end-grade" id="end-grade">🏆</div>
+        <div class="question-text" style="margin-bottom:6px">Exercice terminé !</div>
+
+        <div class="end-stats-double">
+            <div class="end-stat-group">
+                <div class="esg-label">📍 Niveau 1 — QCM</div>
+                <div class="esg-score" id="final-l1-score">—</div>
+                <div class="esg-sub">reconnu du premier coup</div>
+            </div>
+            <div class="end-stat-group">
+                <div class="esg-label">✏️ Niveau 2 — Rédaction</div>
+                <div class="esg-score" id="final-l2-score">—</div>
+                <div class="esg-sub">phrases écrites correctement</div>
+            </div>
+            <div class="end-stat-group">
+                <div class="esg-label">🎯 Réussite niveau 2</div>
+                <div class="esg-score" id="final-pct">—</div>
+                <div class="esg-sub">taux de succès</div>
+            </div>
+            <div class="end-stat-group">
+                <div class="esg-label">🔥 Meilleur combo</div>
+                <div class="esg-score" id="final-streak">—</div>
+                <div class="esg-sub">réponses consécutives</div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="theory-prepositions.html" class="action-btn secondary-btn">📖 Théorie</a>
+            <button class="action-btn" onclick="restartAll()">🔄 Recommencer</button>
+        </div>
+
+    </div>
+
+</div><!-- /container -->
+
+<!-- ── Modal Rappel ──────────────────────────────────────── -->
+<div class="help-modal-overlay" id="help-modal" onclick="closeHelp(event)">
+    <div class="help-mini" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closeHelp()">&times;</button>
+        <h3>📌 Rappel — Les 3 Dimensions</h3>
+
+        <div class="help-mini-row at-row">
+            <div class="help-badge" style="background:#10b981">AT</div>
+            <div class="help-text">
+                Dimension 0 — Le Point
+                <span>Adresses, repères, étapes de voyage</span>
+            </div>
+        </div>
+        <div class="help-mini-row on-row">
+            <div class="help-badge" style="background:#3b82f6">ON</div>
+            <div class="help-text">
+                Dimension 2 — Surface ou Ligne
+                <span>Tables, sols, rues, îles, murs</span>
+            </div>
+        </div>
+        <div class="help-mini-row in-row">
+            <div class="help-badge" style="background:#8b5cf6">IN</div>
+            <div class="help-text">
+                Dimension 3 — Le Contenant
+                <span>Pièces, villes, forêts, voitures, boîtes</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── Scripts ───────────────────────────────────────────── -->
+<script src="../data/prepositions-space.js"></script>
+<script src="../js/app.js"></script>
+<script>
+
+// ═══════════════════════════════════════════════════════════
+//  UTILITAIRES
+// ═══════════════════════════════════════════════════════════
+
+function shuffleArray(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function normalizeText(text) {
+    return text.toLowerCase().replace(/[.,?!]/g, '').replace(/\s+/g, ' ').trim();
+}
+
+function escapeChar(ch) {
+    return ch === '<' ? '&lt;' : ch === '>' ? '&gt;' : ch === '&' ? '&amp;' : ch;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  SONS
+// ═══════════════════════════════════════════════════════════
+
+const SoundFX = {
+    ctx: null,
+    _init() { if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
+    play(type) {
+        try {
+            this._init();
+            const ctx = this.ctx;
+            if (type === 'correct') {
+                const o = ctx.createOscillator(), g = ctx.createGain();
+                o.connect(g); g.connect(ctx.destination);
+                o.frequency.setValueAtTime(523.25, ctx.currentTime);
+                o.frequency.setValueAtTime(783.99, ctx.currentTime + 0.12);
+                g.gain.setValueAtTime(0.25, ctx.currentTime);
+                g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+                o.start(); o.stop(ctx.currentTime + 0.45);
+            } else if (type === 'wrong') {
+                const o = ctx.createOscillator(), g = ctx.createGain();
+                o.connect(g); g.connect(ctx.destination);
+                o.type = 'sawtooth';
+                o.frequency.setValueAtTime(220, ctx.currentTime);
+                o.frequency.setValueAtTime(180, ctx.currentTime + 0.1);
+                g.gain.setValueAtTime(0.15, ctx.currentTime);
+                g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+                o.start(); o.stop(ctx.currentTime + 0.3);
+            } else if (type === 'complete') {
+                [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+                    const o = ctx.createOscillator(), g = ctx.createGain();
+                    o.connect(g); g.connect(ctx.destination);
+                    o.frequency.value = freq;
+                    const t = ctx.currentTime + i * 0.13;
+                    g.gain.setValueAtTime(0.2, t);
+                    g.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
+                    o.start(t); o.stop(t + 0.4);
+                });
+            }
+        } catch(e) {}
+    }
+};
+
+// ═══════════════════════════════════════════════════════════
+//  ÉTAT GLOBAL
+// ═══════════════════════════════════════════════════════════
+
+const st = {
+    sound: true,
+    l1: { questions: [], index: 0, score: 0 },
+    l2: { questions: [], index: 0, score: 0, streak: 0, maxStreak: 0, skipped: 0, phase: 'question' }
+};
+
+// ═══════════════════════════════════════════════════════════
+//  NIVEAU 1 — QCM
+// ═══════════════════════════════════════════════════════════
+
+function initLevel1() {
+    st.l1.questions = shuffleArray(SPACE_QUIZ.level1);
+    st.l1.index     = 0;
+    st.l1.score     = 0;
+
+    show('lv1-container');
+    hide('transition-screen');
+    hide('lv2-container');
+    hide('end-screen');
+
+    document.getElementById('level-pill').textContent  = 'Niveau 1 — QCM';
+    document.getElementById('level-pill').className    = 'level-pill lv1';
+    document.getElementById('l1-total').textContent    = st.l1.questions.length;
+    document.getElementById('total-display').textContent = st.l1.questions.length;
+    document.getElementById('score-display').textContent = 0;
+
+    loadQCM();
+}
+
+function loadQCM() {
+    const q = st.l1.questions[st.l1.index];
+
+    // Progression
+    document.getElementById('l1-current').textContent = st.l1.index + 1;
+    setProgress(st.l1.index / st.l1.questions.length);
+
+    // Texte animé
+    animateIn('qcm-question', q.fr);
+
+    // Reset boutons
+    document.querySelectorAll('.prep-btn').forEach(btn => {
+        btn.disabled  = false;
+        btn.className = `prep-btn ${btn.dataset.prep.toLowerCase()}-btn`;
+    });
+
+    // Cache feedback
+    const fb = document.getElementById('qcm-feedback');
+    fb.style.display = 'none';
+    fb.className = 'qcm-feedback';
+}
+
+function handleChoice(selected) {
+    const q = st.l1.questions[st.l1.index];
+    const isCorrect = selected === q.prep;
+
+    // Désactiver tous les boutons
+    document.querySelectorAll('.prep-btn').forEach(b => b.disabled = true);
+
+    // Animations
+    const clickedBtn  = document.querySelector(`.prep-btn[data-prep="${selected}"]`);
+    const correctBtn  = document.querySelector(`.prep-btn[data-prep="${q.prep}"]`);
+
+    if (isCorrect) {
+        clickedBtn.classList.add('is-correct');
+        st.l1.score++;
+        if (st.sound) SoundFX.play('correct');
+    } else {
+        clickedBtn.classList.add('is-wrong');
+        correctBtn.classList.add('highlight');
+        if (st.sound) SoundFX.play('wrong');
+    }
+
+    // Feedback + hint
+    const fb   = document.getElementById('qcm-feedback');
+    const msg  = document.getElementById('qcm-msg');
+    const hint = document.getElementById('qcm-hint');
+
+    fb.style.display = 'block';
+    fb.className     = `qcm-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+    msg.textContent  = isCorrect ? `✅ Correct ! C'était bien ${q.prep}.` : `❌ C'était ${q.prep}.`;
+    hint.textContent = q.hint ? `💡 ${q.hint}` : '';
+
+    document.getElementById('score-display').textContent = st.l1.score;
+
+    // Auto-avance
+    setTimeout(() => {
+        st.l1.index++;
+        if (st.l1.index < st.l1.questions.length) loadQCM();
+        else showTransition();
+    }, isCorrect ? 1300 : 2200);
+}
+
+// ═══════════════════════════════════════════════════════════
+//  TRANSITION ENTRE LES NIVEAUX
+// ═══════════════════════════════════════════════════════════
+
+function showTransition() {
+    hide('lv1-container');
+    show('transition-screen');
+    setProgress(1);
+
+    if (st.sound) SoundFX.play('complete');
+
+    const total = st.l1.questions.length;
+    const pct   = Math.round((st.l1.score / total) * 100);
+    document.getElementById('l1-final-score').textContent = `${st.l1.score} / ${total}`;
+    document.getElementById('l1-final-pct').textContent   = `${pct}%`;
+}
+
+function startLevel2() {
+    st.l2.questions = shuffleArray(SPACE_QUIZ.level2);
+    st.l2.index     = 0;
+    st.l2.score     = 0;
+    st.l2.streak    = 0;
+    st.l2.maxStreak = 0;
+    st.l2.skipped   = 0;
+    st.l2.phase     = 'question';
+
+    hide('transition-screen');
+    show('lv2-container');
+
+    document.getElementById('level-pill').textContent    = 'Niveau 2 — Rédaction';
+    document.getElementById('level-pill').className      = 'level-pill lv2';
+    document.getElementById('l2-total').textContent      = st.l2.questions.length;
+    document.getElementById('total-display').textContent = st.l2.questions.length;
+    document.getElementById('score-display').textContent = 0;
+
+    loadWriting();
+}
+
+// ═══════════════════════════════════════════════════════════
+//  NIVEAU 2 — RÉDACTION
+// ═══════════════════════════════════════════════════════════
+
+function loadWriting() {
+    st.l2.phase = 'question';
+    const q = st.l2.questions[st.l2.index];
+
+    // Progression
+    document.getElementById('l2-current').textContent = st.l2.index + 1;
+    setProgress(st.l2.index / st.l2.questions.length);
+
+    // Question animée
+    animateIn('l2-question', q.fr);
+
+    // Reset input
+    const input = document.getElementById('answer-input');
+    input.value    = '';
+    input.disabled = false;
+    input.className = '';
+
+    // Reset live feedback
+    const live = document.getElementById('live-feedback');
+    live.style.display = 'none';
+    live.innerHTML     = '';
+
+    // Reset boutons
+    document.getElementById('submit-btn').textContent = 'Vérifier ✓';
+    document.getElementById('skip-btn').style.display = 'inline-flex';
+
+    // Reset feedback
+    const fb = document.getElementById('feedback-box');
+    fb.style.display = 'none';
+    fb.className     = 'feedback';
+
+    updateStreak();
+    setTimeout(() => input.focus(), 80);
+}
+
+function checkWriting() {
+    if (st.l2.phase === 'feedback') { nextWriting(); return; }
+
+    const input  = document.getElementById('answer-input');
+    const answer = input.value.trim();
+    if (!answer) return;
+
+    const q = st.l2.questions[st.l2.index];
+    const ok = q.en.some(a => normalizeText(a) === normalizeText(answer));
+
+    const fb     = document.getElementById('feedback-box');
+    const fbMsg  = document.getElementById('feedback-msg');
+    const fbCorr = document.getElementById('feedback-correction');
+    const btn    = document.getElementById('submit-btn');
+    const live   = document.getElementById('live-feedback');
+
+    if (ok) {
+        st.l2.score++;
+        st.l2.streak++;
+        if (st.l2.streak > st.l2.maxStreak) st.l2.maxStreak = st.l2.streak;
+        if (st.sound) SoundFX.play('correct');
+
+        st.l2.phase     = 'feedback';
+        input.disabled  = true;
+        btn.textContent = 'Continuer →';
+        document.getElementById('skip-btn').style.display = 'none';
+        live.style.display = 'none';
+
+        fb.className       = 'feedback correct';
+        const combo = st.l2.streak >= 3 ? `  🔥 Combo ×${st.l2.streak} !` : '';
+        fbMsg.textContent  = '✅ Parfait !' + combo;
+        fbCorr.textContent = '';
+
+    } else {
+        st.l2.streak = 0;
+        if (st.sound) SoundFX.play('wrong');
+
+        input.classList.add('shake');
+        setTimeout(() => input.classList.remove('shake'), 400);
+
+        fb.className       = 'feedback incorrect';
+        fbMsg.textContent  = '❌ Pas tout à fait — essaie encore !';
+        fbCorr.textContent = '';
+
+        input.focus();
+    }
+
+    fb.style.display = 'block';
+    document.getElementById('score-display').textContent = st.l2.score;
+    updateStreak();
+}
+
+function showAnswer() {
+    if (st.l2.phase === 'feedback') return;
+    const q = st.l2.questions[st.l2.index];
+
+    st.l2.streak = 0;
+    st.l2.skipped++;
+    st.l2.phase = 'feedback';
+
+    const input = document.getElementById('answer-input');
+    input.value    = q.en[0];
+    input.disabled = true;
+    document.getElementById('submit-btn').textContent = 'Continuer →';
+    document.getElementById('skip-btn').style.display = 'none';
+    document.getElementById('live-feedback').style.display = 'none';
+
+    const fb = document.getElementById('feedback-box');
+    fb.className = 'feedback incorrect';
+    document.getElementById('feedback-msg').textContent  = '⏭️ Question passée.';
+    document.getElementById('feedback-correction').textContent = 'Réponse : ' + q.en[0];
+    fb.style.display = 'block';
+
+    document.getElementById('score-display').textContent = st.l2.score;
+    updateStreak();
+}
+
+function nextWriting() {
+    st.l2.index++;
+    if (st.l2.index < st.l2.questions.length) loadWriting();
+    else showEnd();
+}
+
+// ═══════════════════════════════════════════════════════════
+//  ÉCRAN DE FIN
+// ═══════════════════════════════════════════════════════════
+
+function showEnd() {
+    if (st.sound) SoundFX.play('complete');
+    hide('lv2-container');
+    show('end-screen');
+    setProgress(1);
+
+    const total = st.l2.questions.length;
+    const pct   = Math.round((st.l2.score / total) * 100);
+    const grade = pct === 100 ? '🏆 PARFAIT !'
+                : pct >= 90  ? '⭐⭐⭐ Excellent !'
+                : pct >= 70  ? '⭐⭐ Bien joué !'
+                : pct >= 50  ? '⭐ Continue !'
+                :               '📚 Révise encore.';
+
+    document.getElementById('end-grade').textContent      = grade;
+    document.getElementById('final-l1-score').textContent = `${st.l1.score} / ${st.l1.questions.length}`;
+    document.getElementById('final-l2-score').textContent = `${st.l2.score} / ${total}`;
+    document.getElementById('final-pct').textContent      = `${pct}%`;
+    document.getElementById('final-streak').textContent   = st.l2.maxStreak;
+
+    if (typeof updateLessonStat === 'function') {
+        updateLessonStat('prepositions-space', st.l2.score, total);
+    }
+}
+
+function restartAll() {
+    hide('end-screen');
+    initLevel1();
+}
+
+// ═══════════════════════════════════════════════════════════
+//  LIVE FEEDBACK (Niveau 2)
+// ═══════════════════════════════════════════════════════════
+
+(function attachListeners() {
+    const input = document.getElementById('answer-input');
+
+    input.addEventListener('input', function () {
+        if (st.l2.phase !== 'question') return;
+
+        const userText = this.value;
+        const q        = st.l2.questions[st.l2.index];
+        const live     = document.getElementById('live-feedback');
+
+        if (!q || !userText) { live.style.display = 'none'; live.innerHTML = ''; return; }
+
+        live.style.display = 'block';
+
+        let best = q.en[0], max = -1;
+        for (const t of q.en) {
+            let m = 0;
+            for (let i = 0; i < Math.min(userText.length, t.length); i++) {
+                if (userText[i].toLowerCase() === t[i].toLowerCase()) m++;
+                else break;
+            }
+            if (m > max) { max = m; best = t; }
+        }
+
+        let html = '';
+        for (let i = 0; i < userText.length; i++) {
+            const ch = userText[i] === ' ' ? '&nbsp;' : escapeChar(userText[i]);
+            const ok = i < best.length && userText[i].toLowerCase() === best[i].toLowerCase();
+            html += ok
+                ? `<span class="char-correct">${ch}</span>`
+                : `<span class="char-incorrect">${ch}</span>`;
+        }
+        live.innerHTML = html;
+    });
+
+    input.addEventListener('keypress', e => { if (e.key === 'Enter') checkWriting(); });
+})();
+
+// ═══════════════════════════════════════════════════════════
+//  HELPERS UI
+// ═══════════════════════════════════════════════════════════
+
+function show(id) { document.getElementById(id).style.display = 'block'; }
+function hide(id) { document.getElementById(id).style.display = 'none';  }
+
+function setProgress(ratio) {
+    document.getElementById('progress-bar-fill').style.width = (ratio * 100) + '%';
+}
+
+function animateIn(id, text) {
+    const el = document.getElementById(id);
+    el.style.opacity   = '0';
+    el.style.transform = 'translateY(12px)';
+    setTimeout(() => {
+        el.textContent     = text;
+        el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        el.style.opacity   = '1';
+        el.style.transform = 'translateY(0)';
+    }, 50);
+}
+
+function updateStreak() {
+    const el = document.getElementById('streak-display');
+    if (!el) return;
+    if (st.l2.streak >= 2) {
+        el.textContent  = `🔥 ×${st.l2.streak}`;
+        el.style.display = 'inline-block';
+        el.className    = 'streak-badge';
+        void el.offsetWidth;
+        el.className    = 'streak-badge active';
+    } else {
+        el.style.display = 'none';
+    }
+}
+
+function toggleSound() {
+    st.sound = !st.sound;
+    const btn = document.getElementById('sound-btn');
+    btn.textContent  = st.sound ? '🔊' : '🔇';
+    btn.style.opacity = st.sound ? '1' : '0.45';
+}
+
+function openHelp()  { document.getElementById('help-modal').style.display = 'flex'; }
+function closeHelp(e) {
+    if (e && e.target !== document.getElementById('help-modal')) return;
+    document.getElementById('help-modal').style.display = 'none';
+}
+
+// ═══════════════════════════════════════════════════════════
+//  DÉMARRAGE
+// ═══════════════════════════════════════════════════════════
+
+initLevel1();
+
+</script>
+</body>
+</html>
