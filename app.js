@@ -15,7 +15,7 @@ function renderLessons() {
         let badge = lesson.theoryPage && lesson.hasQuiz ? '<span class="lesson-type-badge">📖 + ✏️</span>' : lesson.theoryPage ? '<span class="lesson-type-badge">📖 Théorie</span>' : '';
         let stars = best !== null ? '<div class="lesson-stats"><span class="stars">' + (best>=90?'⭐⭐⭐':best>=70?'⭐⭐':'⭐') + '</span><span class="best-score">' + best + '%</span><span class="attempts">' + att + ' essai' + (att>1?'s':'') + '</span></div>' : '<div class="lesson-stats"><span class="not-done">Jamais fait</span></div>';
         const meta = lesson.questionCount ? lesson.questionCount + ' phrases' : 'Nouvelle leçon';
-        return '<div class="lesson-card" onclick="location.href='' + href + ''" style="--card-color:' + lesson.color + '"><div class="lesson-icon">' + lesson.icon + '</div><div class="lesson-info"><h3>' + lesson.title + '</h3><p>' + lesson.subtitle + '</p><span class="lesson-meta">' + meta + ' ' + badge + '</span></div>' + stars + '<div class="lesson-arrow">→</div></div>';
+        return '<div class="lesson-card" onclick="location.href=\'' + href + '\'" style="--card-color:' + lesson.color + '"><div class="lesson-icon">' + lesson.icon + '</div><div class="lesson-info"><h3>' + lesson.title + '</h3><p>' + lesson.subtitle + '</p><span class="lesson-meta">' + meta + ' ' + badge + '</span></div>' + stars + '<div class="lesson-arrow">→</div></div>';
     }).join('') + '<div class="lesson-card coming-soon"><div class="lesson-icon">🔒</div><div class="lesson-info"><h3>Bientôt disponible</h3><p>Les temps du passé</p></div></div><div class="lesson-card coming-soon"><div class="lesson-icon">🔒</div><div class="lesson-info"><h3>Bientôt disponible</h3><p>Vocabulaire avancé</p></div></div>';
 }
 function renderStats() {
