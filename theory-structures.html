@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Structures Clés — ENG Hub</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="theory.css">
+<style>
+.struct-cards{display:grid;gap:1.25rem;margin-bottom:1.5rem;}
+.struct-card{background:#1e293b;border-radius:16px;padding:1.5rem;border-left:5px solid var(--sc,#3b82f6);}
+.struct-card .struct-num{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--sc,#3b82f6);margin-bottom:.3rem;}
+.struct-card h3{font-size:1.4rem;font-weight:900;color:var(--sc,#3b82f6);margin-bottom:.6rem;}
+.struct-card .formula{background:#0f172a;border-radius:10px;padding:.65rem 1rem;font-family:monospace;font-size:.9rem;color:#e2e8f0;margin-bottom:.9rem;}
+.struct-card ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.struct-card li{font-size:.88rem;color:#cbd5e1;border-bottom:1px solid #293548;padding-bottom:.45rem;}
+.struct-card li:last-child{border-bottom:none;padding-bottom:0;}
+.struct-card .en{color:#60a5fa;font-weight:600;}
+.struct-card .fr{color:#64748b;font-size:.82rem;margin-top:.1rem;}
+
+.contrast-block{background:#1e293b;border-radius:14px;padding:1.25rem;margin-bottom:.75rem;}
+.contrast-block h4{font-size:.9rem;font-weight:700;color:#f59e0b;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.06em;}
+.contrast-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.5rem;}
+.contrast-cell{background:#0f172a;border-radius:10px;padding:.65rem .9rem;}
+.contrast-cell .label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.35rem;}
+.contrast-cell .label.would{color:#3b82f6;}
+.contrast-cell .label.could{color:#8b5cf6;}
+.contrast-cell .label.should{color:#f59e0b;}
+.contrast-cell p{font-size:.82rem;color:#cbd5e1;}
+
+.tip-block{display:flex;align-items:flex-start;gap:.75rem;background:#052e16;border:1px solid #16a34a;border-radius:12px;padding:1rem 1.25rem;margin-top:1rem;}
+.tip-block .tip-icon{font-size:1.2rem;flex-shrink:0;}
+.tip-block p{font-size:.86rem;color:#4ade80;line-height:1.5;}
+.tip-block strong{color:#86efac;}
+</style>
+</head>
+<body>
+<div class="reading-bar" id="reading-bar"></div>
+<div class="theory-page">
+  <a href="index.html" class="back-btn">← Accueil</a>
+  <div class="theory-hero">
+    <h1>🏗️ Would · Could · Should</h1>
+    <p>Maîtrise les 3 structures clés du politesse et du regret</p>
+  </div>
+
+  <nav class="sticky-nav">
+    <div class="sticky-nav-inner">
+      <button class="nav-tab active" data-target="would">Would</button>
+      <button class="nav-tab" data-target="could">Could</button>
+      <button class="nav-tab" data-target="should">Should have</button>
+      <button class="nav-tab" data-target="compare">Comparaison</button>
+    </div>
+  </nav>
+
+  <!-- WOULD -->
+  <section class="theory-section" id="would">
+    <h2><span>💙</span> Structure 1 — WOULD</h2>
+    <p style="color:#94a3b8;font-size:.9rem;margin-bottom:1.25rem;">Exprime un désir, une préférence ou une proposition polie.</p>
+    <div class="struct-cards">
+      <div class="struct-card" style="--sc:#3b82f6">
+        <div class="struct-num">Formule principale</div>
+        <h3>Would like / Would love</h3>
+        <div class="formula">Subject + would like / love / prefer + to + verb</div>
+        <ul>
+          <li><div class="en">I would like a coffee, please.</div><div class="fr">Je voudrais un café, s'il vous plaît.</div></li>
+          <li><div class="en">She would love to learn the piano.</div><div class="fr">Elle aimerait vraiment apprendre le piano.</div></li>
+          <li><div class="en">We would prefer to stay at home.</div><div class="fr">Nous préférerions rester à la maison.</div></li>
+          <li><div class="en">Would you like something to drink?</div><div class="fr">Est-ce que vous voudriez quelque chose à boire ?</div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tip-block">
+      <div class="tip-icon">💡</div>
+      <p><strong>Would like</strong> est plus poli que <strong>want</strong>. Dans un contexte formel ou avec un inconnu, préfère toujours <em>would like</em> à <em>want</em>.</p>
+    </div>
+  </section>
+
+  <!-- COULD -->
+  <section class="theory-section" id="could">
+    <h2><span>💜</span> Structure 2 — COULD</h2>
+    <p style="color:#94a3b8;font-size:.9rem;margin-bottom:1.25rem;">Exprime une demande polie ou une possibilité.</p>
+    <div class="struct-cards">
+      <div class="struct-card" style="--sc:#8b5cf6">
+        <div class="struct-num">Demande polie</div>
+        <h3>Could you... / Could I...</h3>
+        <div class="formula">Could + subject + verb (base form) ?</div>
+        <ul>
+          <li><div class="en">Could you help me, please?</div><div class="fr">Pourriez-vous m'aider, s'il vous plaît ?</div></li>
+          <li><div class="en">Could you speak more slowly?</div><div class="fr">Pourriez-vous parler plus lentement ?</div></li>
+          <li><div class="en">Could I have the bill?</div><div class="fr">Est-ce que je pourrais avoir l'addition ?</div></li>
+          <li><div class="en">Could he call back later?</div><div class="fr">Pourrait-il rappeler plus tard ?</div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nuance-block">
+      <div class="nuance-header" onclick="toggleNuance(this)">
+        <span>🤔 Could you vs Can you — quelle différence ?</span>
+        <span class="nuance-chevron">▼</span>
+      </div>
+      <div class="nuance-body">
+        <p><strong>Could you</strong> est plus poli et plus formel que <strong>Can you</strong>.</p>
+        <div class="example-row"><span class="fr">Décontracté :</span> <span class="en">Can you close the window?</span></div>
+        <div class="example-row"><span class="fr">Poli / formel :</span> <span class="en">Could you close the window?</span></div>
+        <div class="example-row"><span class="fr">Très poli :</span> <span class="en">Could you possibly close the window?</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOULD HAVE -->
+  <section class="theory-section" id="should">
+    <h2><span>🟡</span> Structure 3 — SHOULD HAVE</h2>
+    <p style="color:#94a3b8;font-size:.9rem;margin-bottom:1.25rem;">Exprime un regret sur une action passée — quelque chose qui aurait dû être fait (mais ne l'a pas été).</p>
+    <div class="struct-cards">
+      <div class="struct-card" style="--sc:#f59e0b">
+        <div class="struct-num">Regret / reproche</div>
+        <h3>Should have + past participle</h3>
+        <div class="formula">Subject + should have + past participle</div>
+        <ul>
+          <li><div class="en">I should have studied earlier.</div><div class="fr">J'aurais dû étudier plus tôt.</div></li>
+          <li><div class="en">He should have called before coming.</div><div class="fr">Il aurait dû appeler avant de venir.</div></li>
+          <li><div class="en">We should have taken an umbrella.</div><div class="fr">Nous aurions dû prendre un parapluie.</div></li>
+          <li><div class="en">You shouldn't have said that.</div><div class="fr">Tu n'aurais pas dû dire ça.</div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tip-block">
+      <div class="tip-icon">💡</div>
+      <p>Le participe passé irrégulier est indispensable ici : <strong>studied, called, taken, said, left, read...</strong> Révise-les régulièrement !</p>
+    </div>
+  </section>
+
+  <!-- COMPARAISON -->
+  <section class="theory-section" id="compare">
+    <h2><span>⚖️</span> Comparaison des 3 structures</h2>
+    <div class="contrast-block">
+      <h4>La même situation, 3 nuances différentes</h4>
+      <div style="background:#0f172a;border-radius:10px;padding:.65rem .9rem;margin-bottom:1rem;">
+        <div style="font-size:.75rem;color:#64748b;margin-bottom:.3rem;">Situation : tu n'as pas réservé de table</div>
+      </div>
+      <div class="contrast-row">
+        <div class="contrast-cell"><div class="label would">WOULD</div><p>I would like to book a table.<br><span style="font-size:.75rem;color:#64748b">Désir présent</span></p></div>
+        <div class="contrast-cell"><div class="label could">COULD</div><p>Could I book a table?<br><span style="font-size:.75rem;color:#64748b">Demande polie</span></p></div>
+      </div>
+      <div class="contrast-cell" style="margin-top:.75rem"><div class="label should">SHOULD HAVE</div><p>I should have booked a table in advance.<br><span style="font-size:.75rem;color:#64748b">Regret sur le passé</span></p></div>
+    </div>
+
+    <div class="contrast-block">
+      <h4>Résumé rapide</h4>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem;">
+        <li style="display:flex;align-items:center;gap:.75rem;font-size:.88rem;color:#cbd5e1;"><span style="font-size:1rem;font-weight:900;color:#3b82f6;width:1.8rem">Would</span> → désir, préférence, proposition (présent / futur)</li>
+        <li style="display:flex;align-items:center;gap:.75rem;font-size:.88rem;color:#cbd5e1;"><span style="font-size:1rem;font-weight:900;color:#8b5cf6;width:1.8rem">Could</span> → demande polie, possibilité (présent / futur)</li>
+        <li style="display:flex;align-items:center;gap:.75rem;font-size:.88rem;color:#cbd5e1;"><span style="font-size:.85rem;font-weight:900;color:#f59e0b;width:1.8rem">Should have</span> → regret, reproche (passé)</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <button class="cta-btn" onclick="location.href='quiz.html?lesson=structures-1'">✏️ S'entraîner →</button>
+  </div>
+</div>
+
+<script>
+window.addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+    document.getElementById('reading-bar').style.width=pct+'%';
+});
+function toggleNuance(header){
+    const body=header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+}
+(function(){
+    const tabs=document.querySelectorAll('.nav-tab');
+    const sections=document.querySelectorAll('.theory-section');
+    const observer=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+            if(e.isIntersecting){
+                tabs.forEach(t=>t.classList.toggle('active',t.dataset.target===e.target.id));
+            }
+        });
+    },{threshold:0.3});
+    sections.forEach(s=>observer.observe(s));
+    tabs.forEach(tab=>tab.addEventListener('click',()=>{
+        document.getElementById(tab.dataset.target)?.scrollIntoView({behavior:'smooth'});
+    }));
+})();
+</script>
+</body>
+</html>

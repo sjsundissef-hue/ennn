@@ -6,7 +6,7 @@ const LESSONS = {
     icon: "🏗️",
     color: "#3b82f6",
     questionCount: 25,
-    theoryPage: null,
+    theoryPage: "theory-structures.html",
     hasQuiz: true,
     questions: [
       {fr:"Je voudrais un café, s'il vous plaît.",en:["I would like a coffee, please."],structure:1},
