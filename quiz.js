@@ -6,8 +6,38 @@ const SoundFX = {
         else if(type==='complete'){ [523.25,659.25,783.99,1046.5].forEach((f,i)=>{ const o=ctx.createOscillator(),g=ctx.createGain(); o.connect(g);g.connect(ctx.destination); o.frequency.value=f; const t=ctx.currentTime+i*0.13; g.gain.setValueAtTime(0.2,t); g.gain.exponentialRampToValueAtTime(0.001,t+0.4); o.start(t);o.stop(t+0.4); }); }
     }catch(e){} }
 };
-const quiz={lesson:null,questions:[],currentIndex:0,score:0,streak:0,maxStreak:0,skipped:0,state:"typing",soundEnabled:true};
+const STRUCTURE_HELP={
+  1:{
+    name:"Would — Volonté & Désir",color:"#3b82f6",
+    pattern:"Sujet + <strong>would</strong> + like / prefer / love + <em>to</em> + verbe",
+    example:{fr:"Je voudrais un café.",en:"I <strong>would like</strong> a coffee."},
+    tip:"Utilise <strong>would like / prefer / love</strong> pour exprimer un souhait poli ou une préférence.",
+    errorHint:"Vérifie : <strong>would + like/prefer/love</strong>. Pour les questions, inverse : <strong>Would you…?</strong> N'oublie pas le <em>to</em> devant l'infinitif !"
+  },
+  2:{
+    name:"Could — Politesse & Demande",color:"#8b5cf6",
+    pattern:"<strong>Could</strong> + sujet + verbe ? &nbsp;·&nbsp; Sujet + <strong>could</strong> + verbe",
+    example:{fr:"Pourriez-vous m'aider ?",en:"<strong>Could</strong> you help me?"},
+    tip:"Utilise <strong>could</strong> pour faire une demande polie ou exprimer une possibilité.",
+    errorHint:"Pour les questions, pense à l'inversion : <strong>Could + sujet + verbe ?</strong> Le sujet vient <em>après</em> could."
+  },
+  3:{
+    name:"Should have — Regret",color:"#f59e0b",
+    pattern:"Sujet + <strong>should have</strong> + participe passé",
+    example:{fr:"J'aurais dû étudier.",en:"I <strong>should have</strong> studied."},
+    tip:"Utilise <strong>should have + participe passé</strong> pour exprimer un regret sur quelque chose qui ne s'est pas passé.",
+    errorHint:"N'oublie pas le <strong>have</strong> après <em>should</em> ! Et vérifie le participe passé (studied, taken, called…)."
+  }
+};
+const quiz={lesson:null,questions:[],currentIndex:0,score:0,streak:0,maxStreak:0,skipped:0,state:"typing",soundEnabled:true,hadError:false};
 function normalizeText(t){ return t.toLowerCase().replace(/[.,?!]/g,'').replace(/\s+/g,' ').trim(); }
+function buildVariantHTML(q, usedAnswer){
+    if(!q.en||q.en.length<=1||!q.variantNote)return'';
+    const others=usedAnswer?q.en.filter(a=>normalizeText(a)!==normalizeText(usedAnswer)):q.en.slice(1);
+    if(!others.length)return'';
+    const list=others.map(a=>`<span class="variant-phrase">"${a}"</span>`).join(' ou ');
+    return`<div class="variant-also">Tu aurais aussi pu dire : ${list}</div><div class="variant-diff">${q.variantNote}</div>`;
+}
 function shuffleArray(a){ const r=a.slice(); for(let i=r.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [r[i],r[j]]=[r[j],r[i]]; } return r; }
 function escapeChar(c){ return c==='<'?'&lt;':c==='>'?'&gt;':c==='&'?'&amp;':c; }
 function initQuiz(lesson){
@@ -34,6 +64,8 @@ function loadQuestion(){
     document.getElementById('submit-btn').textContent='Vérifier ✓';document.getElementById('submit-btn').className='action-btn';
     document.getElementById('skip-btn').style.display='inline-flex';
     const fb=document.getElementById('feedback-box');fb.style.display='none';fb.className='feedback';
+    const fvr=document.getElementById('feedback-variants');if(fvr)fvr.innerHTML='';
+    quiz.hadError=false;
     updateStreakDisplay(); setTimeout(()=>inp.focus(),80);
 }
 function checkAnswer(){
@@ -48,8 +80,9 @@ function checkAnswer(){
         quiz.state="feedback";inp.disabled=true;btn.textContent='Continuer →';
         document.getElementById('skip-btn').style.display='none';lb.style.display='none';
         fb.className='feedback correct';fbM.textContent='✅ Parfait!'+(quiz.streak>=3?' 🔥 Combo ×'+quiz.streak+' !':'');fbC.textContent='';
+        const fv1=document.getElementById('feedback-variants');if(fv1)fv1.innerHTML=buildVariantHTML(q,ua);
     }else{
-        quiz.streak=0;if(quiz.soundEnabled)SoundFX.play('wrong');
+        quiz.streak=0;quiz.hadError=true;if(quiz.soundEnabled)SoundFX.play('wrong');
         inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),400);
         fb.className='feedback incorrect';fbM.textContent='❌ Pas tout à fait, essaie encore !';fbC.textContent='';inp.focus();
     }
@@ -64,6 +97,7 @@ function showAnswer(){
     const fb=document.getElementById('feedback-box');fb.className='feedback incorrect';
     document.getElementById('feedback-msg').textContent='⏭️ Question passée.';
     document.getElementById('feedback-correction').textContent='Réponse : '+q.en[0];
+    const fv2=document.getElementById('feedback-variants');if(fv2)fv2.innerHTML=buildVariantHTML(q,null);
     fb.style.display='block';updateScore();updateStreakDisplay();
 }
 function nextQuestion(){ quiz.currentIndex++; if(quiz.currentIndex<quiz.questions.length)loadQuestion();else showEndScreen(); }
@@ -85,7 +119,35 @@ function updateStreakDisplay(){
     const el=document.getElementById('streak-display');if(!el)return;
     if(quiz.streak>=2){el.textContent='🔥 ×'+quiz.streak;el.style.display='inline-block';el.className='streak-badge';void el.offsetWidth;el.className='streak-badge active';}else{el.style.display='none';}
 }
-function openHelp(){document.getElementById('help-modal').style.display='flex';}
+function openHelp(){
+    const box=document.getElementById('help-modal-box');
+    const q=quiz.questions&&quiz.questions[quiz.currentIndex];
+    const sh=q&&q.structure?STRUCTURE_HELP[q.structure]:null;
+    let html='';
+    if(sh){
+        html+=`<div class="help-struct-header" style="color:${sh.color}">💡 ${sh.name}</div>`;
+        if(quiz.hadError){
+            html+=`<div class="help-hint-box error">Tu t'es trompé(e) sur cette question :<br>${sh.errorHint}</div>`;
+        }else{
+            html+=`<div class="help-hint-box">${sh.tip}</div>`;
+        }
+        html+=`<div class="help-pattern-block"><div class="help-label">Structure</div><div class="help-pattern">${sh.pattern}</div></div>`;
+        html+=`<div class="help-example-block">`;
+        html+=`<div class="help-ex-row"><span class="help-flag">🇫🇷</span><span>${sh.example.fr}</span></div>`;
+        html+=`<div class="help-ex-row"><span class="help-flag">🇬🇧</span><span>${sh.example.en}</span></div>`;
+        html+=`</div>`;
+    }else{
+        html+=`<h3>💡 Comment jouer</h3><ul>`;
+        html+=`<li><strong>Tape</strong> la traduction anglaise et appuie sur <strong>Entrée</strong></li>`;
+        html+=`<li>La coloration <strong style="color:#4ade80">verte/rouge</strong> t'indique si tu es sur la bonne voie</li>`;
+        html+=`<li>Tu peux avoir plusieurs essais avant de passer</li>`;
+        html+=`<li><strong>⏭️ Passer</strong> révèle la réponse mais ne compte pas de point</li>`;
+        html+=`</ul>`;
+    }
+    html+=`<button class="modal-close" onclick="closeHelp()">Fermer</button>`;
+    box.innerHTML=html;
+    document.getElementById('help-modal').style.display='flex';
+}
 function closeHelp(e){if(e)e.stopPropagation();document.getElementById('help-modal').style.display='none';if(quiz.state==="typing")setTimeout(()=>document.getElementById('answer-input')?.focus(),80);}
 function toggleSound(){quiz.soundEnabled=!quiz.soundEnabled;const b=document.getElementById('sound-btn');b.textContent=quiz.soundEnabled?'🔊':'🔇';b.style.opacity=quiz.soundEnabled?'1':'0.45';}
 (function(){

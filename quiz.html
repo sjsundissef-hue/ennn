@@ -36,6 +36,7 @@
         <div class="feedback" id="feedback-box">
           <div id="feedback-msg"></div>
           <div class="feedback-correction" id="feedback-correction"></div>
+          <div class="feedback-variants" id="feedback-variants"></div>
         </div>
       </div>
     </div>
@@ -55,16 +56,7 @@
   </div>
 </div>
 <div class="modal-overlay" id="help-modal" onclick="closeHelp(event)">
-  <div class="modal-box" onclick="event.stopPropagation()">
-    <h3>💡 Comment jouer</h3>
-    <ul>
-      <li><strong>Tape</strong> la traduction anglaise et appuie sur <strong>Entrée</strong></li>
-      <li>La coloration <strong style="color:#4ade80">verte/rouge</strong> t'indique si tu es sur la bonne voie</li>
-      <li>Tu peux avoir plusieurs essais avant de passer</li>
-      <li><strong>⏭️ Passer</strong> révèle la réponse mais ne compte pas de point</li>
-    </ul>
-    <button class="modal-close" onclick="closeHelp()">Fermer</button>
-  </div>
+  <div class="modal-box" id="help-modal-box" onclick="event.stopPropagation()"></div>
 </div>
 <script src="lessons.js"></script>
 <script src="app.js"></script>
