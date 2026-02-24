@@ -1,188 +1,36 @@
-// data/prepositions-space.js — Quiz : L'Espace (AT · ON · IN)
-// Niveau 1 : QCM — choisir la préposition
-// Niveau 2 : Rédaction — réécrire la phrase complète
-
 const SPACE_QUIZ = {
-    id:       "prepositions-space",
-    title:    "L'Espace — AT · ON · IN",
-    subtitle: "15 phrases · 2 niveaux",
-
-    // ── Niveau 1 : QCM ─────────────────────────────────────
-    level1: [
-
-        // AT — Le Point (dimension 0)
-        {
-            fr:   "À la porte d'entrée.",
-            en:   "At the front door.",
-            prep: "AT",
-            hint: "Un point de repère précis → dimension 0"
-        },
-        {
-            fr:   "Dans un aéroport bondé.",
-            en:   "At a busy airport.",
-            prep: "AT",
-            hint: "On voit l'aéroport comme une étape, pas un intérieur"
-        },
-        {
-            fr:   "À l'entrée principale.",
-            en:   "At the main entrance.",
-            prep: "AT",
-            hint: "Un point de passage, pas une surface ni un contenant"
-        },
-        {
-            fr:   "À une adresse précise.",
-            en:   "At a specific address.",
-            prep: "AT",
-            hint: "Une adresse = un point sur une carte"
-        },
-        {
-            fr:   "Au dernier étage.",
-            en:   "At the top floor.",
-            prep: "AT",
-            hint: "Vu comme un point d'arrivée, pas une surface à explorer"
-        },
-
-        // ON — La Surface / La Ligne (dimension 2)
-        {
-            fr:   "Sur une table en bois.",
-            en:   "On a wooden table.",
-            prep: "ON",
-            hint: "Contact avec une surface plane → dimension 2"
-        },
-        {
-            fr:   "Sur le sol sale.",
-            en:   "On the dirty floor.",
-            prep: "ON",
-            hint: "Posé sur une surface, pas à l'intérieur"
-        },
-        {
-            fr:   "Dans une rue étroite.",
-            en:   "On a narrow street.",
-            prep: "ON",
-            hint: "L'anglais voit une rue comme une ligne (axe) → ON"
-        },
-        {
-            fr:   "Sur une île tropicale.",
-            en:   "On a tropical island.",
-            prep: "ON",
-            hint: "Une île est une plateforme (surface) dans l'océan"
-        },
-        {
-            fr:   "Sur le mur blanc.",
-            en:   "On the white wall.",
-            prep: "ON",
-            hint: "Fixé ou posé sur une surface verticale"
-        },
-
-        // IN — Le Contenant (dimension 3)
-        {
-            fr:   "Dans une grande boîte.",
-            en:   "In a large box.",
-            prep: "IN",
-            hint: "Entouré par des parois physiques → dimension 3"
-        },
-        {
-            fr:   "Dans une cuisine moderne.",
-            en:   "In a modern kitchen.",
-            prep: "IN",
-            hint: "Une pièce forme un contenant : 4 murs + sol + plafond"
-        },
-        {
-            fr:   "Dans une belle ville.",
-            en:   "In a beautiful city.",
-            prep: "IN",
-            hint: "Les limites de la ville t'entourent comme un contenant"
-        },
-        {
-            fr:   "Dans une forêt sombre.",
-            en:   "In a dark forest.",
-            prep: "IN",
-            hint: "Les arbres t'entourent de tous côtés"
-        },
-        {
-            fr:   "Dans une petite voiture.",
-            en:   "In a small car.",
-            prep: "IN",
-            hint: "Tu dois te plier pour entrer → espace privé fermé"
-        }
-    ],
-
-    // ── Niveau 2 : Rédaction ────────────────────────────────
-    level2: [
-        {
-            fr:   "À la porte d'entrée.",
-            en:   ["At the front door", "At the front door."],
-            prep: "AT"
-        },
-        {
-            fr:   "Dans un aéroport bondé.",
-            en:   ["At a busy airport", "At a busy airport."],
-            prep: "AT"
-        },
-        {
-            fr:   "À l'entrée principale.",
-            en:   ["At the main entrance", "At the main entrance."],
-            prep: "AT"
-        },
-        {
-            fr:   "À une adresse précise.",
-            en:   ["At a specific address", "At a specific address."],
-            prep: "AT"
-        },
-        {
-            fr:   "Au dernier étage.",
-            en:   ["At the top floor", "At the top floor."],
-            prep: "AT"
-        },
-        {
-            fr:   "Sur une table en bois.",
-            en:   ["On a wooden table", "On a wooden table."],
-            prep: "ON"
-        },
-        {
-            fr:   "Sur le sol sale.",
-            en:   ["On the dirty floor", "On the dirty floor."],
-            prep: "ON"
-        },
-        {
-            fr:   "Dans une rue étroite.",
-            en:   ["On a narrow street", "On a narrow street."],
-            prep: "ON"
-        },
-        {
-            fr:   "Sur une île tropicale.",
-            en:   ["On a tropical island", "On a tropical island."],
-            prep: "ON"
-        },
-        {
-            fr:   "Sur le mur blanc.",
-            en:   ["On the white wall", "On the white wall."],
-            prep: "ON"
-        },
-        {
-            fr:   "Dans une grande boîte.",
-            en:   ["In a large box", "In a large box."],
-            prep: "IN"
-        },
-        {
-            fr:   "Dans une cuisine moderne.",
-            en:   ["In a modern kitchen", "In a modern kitchen."],
-            prep: "IN"
-        },
-        {
-            fr:   "Dans une belle ville.",
-            en:   ["In a beautiful city", "In a beautiful city."],
-            prep: "IN"
-        },
-        {
-            fr:   "Dans une forêt sombre.",
-            en:   ["In a dark forest", "In a dark forest."],
-            prep: "IN"
-        },
-        {
-            fr:   "Dans une petite voiture.",
-            en:   ["In a small car", "In a small car."],
-            prep: "IN"
-        }
-    ]
+  level1: [
+    {fr:"Le chat est ___ la boîte.",prep:"IN",hint:"Dedans, à l'intérieur"},
+    {fr:"Je suis ___ l'école.",prep:"AT",hint:"Un lieu précis, un point"},
+    {fr:"Le livre est ___ la table.",prep:"ON",hint:"Posé sur une surface"},
+    {fr:"Elle habite ___ Paris.",prep:"IN",hint:"Dans une ville / un pays"},
+    {fr:"Il est ___ l'arrêt de bus.",prep:"AT",hint:"Un point de rendez-vous"},
+    {fr:"Le chat dort ___ le canapé.",prep:"ON",hint:"Sur une surface"},
+    {fr:"Nous sommes ___ la salle de classe.",prep:"IN",hint:"À l'intérieur d'un espace fermé"},
+    {fr:"Le tableau est ___ le mur.",prep:"ON",hint:"Fixé sur une surface"},
+    {fr:"Je t'attends ___ l'entrée.",prep:"AT",hint:"À un point précis"},
+    {fr:"Il y a une mouche ___ mon verre.",prep:"IN",hint:"À l'intérieur"},
+    {fr:"Elle est ___ la plage.",prep:"ON",hint:"Sur une surface étendue"},
+    {fr:"Les clés sont ___ ma poche.",prep:"IN",hint:"À l'intérieur d'un contenant"},
+    {fr:"Je travaille ___ le bureau.",prep:"AT",hint:"À un poste, un endroit de travail"},
+    {fr:"Il y a des nuages ___ le ciel.",prep:"IN",hint:"Dans un espace étendu"},
+    {fr:"Le chien est ___ le jardin.",prep:"IN",hint:"À l'intérieur d'un espace délimité"}
+  ],
+  level2: [
+    {fr:"Le chat est dans la boîte.",en:["The cat is in the box."]},
+    {fr:"Je suis à l'école.",en:["I am at school."]},
+    {fr:"Le livre est sur la table.",en:["The book is on the table."]},
+    {fr:"Elle habite à Paris.",en:["She lives in Paris."]},
+    {fr:"Il est à l'arrêt de bus.",en:["He is at the bus stop."]},
+    {fr:"Le chat dort sur le canapé.",en:["The cat is sleeping on the sofa.","The cat sleeps on the sofa.","The cat is sleeping on the couch."]},
+    {fr:"Nous sommes dans la salle de classe.",en:["We are in the classroom."]},
+    {fr:"Le tableau est sur le mur.",en:["The painting is on the wall.","The picture is on the wall.","The board is on the wall."]},
+    {fr:"Je t'attends à l'entrée.",en:["I am waiting for you at the entrance.","I'll wait for you at the entrance."]},
+    {fr:"Il y a une mouche dans mon verre.",en:["There is a fly in my glass.","There's a fly in my glass."]},
+    {fr:"Elle est sur la plage.",en:["She is on the beach."]},
+    {fr:"Les clés sont dans ma poche.",en:["The keys are in my pocket."]},
+    {fr:"Je travaille au bureau.",en:["I work at the office.","I am working at the office."]},
+    {fr:"Il y a des nuages dans le ciel.",en:["There are clouds in the sky.","There's clouds in the sky."]},
+    {fr:"Le chien est dans le jardin.",en:["The dog is in the garden.","The dog is in the yard."]}
+  ]
 };

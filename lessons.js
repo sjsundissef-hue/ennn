@@ -1,255 +1,50 @@
-// data/lessons.js — Banque de questions et métadonnées des leçons
-
 const LESSONS = {
-    "structures-1": {
-        id: "structures-1",
-        title: "Structures Clés",
-        subtitle: "Vouloir · Politesse · Regret",
-        icon: "🎯",
-        color: "#3b82f6",
-        questionCount: 25,
-        rules: [
-            {
-                title: "Structure 1 : La Volonté — Tuer le \"QUE\"",
-                engine: "I want / I need / I tell + Personne + TO + Action",
-                examples: [
-                    "Je veux que tu finisses... → I want <b>you to</b> finish...",
-                    "Il a besoin que nous l'aidions. → He needs <b>us to</b> help him.",
-                    "Le patron s'attend à ce qu'ils... → The boss expects <b>them to</b> arrive..."
-                ]
-            },
-            {
-                title: "Structure 2 : La Politesse — Le bloc \"Would you like...\"",
-                engine: "Would you like + Personne + TO + Action ?",
-                examples: [
-                    "Voudrais-tu que je prenne... ? → Would you like <b>me to</b> take...?",
-                    "Aimerais-tu que nous partions... ? → Would you like <b>us to</b> leave...?"
-                ]
-            },
-            {
-                title: "Structure 3 : Le Regret — Le bloc \"Should have\"",
-                engine: "Subject + Should have (Should've) + Participe Passé",
-                examples: [
-                    "Tu aurais dû acheter... → You <b>should've bought</b>...",
-                    "J'aurais dû écouter... → I <b>should've listened</b>...",
-                    "Nous aurions dû partir... → We <b>should've left</b>..."
-                ]
-            }
-        ],
-        questions: [
-            // --- Structure 1 : La Volonté (9 phrases) ---
-            {
-                fr: "Je veux que tu finisses ton travail.",
-                en: ["I want you to finish your work", "I want you to finish your work."],
-                structure: 1
-            },
-            {
-                fr: "Il a besoin que nous l'aidions.",
-                en: ["He needs us to help him", "He needs us to help him."],
-                structure: 1
-            },
-            {
-                fr: "Ma mère veut que je sois prudent.",
-                en: ["My mother wants me to be careful", "My mother wants me to be careful."],
-                structure: 1
-            },
-            {
-                fr: "Le patron s'attend à ce qu'ils arrivent tôt.",
-                en: ["The boss expects them to arrive early", "The boss expects them to arrive early."],
-                structure: 1
-            },
-            {
-                fr: "Je t'ai dit de fermer la fenêtre.",
-                en: ["I told you to close the window", "I told you to close the window."],
-                structure: 1
-            },
-            {
-                fr: "Je veux que tu me dises la vérité.",
-                en: ["I want you to tell me the truth", "I want you to tell me the truth."],
-                structure: 1
-            },
-            {
-                fr: "Elle a besoin que vous terminiez ce projet.",
-                en: ["She needs you to finish this project", "She needs you to finish this project."],
-                structure: 1
-            },
-            {
-                fr: "J'aimerais que tu sois là demain.",
-                en: [
-                    "I would like you to be there tomorrow",
-                    "I would like you to be there tomorrow.",
-                    "I'd like you to be there tomorrow",
-                    "I'd like you to be there tomorrow."
-                ],
-                structure: 1
-            },
-            {
-                fr: "Dis-leur de faire moins de bruit.",
-                en: ["Tell them to make less noise", "Tell them to make less noise."],
-                structure: 1
-            },
-
-            // --- Structure 2 : La Politesse (8 phrases) ---
-            {
-                fr: "Voudrais-tu que je prenne une photo ?",
-                en: ["Would you like me to take a photo?", "Would you like me to take a photo"],
-                structure: 2
-            },
-            {
-                fr: "Voudrais-tu qu'il vienne à la fête ?",
-                en: ["Would you like him to come to the party?", "Would you like him to come to the party"],
-                structure: 2
-            },
-            {
-                fr: "Aimerais-tu que nous partions maintenant ?",
-                en: ["Would you like us to leave now?", "Would you like us to leave now"],
-                structure: 2
-            },
-            {
-                fr: "Voudrais-tu que je t'apporte un café ?",
-                en: [
-                    "Would you like me to bring you a coffee?",
-                    "Would you like me to bring you a coffee",
-                    "Would you like me to bring you some coffee?"
-                ],
-                structure: 2
-            },
-            {
-                fr: "Est-ce que tu voudrais qu'elle t'explique ?",
-                en: [
-                    "Would you like her to explain to you?",
-                    "Would you like her to explain to you",
-                    "Would you like her to explain it to you?"
-                ],
-                structure: 2
-            },
-            {
-                fr: "Voudrais-tu que je t'aide à porter tes valises ?",
-                en: [
-                    "Would you like me to help you carry your bags?",
-                    "Would you like me to help you carry your bags",
-                    "Would you like me to help you carry your suitcases?"
-                ],
-                structure: 2
-            },
-            {
-                fr: "Voudrais-tu qu'il nous rejoigne au restaurant ?",
-                en: [
-                    "Would you like him to join us at the restaurant?",
-                    "Would you like him to join us at the restaurant"
-                ],
-                structure: 2
-            },
-            {
-                fr: "Voudrais-tu que je prépare le dîner ?",
-                en: [
-                    "Would you like me to cook dinner?",
-                    "Would you like me to cook dinner",
-                    "Would you like me to make dinner?",
-                    "Would you like me to make dinner"
-                ],
-                structure: 2
-            },
-
-            // --- Structure 3 : Le Regret (8 phrases) ---
-            {
-                fr: "Tu aurais dû acheter ce billet.",
-                en: [
-                    "You should've bought this ticket",
-                    "You should've bought this ticket.",
-                    "You should have bought this ticket",
-                    "You should have bought this ticket."
-                ],
-                structure: 3
-            },
-            {
-                fr: "J'aurais dû écouter tes conseils.",
-                en: [
-                    "I should've listened to your advice",
-                    "I should've listened to your advice.",
-                    "I should have listened to your advice",
-                    "I should have listened to your advice."
-                ],
-                structure: 3
-            },
-            {
-                fr: "Nous aurions dû partir plus tôt.",
-                en: [
-                    "We should've left earlier",
-                    "We should've left earlier.",
-                    "We should have left earlier",
-                    "We should have left earlier."
-                ],
-                structure: 3
-            },
-            {
-                fr: "Elle aurait dû appeler avant de venir.",
-                en: [
-                    "She should've called before coming",
-                    "She should've called before coming.",
-                    "She should have called before coming",
-                    "She should have called before coming."
-                ],
-                structure: 3
-            },
-            {
-                fr: "Ils auraient dû être plus polis.",
-                en: [
-                    "They should've been more polite",
-                    "They should've been more polite.",
-                    "They should have been more polite",
-                    "They should have been more polite."
-                ],
-                structure: 3
-            },
-            {
-                fr: "Tu aurais dû m'écouter la première fois.",
-                en: [
-                    "You should've listened to me the first time",
-                    "You should've listened to me the first time.",
-                    "You should have listened to me the first time",
-                    "You should have listened to me the first time."
-                ],
-                structure: 3
-            },
-            {
-                fr: "Nous aurions dû réserver une table.",
-                en: [
-                    "We should've booked a table",
-                    "We should've booked a table.",
-                    "We should have booked a table",
-                    "We should have booked a table.",
-                    "We should've reserved a table",
-                    "We should have reserved a table"
-                ],
-                structure: 3
-            },
-            {
-                fr: "Tu n'aurais pas dû dire ça.",
-                en: [
-                    "You shouldn't have said that",
-                    "You shouldn't have said that.",
-                    "You should not have said that",
-                    "You should not have said that."
-                ],
-                structure: 3
-            }
-        ]
-    }
-
-    // ─── Module 2 : Prépositions ──────────────────────────────
-    "prepositions-1": {
-        id: "prepositions-1",
-        title: "Prépositions",
-        subtitle: "AT · ON · IN · FOR",
-        icon: "📍",
-        color: "#10b981",
-        questionCount: null,         // rempli quand le quiz sera prêt
-        theoryPage: "theory-prepositions.html",
-        hasQuiz: true,
-        rules: [],
-        questions: []
-    }
-
-    // D'autres modules seront ajoutés ici au fil du temps
+  "structures-1": {
+    id: "structures-1",
+    title: "Structures Clés",
+    subtitle: "Would, Could, Should",
+    icon: "🏗️",
+    color: "#3b82f6",
+    questionCount: 25,
+    theoryPage: null,
+    hasQuiz: true,
+    questions: [
+      {fr:"Je voudrais un café, s'il vous plaît.",en:["I would like a coffee, please."],structure:1},
+      {fr:"Est-ce que tu voudrais venir avec nous ?",en:["Would you like to come with us?"],structure:1},
+      {fr:"Il aimerait apprendre le piano.",en:["He would like to learn the piano.","He would love to learn the piano."],structure:1},
+      {fr:"Nous voudrions réserver une table pour ce soir.",en:["We would like to book a table for tonight.","We would like to reserve a table for tonight."],structure:1},
+      {fr:"Elle préférerait rester à la maison.",en:["She would prefer to stay at home.","She would rather stay at home."],structure:1},
+      {fr:"Je veux vraiment aller à Paris un jour.",en:["I would really like to go to Paris one day.","I really want to go to Paris one day."],structure:1},
+      {fr:"Ils voudraient un remboursement.",en:["They would like a refund."],structure:1},
+      {fr:"Est-ce que vous voudriez quelque chose à boire ?",en:["Would you like something to drink?"],structure:1},
+      {fr:"J'aimerais vraiment te voir bientôt.",en:["I would really like to see you soon.","I would love to see you soon."],structure:1},
+      {fr:"Pourriez-vous m'aider, s'il vous plaît ?",en:["Could you help me, please?"],structure:2},
+      {fr:"Est-ce que tu pourrais fermer la fenêtre ?",en:["Could you close the window?","Could you please close the window?"],structure:2},
+      {fr:"Serait-il possible de changer ma réservation ?",en:["Could I change my reservation?","Would it be possible to change my reservation?"],structure:2},
+      {fr:"Pourriez-vous parler plus lentement ?",en:["Could you speak more slowly?","Could you please speak more slowly?"],structure:2},
+      {fr:"Est-ce que je pourrais avoir l'addition ?",en:["Could I have the bill?","Could I get the check?"],structure:2},
+      {fr:"Ce serait bien si tu pouvais venir.",en:["It would be nice if you could come."],structure:2},
+      {fr:"Pourrait-il rappeler plus tard ?",en:["Could he call back later?"],structure:2},
+      {fr:"Est-ce que tu pourrais me prêter ton stylo ?",en:["Could you lend me your pen?","Could you borrow me your pen?"],structure:2},
+      {fr:"J'aurais dû étudier plus tôt.",en:["I should have studied earlier."],structure:3},
+      {fr:"Il aurait dû appeler avant de venir.",en:["He should have called before coming."],structure:3},
+      {fr:"Nous aurions dû prendre un parapluie.",en:["We should have taken an umbrella.","We should have brought an umbrella."],structure:3},
+      {fr:"Tu n'aurais pas dû dire ça.",en:["You should not have said that.","You shouldn't have said that."],structure:3},
+      {fr:"Elle aurait dû partir plus tôt.",en:["She should have left earlier."],structure:3},
+      {fr:"Ils auraient dû lire les instructions.",en:["They should have read the instructions."],structure:3},
+      {fr:"J'aurais dû me souvenir de son anniversaire.",en:["I should have remembered her birthday.","I should have remembered his birthday."],structure:3},
+      {fr:"On aurait dû réserver à l'avance.",en:["We should have booked in advance.","We should have reserved in advance."],structure:3}
+    ]
+  },
+  "prepositions-1": {
+    id: "prepositions-1",
+    title: "Prépositions de lieu",
+    subtitle: "AT / ON / IN — L'Espace",
+    icon: "📍",
+    color: "#10b981",
+    questionCount: 15,
+    theoryPage: "theory-prepositions.html",
+    hasQuiz: true,
+    questions: []
+  }
 };

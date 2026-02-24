@@ -1,143 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz — English Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quiz — ENG Hub</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<div class="container">
-
-    <!-- Header -->
-    <div class="header">
-        <a href="../index.html" class="back-btn">← Accueil</a>
-        <div class="header-right">
-            <span id="streak-display" class="streak-badge" style="display:none"></span>
-            <button id="sound-btn" class="icon-btn" onclick="toggleSound()" title="Activer/désactiver le son">🔊</button>
-            <button class="help-btn" onclick="openHelp()">💡 Aide</button>
-            <div class="score-badge">Score : <span id="score-display">0</span> / <span id="total-display">0</span></div>
-        </div>
+<div class="quiz-page">
+  <a href="index.html" class="back-btn">← Accueil</a>
+  <div id="quiz-container" style="display:none">
+    <div class="quiz-header">
+      <div class="quiz-title" id="quiz-title">Quiz</div>
+      <div class="quiz-controls">
+        <button class="icon-btn" id="sound-btn" onclick="toggleSound()" title="Son">🔊</button>
+        <button class="icon-btn" onclick="openHelp()" title="Aide">❓</button>
+      </div>
     </div>
-
-    <!-- Barre de progression -->
-    <div class="progress-bar-track">
-        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+    <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+    <div class="score-bar">
+      <div class="score-display">Score : <span id="score-display">0</span> / <span id="total-display">0</span></div>
+      <div class="score-display">Question <span id="current-q">1</span> / <span id="total-q">0</span></div>
+      <span class="streak-badge" id="streak-display" style="display:none"></span>
     </div>
-
-    <!-- Carte Quiz -->
-    <div class="quiz-card" id="quiz-container">
-
-        <span class="progress-text">
-            Phrase <span id="current-q">1</span> sur <span id="total-q">?</span>
-        </span>
-
-        <div id="structure-badge" class="structure-badge" style="display:none"></div>
-
-        <div class="question-text" id="question-text">Chargement…</div>
-
-        <div class="input-group">
-            <input
-                type="text"
-                id="answer-input"
-                placeholder="Tape ta traduction en anglais…"
-                autocomplete="off"
-                spellcheck="false"
-            >
-
-            <!-- Aperçu en temps réel -->
-            <div id="live-feedback" class="live-feedback-container"></div>
-
-            <div class="action-buttons">
-                <button class="action-btn secondary-btn" id="skip-btn" onclick="showAnswer()">
-                    👀 Voir la réponse
-                </button>
-                <button class="action-btn" id="submit-btn" onclick="checkAnswer()">
-                    Vérifier ✓
-                </button>
-            </div>
+    <div class="question-card">
+      <span class="structure-badge" id="structure-badge" style="display:none"></span>
+      <div class="question-text" id="question-text"></div>
+      <div class="answer-area">
+        <input type="text" id="answer-input" class="answer-input" placeholder="Écris la traduction..." autocomplete="off" spellcheck="false">
+        <div class="live-feedback" id="live-feedback"></div>
+        <div class="action-row">
+          <button class="action-btn" id="submit-btn" onclick="checkAnswer()">Vérifier ✓</button>
+          <button class="skip-btn" id="skip-btn" onclick="showAnswer()">⏭️ Passer</button>
         </div>
-
         <div class="feedback" id="feedback-box">
-            <span id="feedback-msg"></span>
-            <span class="correction" id="feedback-correction"></span>
+          <div id="feedback-msg"></div>
+          <div class="feedback-correction" id="feedback-correction"></div>
         </div>
-
+      </div>
     </div>
-
-    <!-- Écran de fin -->
-    <div class="quiz-card" id="end-screen" style="display:none">
-
-        <div class="end-grade" id="final-grade">🏆</div>
-        <div class="question-text" style="margin-bottom:6px">Exercice terminé !</div>
-
-        <div class="end-stats">
-            <div class="end-stat">
-                <div class="end-stat-value" id="final-score">—</div>
-                <div class="end-stat-label">Score</div>
-            </div>
-            <div class="end-stat">
-                <div class="end-stat-value" id="final-pct">—</div>
-                <div class="end-stat-label">Réussite</div>
-            </div>
-            <div class="end-stat">
-                <div class="end-stat-value" id="final-streak">—</div>
-                <div class="end-stat-label">Meilleur combo</div>
-            </div>
-            <div class="end-stat">
-                <div class="end-stat-value" id="final-skipped">—</div>
-                <div class="end-stat-label">Passées</div>
-            </div>
-        </div>
-
-        <div class="action-buttons">
-            <a href="../index.html" class="action-btn secondary-btn">🏠 Accueil</a>
-            <button class="action-btn" onclick="initQuiz(quiz.lesson)">🔄 Recommencer</button>
-        </div>
-
+  </div>
+  <div class="end-screen" id="end-screen">
+    <div class="end-grade" id="final-grade"></div>
+    <div class="end-scores">
+      <div class="end-score-item"><div class="label">Score</div><div class="value" id="final-score"></div></div>
+      <div class="end-score-item"><div class="label">Résultat</div><div class="value" id="final-pct"></div></div>
+      <div class="end-score-item"><div class="label">Meilleure série</div><div class="value" id="final-streak"></div></div>
     </div>
-
+    <div>Passées : <span id="final-skipped">0</span></div>
+    <div style="margin-top:1.5rem">
+      <button class="restart-btn" onclick="location.reload()">🔄 Recommencer</button>
+      <button class="home-btn" onclick="location.href='index.html'">🏠 Accueil</button>
+    </div>
+  </div>
 </div>
-
-<!-- Modal Aide -->
 <div class="modal-overlay" id="help-modal" onclick="closeHelp(event)">
-    <div class="modal" onclick="event.stopPropagation()">
-        <button class="close-btn" onclick="closeHelp(event)">&times;</button>
-        <h2>📚 Fiche de révision</h2>
-        <div id="modal-rules"></div>
-    </div>
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <h3>💡 Comment jouer</h3>
+    <ul>
+      <li><strong>Tape</strong> la traduction anglaise et appuie sur <strong>Entrée</strong></li>
+      <li>La coloration <strong style="color:#4ade80">verte/rouge</strong> t'indique si tu es sur la bonne voie</li>
+      <li>Tu peux avoir plusieurs essais avant de passer</li>
+      <li><strong>⏭️ Passer</strong> révèle la réponse mais ne compte pas de point</li>
+    </ul>
+    <button class="modal-close" onclick="closeHelp()">Fermer</button>
+  </div>
 </div>
-
-<script src="../data/lessons.js"></script>
-<script src="../js/app.js"></script>
-<script src="../js/quiz.js"></script>
+<script src="lessons.js"></script>
+<script src="app.js"></script>
+<script src="quiz.js"></script>
 <script>
-    // Récupère l'ID de la leçon depuis l'URL (?lesson=structures-1)
-    const params   = new URLSearchParams(window.location.search);
-    const lessonId = params.get('lesson') || 'structures-1';
-    const lesson   = LESSONS[lessonId];
-
-    if (!lesson) {
-        document.getElementById('question-text').textContent = '⚠️ Leçon introuvable.';
-    } else {
-        // Titre de la page
-        document.title = lesson.title + ' — English Hub';
-
-        // Construction du contenu de la modal d'aide
-        document.getElementById('modal-rules').innerHTML = lesson.rules.map(r => `
-            <div class="rule-block">
-                <div class="rule-title">${r.title}</div>
-                <div class="rule-moteur">${r.engine}</div>
-                <ul>${r.examples.map(ex => `<li>${ex}</li>`).join('')}</ul>
-            </div>
-        `).join('');
-
-        // Démarrer le quiz
-        initQuiz(lesson);
-    }
+const params = new URLSearchParams(location.search);
+const lid = params.get('lesson');
+if (lid && LESSONS[lid]) {
+    document.getElementById('quiz-title').textContent = LESSONS[lid].title;
+    initQuiz(LESSONS[lid]);
+} else {
+    document.getElementById('quiz-container').innerHTML = '<p style="color:#f87171">Leçon introuvable.</p>';
+    document.getElementById('quiz-container').style.display = 'block';
+}
 </script>
-
 </body>
 </html>

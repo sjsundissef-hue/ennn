@@ -1,38 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Hub 🇬🇧</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ENG Hub — Tableau de bord</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<div class="page-container">
-
-    <header class="site-header">
-        <div class="logo">🇬🇧 English Hub</div>
-        <div class="header-stats" id="header-stats"></div>
-    </header>
-
-    <section class="hero">
-        <h1>Entraîne-toi à l'anglais</h1>
-        <p>Choisis un module et commence à pratiquer</p>
-    </section>
-
-    <section class="lessons-grid" id="lessons-grid">
-        <!-- Rempli par app.js -->
-    </section>
-
-</div>
-
-<script src="data/lessons.js"></script>
-<script src="js/app.js"></script>
-<script>
-    renderLessons();
-    renderStats();
-</script>
-
+<header class="site-header">
+  <h1>🇬🇧 ENG Hub</h1>
+  <p>Entraîne-toi à traduire des phrases en anglais</p>
+  <div class="header-stats" id="header-stats"></div>
+</header>
+<main class="main-content">
+  <p class="section-title">Mes leçons</p>
+  <div class="lessons-grid" id="lessons-grid"></div>
+</main>
+<script src="lessons.js"></script>
+<script src="app.js"></script>
+<script>renderLessons();renderStats();</script>
 </body>
 </html>
