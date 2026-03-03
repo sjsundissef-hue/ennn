@@ -9,7 +9,7 @@ function updateLessonStat(id, score, total) {
 function renderLessons() {
     const grid = document.getElementById('lessons-grid'); if (!grid) return;
     const stats = getStats();
-    grid.innerHTML = Object.values(LESSONS).map(lesson => {
+    grid.innerHTML = Object.values(LESSONS).filter(l => !l.hidden).map(lesson => {
         const href = lesson.theoryPage ? lesson.theoryPage : 'quiz.html?lesson=' + lesson.id;
         const s = stats[lesson.id]; const best = s ? s.bestScore : null; const att = s ? s.attempts : 0;
         let badge = lesson.theoryPage && lesson.hasQuiz ? '<span class="lesson-type-badge">📖 + ✏️</span>' : lesson.theoryPage ? '<span class="lesson-type-badge">📖 Théorie</span>' : '';

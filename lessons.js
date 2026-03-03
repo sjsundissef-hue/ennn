@@ -36,8 +36,17 @@ const LESSONS = {
       {fr:"On aurait dû réserver à l'avance.",en:["We should have booked in advance.","We should have reserved in advance."],structure:3,variantNote:"Synonymes — <em>book</em> et <em>reserve</em> signifient tous les deux réserver, aucune différence de sens."}
     ]
   },
+  "pp-hub": {
+    id: "pp-hub",
+    title: "Participe Passé",
+    subtitle: "Structures, voix passive & verbes irréguliers",
+    icon: "⏪",
+    color: "#10b981",
+    theoryPage: "pp-hub.html",
+    hasQuiz: true
+  },
   "past-participle-1": {
-    id: "past-participle-1",
+    id: "past-participle-1", hidden: true,
     title: "Participe Passé",
     subtitle: "Formation & 4 structures essentielles",
     icon: "⏪",
@@ -69,7 +78,7 @@ const LESSONS = {
     ]
   },
   "irreg-verbs-1": {
-    id:"irreg-verbs-1",title:"Verbes irréguliers — Set 1",subtitle:"Participe passé · Les 20 plus courants",icon:"🔤",color:"#6366f1",questionCount:20,hasQuiz:true,
+    id:"irreg-verbs-1",hidden:true,title:"Verbes irréguliers — Set 1",subtitle:"Participe passé · Les 20 plus courants",icon:"🔤",color:"#6366f1",questionCount:20,hasQuiz:true,
     questions:[
       {fr:"Participe passé de : BREAK",en:["broken"]},
       {fr:"Participe passé de : BRING",en:["brought"]},
@@ -94,7 +103,7 @@ const LESSONS = {
     ]
   },
   "irreg-verbs-2": {
-    id:"irreg-verbs-2",title:"Verbes irréguliers — Set 2",subtitle:"Participe passé · Niveau intermédiaire",icon:"🔡",color:"#8b5cf6",questionCount:20,hasQuiz:true,
+    id:"irreg-verbs-2",hidden:true,title:"Verbes irréguliers — Set 2",subtitle:"Participe passé · Niveau intermédiaire",icon:"🔡",color:"#8b5cf6",questionCount:20,hasQuiz:true,
     questions:[
       {fr:"Participe passé de : BE",en:["been"]},
       {fr:"Participe passé de : BEGIN",en:["begun"]},
@@ -119,7 +128,7 @@ const LESSONS = {
     ]
   },
   "irreg-verbs-3": {
-    id:"irreg-verbs-3",title:"Verbes irréguliers — Set 3",subtitle:"Passé simple · Les formes qui piègent",icon:"⚡",color:"#ec4899",questionCount:20,hasQuiz:true,
+    id:"irreg-verbs-3",hidden:true,title:"Verbes irréguliers — Set 3",subtitle:"Passé simple · Les formes qui piègent",icon:"⚡",color:"#ec4899",questionCount:20,hasQuiz:true,
     questions:[
       {fr:"Passé simple de : GO",en:["went"]},
       {fr:"Passé simple de : SEE",en:["saw"]},
@@ -144,7 +153,7 @@ const LESSONS = {
     ]
   },
   "pp-present-perfect": {
-    id:"pp-present-perfect",title:"Present Perfect",subtitle:"have / has + participe passé",icon:"✅",color:"#10b981",questionCount:12,theoryPage:"theory-past-participle.html",hasQuiz:true,
+    id:"pp-present-perfect",hidden:true,title:"Present Perfect",subtitle:"have / has + participe passé",icon:"✅",color:"#10b981",questionCount:12,theoryPage:"theory-pp-present-perfect.html",hasQuiz:true,
     questions:[
       {fr:"Je n'ai jamais mangé de sushis.",en:["I have never eaten sushi."],structure:4},
       {fr:"Elle a déjà visité Paris.",en:["She has already visited Paris."],structure:4},
@@ -161,7 +170,7 @@ const LESSONS = {
     ]
   },
   "pp-past-perfect": {
-    id:"pp-past-perfect",title:"Past Perfect",subtitle:"had + participe passé — plus-que-parfait",icon:"⏮️",color:"#6366f1",questionCount:10,theoryPage:"theory-past-participle.html",hasQuiz:true,
+    id:"pp-past-perfect",hidden:true,title:"Past Perfect",subtitle:"had + participe passé — plus-que-parfait",icon:"⏮️",color:"#6366f1",questionCount:10,theoryPage:"theory-pp-past-perfect.html",hasQuiz:true,
     questions:[
       {fr:"Il avait déjà mangé quand je suis arrivé.",en:["He had already eaten when I arrived."],structure:5},
       {fr:"Elle n'avait jamais conduit avant.",en:["She had never driven before."],structure:5},
@@ -176,7 +185,7 @@ const LESSONS = {
     ]
   },
   "pp-modal-have": {
-    id:"pp-modal-have",title:"Modal + have",subtitle:"should / could / must + have + PP",icon:"🎯",color:"#f59e0b",questionCount:10,theoryPage:"theory-past-participle.html",hasQuiz:true,
+    id:"pp-modal-have",hidden:true,title:"Modal + have",subtitle:"should / could / must + have + PP",icon:"🎯",color:"#f59e0b",questionCount:10,theoryPage:"theory-pp-modal-have.html",hasQuiz:true,
     questions:[
       {fr:"J'aurais dû rester à la maison.",en:["I should have stayed at home."],structure:6},
       {fr:"Tu aurais pu appeler avant de venir.",en:["You could have called before coming."],structure:6},
@@ -191,7 +200,7 @@ const LESSONS = {
     ]
   },
   "pp-passive": {
-    id:"pp-passive",title:"Voix passive",subtitle:"be + participe passé",icon:"🔄",color:"#ec4899",questionCount:10,theoryPage:"theory-past-participle.html",hasQuiz:true,
+    id:"pp-passive",hidden:true,title:"Voix passive",subtitle:"be + participe passé",icon:"🔄",color:"#ec4899",questionCount:10,theoryPage:"theory-pp-passive.html",hasQuiz:true,
     questions:[
       {fr:"La fenêtre a été cassée.",en:["The window was broken."],structure:7},
       {fr:"La lettre a été envoyée hier.",en:["The letter was sent yesterday."],structure:7},

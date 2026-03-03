@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Participe Passé — ENG Hub</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <h1>⏪ Participe Passé</h1>
+  <p>Structures, voix passive & verbes irréguliers</p>
+  <div class="header-stats" id="header-stats"></div>
+</header>
+<div class="main-content">
+  <a href="index.html" class="back-btn" style="display:inline-flex;align-items:center;gap:.4rem;color:#94a3b8;font-size:.88rem;padding:.5rem .9rem;border-radius:10px;background:#1e293b;border:1px solid #334155;margin-bottom:1.1rem;min-height:40px;">← Accueil</a>
+
+  <div class="section-title" style="margin-top:.5rem">Théorie générale</div>
+  <div class="lessons-grid" id="grid-theory"></div>
+
+  <div class="section-title" style="margin-top:1.5rem">Exercices par structure</div>
+  <div class="lessons-grid" id="grid-structure"></div>
+
+  <div class="section-title" style="margin-top:1.5rem">Verbes irréguliers</div>
+  <div class="lessons-grid" id="grid-irreg"></div>
+</div>
+<script src="lessons.js"></script>
+<script src="app.js"></script>
+<script>
+function renderHubSection(gridId, ids) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  const stats = getStats();
+  grid.innerHTML = ids.map(function(id) {
+    const lesson = LESSONS[id];
+    if (!lesson) return '';
+    const href = lesson.theoryPage ? lesson.theoryPage : 'quiz.html?lesson=' + id;
+    const s = stats[id]; const best = s ? s.bestScore : null; const att = s ? s.attempts : 0;
+    const badge = lesson.theoryPage && lesson.hasQuiz ? '<span class="lesson-type-badge">📖 + ✏️</span>' : lesson.theoryPage ? '<span class="lesson-type-badge">📖 Théorie</span>' : '';
+    const stars = best !== null ? '<div class="lesson-stats"><span class="stars">' + (best>=90?'⭐⭐⭐':best>=70?'⭐⭐':'⭐') + '</span><span class="best-score">' + best + '%</span><span class="attempts">' + att + ' essai' + (att>1?'s':'') + '</span></div>' : '<div class="lesson-stats"><span class="not-done">Jamais fait</span></div>';
+    const meta = lesson.questionCount ? lesson.questionCount + ' questions' : '';
+    return '<div class="lesson-card" onclick="location.href=\'' + href + '\'" style="--card-color:' + lesson.color + '"><div class="lesson-icon">' + lesson.icon + '</div><div class="lesson-info"><h3>' + lesson.title + '</h3><p>' + lesson.subtitle + '</p><span class="lesson-meta">' + meta + ' ' + badge + '</span></div>' + stars + '<div class="lesson-arrow">→</div></div>';
+  }).join('');
+}
+renderStats();
+renderHubSection('grid-theory', ['past-participle-1']);
+renderHubSection('grid-structure', ['pp-present-perfect','pp-past-perfect','pp-modal-have','pp-passive']);
+renderHubSection('grid-irreg', ['irreg-verbs-1','irreg-verbs-2','irreg-verbs-3']);
+</script>
+</body>
+</html>
