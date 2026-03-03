@@ -36,6 +36,46 @@ const STRUCTURE_HELP={
     why:"On utilise <strong>should have + participe passé</strong> car c'est la seule façon d'exprimer un regret passé en anglais. Le <em>have</em> est obligatoire — il indique qu'on parle d'une action qui aurait dû se faire dans le passé.",
     audio:"Quand tu entends <strong>should have…</strong>, pense directement à <em>\"j'aurais dû…\"</em>. C'est toujours un regret — quelque chose qui ne s'est pas passé mais qui aurait dû.",
     altModal:{word:"could have",sentence:"We <strong>could have</strong> taken an umbrella.",fr:"On <strong>aurait pu</strong> prendre un parapluie.",note:"On parlerait d'une possibilité passée — sans le sentiment de regret ou d'obligation."}
+  },
+  4:{
+    name:"Present Perfect",color:"#10b981",
+    pattern:"Sujet + <strong>have / has</strong> + participe passé",
+    example:{fr:"J'ai mangé.",en:"I <strong>have</strong> eat<strong>en</strong>."},
+    tip:"Utilise <strong>have/has + PP</strong> pour une action passée liée au présent. <em>have</em> avec I/you/we/they, <em>has</em> avec he/she/it.",
+    errorHint:"N'oublie pas <strong>have/has</strong> avant le PP ! Et vérifie la forme PP — <em>eaten</em> et non <em>ate</em>.",
+    why:"On utilise <strong>have/has + PP</strong> car l'action passée a un lien avec le présent — différent du simple past qui parle d'un moment précis et terminé.",
+    audio:"Quand tu entends <strong>have/has + PP</strong>, pense à <em>\"j'ai mangé / elle a fini\"</em> — mais avec l'idée que ça touche encore le présent.",
+    altModal:{word:"simple past",sentence:"I <strong>ate</strong> yesterday.",fr:"J'ai mangé <em>hier</em>.",note:"Simple past = action passée à un moment précis et terminé, souvent avec une date ou heure."}
+  },
+  5:{
+    name:"Past Perfect — Plus-que-parfait",color:"#6366f1",
+    pattern:"Sujet + <strong>had</strong> + participe passé",
+    example:{fr:"Il avait déjà mangé.",en:"He <strong>had</strong> already eat<strong>en</strong>."},
+    tip:"Utilise <strong>had + PP</strong> pour une action qui s'est passée AVANT une autre action passée.",
+    errorHint:"N'oublie pas <strong>had</strong> (pas <em>have</em> !) avant le PP. <em>had</em> ne change pas avec he/she/it.",
+    why:"On utilise <strong>had + PP</strong> pour remonter encore plus loin dans le passé — montrer qu'une action est arrivée avant une autre action passée.",
+    audio:"Quand tu entends <strong>had + PP</strong>, pense à <em>\"il avait déjà mangé quand je suis arrivé\"</em> — c'est le plus-que-parfait.",
+    altModal:{word:"present perfect",sentence:"He <strong>has</strong> already eaten.",fr:"Il <strong>a</strong> déjà mangé <em>(lié au présent)</em>.",note:"Present perfect = lien avec le présent. Past perfect = action encore plus ancienne."}
+  },
+  6:{
+    name:"Modal + have — Regret · Possibilité · Certitude",color:"#f59e0b",
+    pattern:"Sujet + <strong>should / could / must / would</strong> + have + participe passé",
+    example:{fr:"J'aurais dû appeler.",en:"I <strong>should have</strong> call<strong>ed</strong>."},
+    tip:"Utilise <strong>modal + have + PP</strong> pour un regret (should), une possibilité (could) ou une certitude (must) sur le passé.",
+    errorHint:"N'oublie pas le <strong>have</strong> entre le modal et le PP ! Sans lui, tu parles du présent, pas du passé.",
+    why:"Le <strong>have</strong> est obligatoire — c'est lui qui indique qu'on parle du passé. Sans lui, la phrase parlerait du présent ou du futur.",
+    audio:"Quand tu entends <strong>should have / could have / must have</strong>, pense à <em>\"j'aurais dû / j'aurais pu / il a dû\"</em>.",
+    altModal:{word:"should (sans have)",sentence:"You <strong>should</strong> call.",fr:"Tu <strong>devrais</strong> appeler.",note:"Sans <em>have</em>, on parle du présent ou du futur — pas du passé."}
+  },
+  7:{
+    name:"Voix passive",color:"#ec4899",
+    pattern:"Sujet + <strong>be</strong> (conjugué) + participe passé",
+    example:{fr:"La fenêtre a été cassée.",en:"The window <strong>was</strong> brok<strong>en</strong>."},
+    tip:"Utilise <strong>be + PP</strong> quand on s'intéresse à l'objet qui subit l'action, pas à celui qui l'effectue.",
+    errorHint:"Vérifie que tu as bien conjugué <strong>be</strong> (is/are/was/were) et que le PP est correct.",
+    why:"La voix passive met en avant le résultat plutôt que l'acteur. <em>\"The window was broken\"</em> = la fenêtre a subi l'action — peu importe qui l'a cassée.",
+    audio:"Quand tu entends <strong>was/were + PP</strong>, pense à <em>\"a été + PP\"</em> en français — c'est la voix passive.",
+    altModal:{word:"voix active",sentence:"Someone <strong>broke</strong> the window.",fr:"Quelqu'un <strong>a cassé</strong> la fenêtre.",note:"Voix active = on met en avant QUI fait l'action."}
   }
 };
 const quiz={lesson:null,questions:[],currentIndex:0,score:0,streak:0,maxStreak:0,skipped:0,state:"typing",soundEnabled:true,hadError:false};

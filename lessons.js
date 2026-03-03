@@ -36,6 +36,38 @@ const LESSONS = {
       {fr:"On aurait dû réserver à l'avance.",en:["We should have booked in advance.","We should have reserved in advance."],structure:3,variantNote:"Synonymes — <em>book</em> et <em>reserve</em> signifient tous les deux réserver, aucune différence de sens."}
     ]
   },
+  "past-participle-1": {
+    id: "past-participle-1",
+    title: "Participe Passé",
+    subtitle: "Formation & 4 structures essentielles",
+    icon: "⏪",
+    color: "#10b981",
+    questionCount: 20,
+    theoryPage: "theory-past-participle.html",
+    hasQuiz: true,
+    questions: [
+      {fr:"J'ai mangé.",en:["I have eaten."],structure:4},
+      {fr:"Elle a fini son travail.",en:["She has finished her work."],structure:4},
+      {fr:"Il a cassé la fenêtre.",en:["He has broken the window."],structure:4},
+      {fr:"Tu as oublié tes clés.",en:["You have forgotten your keys."],structure:4},
+      {fr:"Nous avons pris notre décision.",en:["We have made our decision.","We have taken our decision."],structure:4,variantNote:"<em>make a decision</em> est plus naturel en anglais courant, <em>take a decision</em> est aussi correct."},
+      {fr:"Il avait déjà mangé quand je suis arrivé.",en:["He had already eaten when I arrived."],structure:5},
+      {fr:"Elle avait étudié toute la nuit.",en:["She had studied all night."],structure:5},
+      {fr:"Nous avions déjà vu ce film.",en:["We had already seen this movie.","We had already seen this film."],structure:5,variantNote:"Aucune différence — <em>movie</em> est américain, <em>film</em> est britannique."},
+      {fr:"Ils n'avaient jamais voyagé à l'étranger.",en:["They had never travelled abroad.","They had never traveled abroad."],structure:5,variantNote:"Aucune différence — <em>travelled</em> est l'orthographe britannique, <em>traveled</em> est américaine."},
+      {fr:"Tu aurais dû appeler.",en:["You should have called."],structure:6},
+      {fr:"Elle aurait pu venir.",en:["She could have come."],structure:6},
+      {fr:"Il a dû oublier son rendez-vous.",en:["He must have forgotten his appointment."],structure:6},
+      {fr:"Nous aurions pu rester.",en:["We could have stayed."],structure:6},
+      {fr:"Elle aurait dû savoir.",en:["She should have known."],structure:6},
+      {fr:"La fenêtre a été cassée.",en:["The window was broken."],structure:7},
+      {fr:"La lettre a été envoyée.",en:["The letter was sent."],structure:7},
+      {fr:"Le livre a été écrit en 1984.",en:["The book was written in 1984."],structure:7},
+      {fr:"Le repas est préparé.",en:["The meal is prepared."],structure:7},
+      {fr:"La décision a été prise.",en:["The decision was made.","The decision was taken."],structure:7,variantNote:"Même sens — <em>made</em> est plus courant, <em>taken</em> aussi correct."},
+      {fr:"Les instructions n'ont pas été suivies.",en:["The instructions were not followed.","The instructions weren't followed."],structure:7,variantNote:"Aucune différence — <em>weren't</em> est la contraction de <em>were not</em>."}
+    ]
+  },
   "prepositions-1": {
     id: "prepositions-1",
     title: "Prépositions de lieu",
