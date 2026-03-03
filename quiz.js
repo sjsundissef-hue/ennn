@@ -12,21 +12,30 @@ const STRUCTURE_HELP={
     pattern:"Sujet + <strong>would</strong> + like / prefer / love + <em>to</em> + verbe",
     example:{fr:"Je voudrais un café.",en:"I <strong>would like</strong> a coffee."},
     tip:"Utilise <strong>would like / prefer / love</strong> pour exprimer un souhait poli ou une préférence.",
-    errorHint:"Vérifie : <strong>would + like/prefer/love</strong>. Pour les questions, inverse : <strong>Would you…?</strong> N'oublie pas le <em>to</em> devant l'infinitif !"
+    errorHint:"Vérifie : <strong>would + like/prefer/love</strong>. Pour les questions, inverse : <strong>Would you…?</strong> N'oublie pas le <em>to</em> devant l'infinitif !",
+    why:"On utilise <strong>would</strong> car c'est le conditionnel de politesse — il transforme un désir direct (<em>I want</em>) en souhait poli et atténué. C'est comme dire <em>\"je voudrais\"</em> plutôt que <em>\"je veux\"</em>.",
+    audio:"Quand tu entends <strong>would like / would prefer</strong>, pense directement à <em>\"j'aimerais / je préférerais\"</em>. C'est plus doux et plus poli que <em>want</em>.",
+    altModal:{word:"could",sentence:"She <strong>could</strong> stay at home.",fr:"Elle <strong>pourrait</strong> rester à la maison.",note:"On parlerait d'une possibilité ou d'une capacité — plus une préférence."}
   },
   2:{
     name:"Could — Politesse & Demande",color:"#8b5cf6",
     pattern:"<strong>Could</strong> + sujet + verbe ? &nbsp;·&nbsp; Sujet + <strong>could</strong> + verbe",
     example:{fr:"Pourriez-vous m'aider ?",en:"<strong>Could</strong> you help me?"},
     tip:"Utilise <strong>could</strong> pour faire une demande polie ou exprimer une possibilité.",
-    errorHint:"Pour les questions, pense à l'inversion : <strong>Could + sujet + verbe ?</strong> Le sujet vient <em>après</em> could."
+    errorHint:"Pour les questions, pense à l'inversion : <strong>Could + sujet + verbe ?</strong> Le sujet vient <em>après</em> could.",
+    why:"On utilise <strong>could</strong> (passé de <em>can</em>) au conditionnel pour adoucir la demande. <em>\"Can you…?\"</em> est direct, parfois sec. <em>\"Could you…?\"</em> est beaucoup plus respectueux et poli.",
+    audio:"Quand tu entends <strong>Could you…?</strong>, pense à <em>\"Pourriez-vous… / Est-ce que tu pourrais…\"</em>. C'est la formule de demande polie par excellence en anglais.",
+    altModal:{word:"would",sentence:"<strong>Would</strong> you close the window?",fr:"<strong>Voudriez-vous</strong> fermer la fenêtre ?",note:"Ça exprime davantage un souhait qu'une demande d'action concrète."}
   },
   3:{
     name:"Should have — Regret",color:"#f59e0b",
     pattern:"Sujet + <strong>should have</strong> + participe passé",
     example:{fr:"J'aurais dû étudier.",en:"I <strong>should have</strong> studied."},
     tip:"Utilise <strong>should have + participe passé</strong> pour exprimer un regret sur quelque chose qui ne s'est pas passé.",
-    errorHint:"N'oublie pas le <strong>have</strong> après <em>should</em> ! Et vérifie le participe passé (studied, taken, called…)."
+    errorHint:"N'oublie pas le <strong>have</strong> après <em>should</em> ! Et vérifie le participe passé (studied, taken, called…).",
+    why:"On utilise <strong>should have + participe passé</strong> car c'est la seule façon d'exprimer un regret passé en anglais. Le <em>have</em> est obligatoire — il indique qu'on parle d'une action qui aurait dû se faire dans le passé.",
+    audio:"Quand tu entends <strong>should have…</strong>, pense directement à <em>\"j'aurais dû…\"</em>. C'est toujours un regret — quelque chose qui ne s'est pas passé mais qui aurait dû.",
+    altModal:{word:"could have",sentence:"We <strong>could have</strong> taken an umbrella.",fr:"On <strong>aurait pu</strong> prendre un parapluie.",note:"On parlerait d'une possibilité passée — sans le sentiment de regret ou d'obligation."}
   }
 };
 const quiz={lesson:null,questions:[],currentIndex:0,score:0,streak:0,maxStreak:0,skipped:0,state:"typing",soundEnabled:true,hadError:false};
@@ -37,6 +46,16 @@ function buildVariantHTML(q, usedAnswer){
     if(!others.length)return'';
     const list=others.map(a=>`<span class="variant-phrase">"${a}"</span>`).join(' ou ');
     return`<div class="variant-also">Tu aurais aussi pu dire : ${list}</div><div class="variant-diff">${q.variantNote}</div>`;
+}
+function buildExplainHTML(q){
+    if(!q||!q.structure)return'';
+    const sh=STRUCTURE_HELP[q.structure];if(!sh)return'';
+    let html='<div class="explain-panel">';
+    html+=`<div class="explain-row"><div class="explain-icon">❓</div><div><div class="explain-label">Pourquoi cette structure ?</div><div class="explain-body">${sh.why}</div></div></div>`;
+    html+=`<div class="explain-row"><div class="explain-icon">👂</div><div><div class="explain-label">À l'oreille</div><div class="explain-body">${sh.audio}</div></div></div>`;
+    if(sh.altModal){html+=`<div class="explain-row"><div class="explain-icon">🔄</div><div><div class="explain-label">Avec <em>${sh.altModal.word}</em> à la place ?</div><div class="explain-body"><span class="explain-alt-en">${sh.altModal.sentence}</span>&ensp;→&ensp;<span class="explain-alt-fr">${sh.altModal.fr}</span><br><span class="explain-alt-note">${sh.altModal.note}</span></div></div></div>`;}
+    html+='</div>';
+    return html;
 }
 function shuffleArray(a){ const r=a.slice(); for(let i=r.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [r[i],r[j]]=[r[j],r[i]]; } return r; }
 function escapeChar(c){ return c==='<'?'&lt;':c==='>'?'&gt;':c==='&'?'&amp;':c; }
@@ -65,6 +84,7 @@ function loadQuestion(){
     document.getElementById('skip-btn').style.display='inline-flex';
     const fb=document.getElementById('feedback-box');fb.style.display='none';fb.className='feedback';
     const fvr=document.getElementById('feedback-variants');if(fvr)fvr.innerHTML='';
+    const fer=document.getElementById('feedback-explain');if(fer)fer.innerHTML='';
     quiz.hadError=false;
     updateStreakDisplay(); setTimeout(()=>inp.focus(),80);
 }
@@ -81,6 +101,7 @@ function checkAnswer(){
         document.getElementById('skip-btn').style.display='none';lb.style.display='none';
         fb.className='feedback correct';fbM.textContent='✅ Parfait!'+(quiz.streak>=3?' 🔥 Combo ×'+quiz.streak+' !':'');fbC.textContent='';
         const fv1=document.getElementById('feedback-variants');if(fv1)fv1.innerHTML=buildVariantHTML(q,ua);
+        const fe1=document.getElementById('feedback-explain');if(fe1)fe1.innerHTML=buildExplainHTML(q);
     }else{
         quiz.streak=0;quiz.hadError=true;if(quiz.soundEnabled)SoundFX.play('wrong');
         inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),400);
@@ -98,6 +119,7 @@ function showAnswer(){
     document.getElementById('feedback-msg').textContent='⏭️ Question passée.';
     document.getElementById('feedback-correction').textContent='Réponse : '+q.en[0];
     const fv2=document.getElementById('feedback-variants');if(fv2)fv2.innerHTML=buildVariantHTML(q,null);
+    const fe2=document.getElementById('feedback-explain');if(fe2)fe2.innerHTML=buildExplainHTML(q);
     fb.style.display='block';updateScore();updateStreakDisplay();
 }
 function nextQuestion(){ quiz.currentIndex++; if(quiz.currentIndex<quiz.questions.length)loadQuestion();else showEndScreen(); }
