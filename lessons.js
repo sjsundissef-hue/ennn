@@ -68,6 +68,143 @@ const LESSONS = {
       {fr:"Les instructions n'ont pas été suivies.",en:["The instructions were not followed.","The instructions weren't followed."],structure:7,variantNote:"Aucune différence — <em>weren't</em> est la contraction de <em>were not</em>."}
     ]
   },
+  "irreg-verbs-1": {
+    id:"irreg-verbs-1",title:"Verbes irréguliers — Set 1",subtitle:"Participe passé · Les 20 plus courants",icon:"🔤",color:"#6366f1",questionCount:20,hasQuiz:true,
+    questions:[
+      {fr:"Participe passé de : BREAK",en:["broken"]},
+      {fr:"Participe passé de : BRING",en:["brought"]},
+      {fr:"Participe passé de : BUY",en:["bought"]},
+      {fr:"Participe passé de : COME",en:["come"]},
+      {fr:"Participe passé de : DO",en:["done"]},
+      {fr:"Participe passé de : EAT",en:["eaten"]},
+      {fr:"Participe passé de : FIND",en:["found"]},
+      {fr:"Participe passé de : GET",en:["got","gotten"],variantNote:"<em>got</em> est britannique, <em>gotten</em> est américain — les deux sont corrects."},
+      {fr:"Participe passé de : GIVE",en:["given"]},
+      {fr:"Participe passé de : GO",en:["gone"]},
+      {fr:"Participe passé de : HAVE",en:["had"]},
+      {fr:"Participe passé de : KNOW",en:["known"]},
+      {fr:"Participe passé de : LEAVE",en:["left"]},
+      {fr:"Participe passé de : LOSE",en:["lost"]},
+      {fr:"Participe passé de : MAKE",en:["made"]},
+      {fr:"Participe passé de : SEE",en:["seen"]},
+      {fr:"Participe passé de : TAKE",en:["taken"]},
+      {fr:"Participe passé de : TELL",en:["told"]},
+      {fr:"Participe passé de : THINK",en:["thought"]},
+      {fr:"Participe passé de : WRITE",en:["written"]}
+    ]
+  },
+  "irreg-verbs-2": {
+    id:"irreg-verbs-2",title:"Verbes irréguliers — Set 2",subtitle:"Participe passé · Niveau intermédiaire",icon:"🔡",color:"#8b5cf6",questionCount:20,hasQuiz:true,
+    questions:[
+      {fr:"Participe passé de : BE",en:["been"]},
+      {fr:"Participe passé de : BEGIN",en:["begun"]},
+      {fr:"Participe passé de : BUILD",en:["built"]},
+      {fr:"Participe passé de : CHOOSE",en:["chosen"]},
+      {fr:"Participe passé de : DRINK",en:["drunk"]},
+      {fr:"Participe passé de : DRIVE",en:["driven"]},
+      {fr:"Participe passé de : FALL",en:["fallen"]},
+      {fr:"Participe passé de : FEEL",en:["felt"]},
+      {fr:"Participe passé de : FLY",en:["flown"]},
+      {fr:"Participe passé de : FORGET",en:["forgotten"]},
+      {fr:"Participe passé de : GROW",en:["grown"]},
+      {fr:"Participe passé de : HEAR",en:["heard"]},
+      {fr:"Participe passé de : HOLD",en:["held"]},
+      {fr:"Participe passé de : KEEP",en:["kept"]},
+      {fr:"Participe passé de : MEET",en:["met"]},
+      {fr:"Participe passé de : PAY",en:["paid"]},
+      {fr:"Participe passé de : SAY",en:["said"]},
+      {fr:"Participe passé de : SELL",en:["sold"]},
+      {fr:"Participe passé de : SEND",en:["sent"]},
+      {fr:"Participe passé de : SPEAK",en:["spoken"]}
+    ]
+  },
+  "irreg-verbs-3": {
+    id:"irreg-verbs-3",title:"Verbes irréguliers — Set 3",subtitle:"Passé simple · Les formes qui piègent",icon:"⚡",color:"#ec4899",questionCount:20,hasQuiz:true,
+    questions:[
+      {fr:"Passé simple de : GO",en:["went"]},
+      {fr:"Passé simple de : SEE",en:["saw"]},
+      {fr:"Passé simple de : TAKE",en:["took"]},
+      {fr:"Passé simple de : EAT",en:["ate"]},
+      {fr:"Passé simple de : BREAK",en:["broke"]},
+      {fr:"Passé simple de : WRITE",en:["wrote"]},
+      {fr:"Passé simple de : SPEAK",en:["spoke"]},
+      {fr:"Passé simple de : CHOOSE",en:["chose"]},
+      {fr:"Passé simple de : DRINK",en:["drank"]},
+      {fr:"Passé simple de : FLY",en:["flew"]},
+      {fr:"Passé simple de : GROW",en:["grew"]},
+      {fr:"Passé simple de : GIVE",en:["gave"]},
+      {fr:"Passé simple de : KNOW",en:["knew"]},
+      {fr:"Passé simple de : FORGET",en:["forgot"]},
+      {fr:"Passé simple de : BEGIN",en:["began"]},
+      {fr:"Passé simple de : FALL",en:["fell"]},
+      {fr:"Passé simple de : DRIVE",en:["drove"]},
+      {fr:"Passé simple de : SWIM",en:["swam"]},
+      {fr:"Passé simple de : THROW",en:["threw"]},
+      {fr:"Passé simple de : WAKE",en:["woke"]}
+    ]
+  },
+  "pp-present-perfect": {
+    id:"pp-present-perfect",title:"Present Perfect",subtitle:"have / has + participe passé",icon:"✅",color:"#10b981",questionCount:12,theoryPage:"theory-past-participle.html",hasQuiz:true,
+    questions:[
+      {fr:"Je n'ai jamais mangé de sushis.",en:["I have never eaten sushi."],structure:4},
+      {fr:"Elle a déjà visité Paris.",en:["She has already visited Paris."],structure:4},
+      {fr:"Il a perdu ses clés.",en:["He has lost his keys."],structure:4},
+      {fr:"Nous avons terminé le projet.",en:["We have finished the project."],structure:4},
+      {fr:"Tu n'as pas encore appelé.",en:["You have not called yet.","You haven't called yet."],structure:4,variantNote:"Aucune différence — <em>haven't</em> est la contraction de <em>have not</em>."},
+      {fr:"Ils ont déjà vu ce film.",en:["They have already seen this movie.","They have already seen this film."],structure:4,variantNote:"Aucune différence — <em>movie</em> est américain, <em>film</em> est britannique."},
+      {fr:"Elle a écrit trois livres.",en:["She has written three books."],structure:4},
+      {fr:"J'ai cassé mon téléphone.",en:["I have broken my phone."],structure:4},
+      {fr:"Il a conduit toute la nuit.",en:["He has driven all night."],structure:4},
+      {fr:"Elle a rencontré quelqu'un.",en:["She has met someone."],structure:4},
+      {fr:"Ils ont construit une maison.",en:["They have built a house."],structure:4},
+      {fr:"J'ai pris ma décision.",en:["I have made my decision.","I have taken my decision."],structure:4,variantNote:"<em>make a decision</em> est plus naturel en anglais, <em>take a decision</em> est aussi accepté."}
+    ]
+  },
+  "pp-past-perfect": {
+    id:"pp-past-perfect",title:"Past Perfect",subtitle:"had + participe passé — plus-que-parfait",icon:"⏮️",color:"#6366f1",questionCount:10,theoryPage:"theory-past-participle.html",hasQuiz:true,
+    questions:[
+      {fr:"Il avait déjà mangé quand je suis arrivé.",en:["He had already eaten when I arrived."],structure:5},
+      {fr:"Elle n'avait jamais conduit avant.",en:["She had never driven before."],structure:5},
+      {fr:"Ils avaient tout vendu avant notre arrivée.",en:["They had sold everything before we arrived."],structure:5},
+      {fr:"J'avais déjà vu ce film.",en:["I had already seen this movie.","I had already seen this film."],structure:5,variantNote:"Aucune différence — <em>movie</em> est américain, <em>film</em> est britannique."},
+      {fr:"Il avait oublié son mot de passe.",en:["He had forgotten his password."],structure:5},
+      {fr:"Nous avions fini avant midi.",en:["We had finished before noon."],structure:5},
+      {fr:"Elle avait parlé au directeur.",en:["She had spoken to the manager.","She had spoken to the director."],structure:5,variantNote:"Même sens — <em>manager</em> est plus courant en anglais professionnel, <em>director</em> aussi correct."},
+      {fr:"Tu avais pris le mauvais train.",en:["You had taken the wrong train."],structure:5},
+      {fr:"Ils n'avaient jamais entendu ce nom.",en:["They had never heard that name.","They had never heard this name."],structure:5,variantNote:"Aucune différence de sens — <em>that</em> ou <em>this</em> fonctionnent tous les deux."},
+      {fr:"J'avais perdu mes notes.",en:["I had lost my notes."],structure:5}
+    ]
+  },
+  "pp-modal-have": {
+    id:"pp-modal-have",title:"Modal + have",subtitle:"should / could / must + have + PP",icon:"🎯",color:"#f59e0b",questionCount:10,theoryPage:"theory-past-participle.html",hasQuiz:true,
+    questions:[
+      {fr:"J'aurais dû rester à la maison.",en:["I should have stayed at home."],structure:6},
+      {fr:"Tu aurais pu appeler avant de venir.",en:["You could have called before coming."],structure:6},
+      {fr:"Elle aurait dû partir plus tôt.",en:["She should have left earlier."],structure:6},
+      {fr:"Il a dû se perdre.",en:["He must have gotten lost.","He must have got lost."],structure:6,variantNote:"<em>gotten</em> est américain, <em>got</em> est britannique — les deux sont corrects."},
+      {fr:"Nous aurions pu trouver un taxi.",en:["We could have found a taxi."],structure:6},
+      {fr:"Tu n'aurais pas dû dire ça.",en:["You should not have said that.","You shouldn't have said that."],structure:6,variantNote:"Aucune différence — <em>shouldn't</em> est la contraction de <em>should not</em>."},
+      {fr:"Elle aurait pu réussir.",en:["She could have succeeded."],structure:6},
+      {fr:"Ils auraient dû lire les instructions.",en:["They should have read the instructions."],structure:6},
+      {fr:"J'aurais dû savoir.",en:["I should have known."],structure:6},
+      {fr:"Il a dû prendre le mauvais chemin.",en:["He must have taken the wrong road.","He must have taken the wrong way."],structure:6,variantNote:"Même sens — <em>road</em> et <em>way</em> sont tous deux corrects dans ce contexte."}
+    ]
+  },
+  "pp-passive": {
+    id:"pp-passive",title:"Voix passive",subtitle:"be + participe passé",icon:"🔄",color:"#ec4899",questionCount:10,theoryPage:"theory-past-participle.html",hasQuiz:true,
+    questions:[
+      {fr:"La fenêtre a été cassée.",en:["The window was broken."],structure:7},
+      {fr:"La lettre a été envoyée hier.",en:["The letter was sent yesterday."],structure:7},
+      {fr:"Le livre a été écrit en 1984.",en:["The book was written in 1984."],structure:7},
+      {fr:"Le repas est servi.",en:["The meal is served."],structure:7},
+      {fr:"La voiture a été vendue.",en:["The car was sold."],structure:7},
+      {fr:"Le voleur a été attrapé.",en:["The thief was caught."],structure:7},
+      {fr:"La maison a été construite en 1990.",en:["The house was built in 1990."],structure:7},
+      {fr:"Le message a été lu.",en:["The message was read."],structure:7},
+      {fr:"Le gâteau a été mangé.",en:["The cake was eaten."],structure:7},
+      {fr:"La décision a été prise hier.",en:["The decision was made yesterday.","The decision was taken yesterday."],structure:7,variantNote:"Même sens — <em>made</em> est plus courant, <em>taken</em> aussi correct."}
+    ]
+  },
   "prepositions-1": {
     id: "prepositions-1",
     title: "Prépositions de lieu",
