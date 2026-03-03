@@ -85,6 +85,21 @@ a{color:inherit;text-decoration:none;}
 .explain-alt-fr{font-style:italic;color:#cbd5e1;}
 .explain-alt-note{font-size:.77rem;color:#64748b;}
 
+/* ── Irregular verbs modal ── */
+.irreg-modal-box{max-height:82vh;overflow-y:auto;display:flex;flex-direction:column;gap:.65rem;padding-bottom:1.5rem!important;}
+.irreg-title{font-size:1.05rem;font-weight:800;color:#f1f5f9;}
+.irreg-subtitle{font-size:.82rem;color:#64748b;}
+.irreg-rule{background:#0f172a;border-radius:10px;padding:.7rem 1rem;font-size:.84rem;color:#cbd5e1;line-height:1.5;}
+.irreg-rule-ex{display:block;margin-top:.3rem;font-size:.8rem;color:#64748b;font-family:monospace;letter-spacing:.03em;}
+.irreg-section-label{font-size:.72rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.07em;margin-top:.1rem;}
+.irreg-cols-head{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:.4rem;padding:.2rem .4rem;font-size:.68rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #334155;}
+.irreg-list{display:flex;flex-direction:column;}
+.irreg-row{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:.4rem;padding:.28rem .4rem;border-radius:6px;font-size:.84rem;align-items:center;}
+.irreg-row:nth-child(odd){background:#0f172a;}
+.irreg-base{color:#94a3b8;}
+.irreg-pp{font-weight:700;color:#60a5fa;}
+.irreg-fr{color:#64748b;font-size:.78rem;}
+
 /* ── End screen ── */
 .end-screen{text-align:center;padding:1.5rem 1rem;display:none;}
 .end-grade{font-size:1.8rem;font-weight:800;margin-bottom:.4rem;}

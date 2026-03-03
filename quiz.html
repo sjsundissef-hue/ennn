@@ -14,6 +14,7 @@
       <div class="quiz-title" id="quiz-title">Quiz</div>
       <div class="quiz-controls">
         <button class="icon-btn" id="sound-btn" onclick="toggleSound()" title="Son">🔊</button>
+        <button class="icon-btn" onclick="openIrreg()" title="Verbes irréguliers">📚</button>
         <button class="icon-btn" onclick="openHelp()" title="Aide">❓</button>
       </div>
     </div>
@@ -58,6 +59,9 @@
 </div>
 <div class="modal-overlay" id="help-modal" onclick="closeHelp(event)">
   <div class="modal-box" id="help-modal-box" onclick="event.stopPropagation()"></div>
+</div>
+<div class="modal-overlay" id="irreg-modal" onclick="closeIrreg(event)">
+  <div class="modal-box irreg-modal-box" id="irreg-modal-box" onclick="event.stopPropagation()"></div>
 </div>
 <script src="lessons.js"></script>
 <script src="app.js"></script>
