@@ -80,6 +80,12 @@ const STRUCTURE_HELP={
 };
 const quiz={lesson:null,questions:[],currentIndex:0,score:0,streak:0,maxStreak:0,skipped:0,state:"typing",soundEnabled:true,hadError:false};
 function normalizeText(t){ return t.toLowerCase().replace(/[.,?!]/g,'').replace(/\s+/g,' ').trim(); }
+function checkCombined(ua, expected){
+    const exp=expected.split(' / ').map(s=>s.trim().toLowerCase());
+    const parts=ua.trim().split(/\s*[\/,]\s*|\s+/).filter(s=>s);
+    if(parts.length<2)return false;
+    return parts[0].toLowerCase()===exp[0]&&parts[1].toLowerCase()===exp[1];
+}
 function buildVariantHTML(q, usedAnswer){
     if(!q.en||q.en.length<=1||!q.variantNote)return'';
     const others=usedAnswer?q.en.filter(a=>normalizeText(a)!==normalizeText(usedAnswer)):q.en.slice(1);
@@ -138,6 +144,7 @@ function loadQuestion(){
     qEl.style.opacity='0';qEl.style.transform='translateY(12px)';
     setTimeout(()=>{qEl.textContent=q.fr;qEl.style.transition='opacity 0.3s ease,transform 0.3s ease';qEl.style.opacity='1';qEl.style.transform='translateY(0)';},50);
     const inp=document.getElementById('answer-input');inp.value='';inp.disabled=false;inp.className='answer-input';
+    inp.placeholder=q.combined?'V2 / V3 — ex: went / gone':'Écris la traduction...';
     const lb=document.getElementById('live-feedback');lb.style.display='none';lb.innerHTML='';
     document.getElementById('submit-btn').textContent='Vérifier ✓';document.getElementById('submit-btn').className='action-btn';
     document.getElementById('skip-btn').style.display='inline-flex';
@@ -150,7 +157,8 @@ function loadQuestion(){
 function checkAnswer(){
     if(quiz.state==="feedback"){nextQuestion();return;}
     const inp=document.getElementById('answer-input'); const ua=inp.value.trim(); if(!ua)return;
-    const q=quiz.questions[quiz.currentIndex]; const ok=q.en.some(a=>normalizeText(a)===normalizeText(ua));
+    const q=quiz.questions[quiz.currentIndex];
+    const ok=q.combined?q.en.some(a=>checkCombined(ua,a)):q.en.some(a=>normalizeText(a)===normalizeText(ua));
     const fb=document.getElementById('feedback-box'),fbM=document.getElementById('feedback-msg'),fbC=document.getElementById('feedback-correction');
     const btn=document.getElementById('submit-btn'),lb=document.getElementById('live-feedback');
     if(ok){
@@ -278,10 +286,19 @@ function toggleSound(){quiz.soundEnabled=!quiz.soundEnabled;const b=document.get
     inp.addEventListener('input',function(){
         if(quiz.state!=="typing")return; const ut=this.value; const q=quiz.questions[quiz.currentIndex]; const lb=document.getElementById('live-feedback');
         if(!q||!ut){lb.style.display='none';lb.innerHTML='';return;} lb.style.display='block';
-        let best=q.en[0],max=-1;
-        for(const t of q.en){let m=0;for(let i=0;i<Math.min(ut.length,t.length);i++){if(ut[i].toLowerCase()===t[i].toLowerCase())m++;else break;}if(m>max){max=m;best=t;}}
-        let html='';for(let i=0;i<ut.length;i++){const ch=ut[i]===' '?'&nbsp;':escapeChar(ut[i]);const ok=i<best.length&&ut[i].toLowerCase()===best[i].toLowerCase();html+=ok?'<span class="char-correct">'+ch+'</span>':'<span class="char-incorrect">'+ch+'</span>';}
-        lb.innerHTML=html;
+        if(q.combined){
+            const exp=q.en[0].split(' / ');
+            const parts=ut.split(/\s*[\/,]\s*|\s+/).filter(s=>s);
+            let html='';
+            if(parts[0]!==undefined){const ok0=parts[0].toLowerCase()===exp[0].toLowerCase();html+=`<span class="${ok0?'char-correct':'char-incorrect'}">${escapeChar(parts[0])}</span>`;}
+            if(parts[1]!==undefined){html+=' <span style="color:#475569">/</span> ';const ok1=parts[1].toLowerCase()===exp[1].toLowerCase();html+=`<span class="${ok1?'char-correct':'char-incorrect'}">${escapeChar(parts[1])}</span>`;}
+            lb.innerHTML=html;
+        }else{
+            let best=q.en[0],max=-1;
+            for(const t of q.en){let m=0;for(let i=0;i<Math.min(ut.length,t.length);i++){if(ut[i].toLowerCase()===t[i].toLowerCase())m++;else break;}if(m>max){max=m;best=t;}}
+            let html='';for(let i=0;i<ut.length;i++){const ch=ut[i]===' '?'&nbsp;':escapeChar(ut[i]);const ok=i<best.length&&ut[i].toLowerCase()===best[i].toLowerCase();html+=ok?'<span class="char-correct">'+ch+'</span>':'<span class="char-incorrect">'+ch+'</span>';}
+            lb.innerHTML=html;
+        }
     });
     inp.addEventListener('keypress',e=>{if(e.key==='Enter')checkAnswer();});
 })();
