@@ -80,6 +80,19 @@ const STRUCTURE_HELP={
 };
 const quiz={lesson:null,questions:[],currentIndex:0,score:0,streak:0,maxStreak:0,skipped:0,state:"typing",soundEnabled:true,hadError:false};
 function normalizeText(t){ return t.toLowerCase().replace(/[.,?!]/g,'').replace(/\s+/g,' ').trim(); }
+function isFav(q){ return !!getFavs()[q.fr]; }
+function toggleFav(){
+    const q=quiz.questions&&quiz.questions[quiz.currentIndex]; if(!q)return;
+    const favs=getFavs();
+    if(favs[q.fr]){ delete favs[q.fr]; }
+    else{ favs[q.fr]={fr:q.fr,en:q.en,combined:q.combined||false,structure:q.structure||null,variantNote:q.variantNote||null}; }
+    saveFavs(favs); updateHeartBtn();
+}
+function updateHeartBtn(){
+    const btn=document.getElementById('heart-btn'); if(!btn)return;
+    const q=quiz.questions&&quiz.questions[quiz.currentIndex]; if(!q)return;
+    const fav=isFav(q); btn.textContent=fav?'❤️':'🤍'; btn.classList.toggle('fav',fav);
+}
 function checkCombined(ua, expected){
     const exp=expected.split(' / ').map(s=>s.trim().toLowerCase());
     const parts=ua.trim().split(/\s*[\/,]\s*/).map(s=>s.trim().toLowerCase()).filter(s=>s);
@@ -152,7 +165,7 @@ function loadQuestion(){
     const fvr=document.getElementById('feedback-variants');if(fvr)fvr.innerHTML='';
     const fer=document.getElementById('feedback-explain');if(fer)fer.innerHTML='';
     quiz.hadError=false;
-    updateStreakDisplay(); setTimeout(()=>inp.focus(),80);
+    updateStreakDisplay(); updateHeartBtn(); setTimeout(()=>inp.focus(),80);
 }
 function checkAnswer(){
     if(quiz.state==="feedback"){nextQuestion();return;}

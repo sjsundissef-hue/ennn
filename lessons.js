@@ -239,5 +239,86 @@ const LESSONS = {
     theoryPage: "theory-prepositions.html",
     hasQuiz: true,
     questions: []
+  },
+  "phrasal-hub": {
+    id:"phrasal-hub",
+    title:"Phrasal Verbs",
+    subtitle:"Théorie, liste complète & exercices",
+    icon:"🔗",
+    color:"#8b5cf6",
+    theoryPage:"phrasal-hub.html",
+    hasQuiz:true
+  },
+  "phrasal-theory": {
+    id:"phrasal-theory",hidden:true,
+    title:"Comprendre les phrasal verbs",
+    subtitle:"Définition, types & liste complète",
+    icon:"📖",
+    color:"#8b5cf6",
+    theoryPage:"theory-phrasal-verbs.html"
+  },
+  "phrasal-1": {
+    id:"phrasal-1",hidden:true,
+    title:"Phrasal Verbs — Pack 1",
+    subtitle:"Les 10 essentiels du quotidien",
+    icon:"🔗",color:"#8b5cf6",questionCount:10,hasQuiz:true,
+    questions:[
+      {fr:"abandonner",en:["give up"]},
+      {fr:"chercher",en:["look for"]},
+      {fr:"découvrir / apprendre (une info)",en:["find out"]},
+      {fr:"tomber sur quelqu'un (par hasard)",en:["run into"]},
+      {fr:"continuer",en:["carry on"]},
+      {fr:"reporter / remettre à plus tard",en:["put off"]},
+      {fr:"décevoir",en:["let down"]},
+      {fr:"finir par",en:["end up"]},
+      {fr:"se lever",en:["get up"]},
+      {fr:"ramasser / aller chercher",en:["pick up"]}
+    ]
+  },
+  "phrasal-2": {
+    id:"phrasal-2",hidden:true,
+    title:"Phrasal Verbs — Pack 2",
+    subtitle:"10 expressions avancées",
+    icon:"🔗",color:"#7c3aed",questionCount:10,hasQuiz:true,
+    questions:[
+      {fr:"allumer",en:["turn on"]},
+      {fr:"éteindre",en:["turn off"]},
+      {fr:"jeter",en:["throw away"]},
+      {fr:"refuser / baisser le volume",en:["turn down"]},
+      {fr:"tomber en panne / craquer",en:["break down"]},
+      {fr:"s'entraîner / se passer bien",en:["work out"]},
+      {fr:"avoir hâte de",en:["look forward to"]},
+      {fr:"manquer de / ne plus avoir",en:["run out of"]},
+      {fr:"surmonter / se remettre de",en:["get over"]},
+      {fr:"mettre en place / créer",en:["set up"]}
+    ]
+  },
+  "phrasal-phrases-1": {
+    id:"phrasal-phrases-1",hidden:true,
+    title:"Phrasal Verbs en phrases",
+    subtitle:"Traduis des phrases complètes",
+    icon:"💬",color:"#6d28d9",questionCount:20,hasQuiz:true,
+    questions:[
+      {fr:"J'ai abandonné le sport l'année dernière.",en:["I gave up sport last year."]},
+      {fr:"Elle cherche ses clés depuis ce matin.",en:["She has been looking for her keys since this morning.","She's been looking for her keys since this morning."]},
+      {fr:"J'ai découvert qu'il avait menti.",en:["I found out that he had lied.","I found out he had lied."]},
+      {fr:"Je suis tombé sur mon prof au supermarché.",en:["I ran into my teacher at the supermarket."]},
+      {fr:"Continue, tu fais du bon travail.",en:["Carry on, you're doing a great job.","Carry on, you are doing a great job."]},
+      {fr:"Il a encore reporté notre réunion.",en:["He put off our meeting again.","He put our meeting off again."]},
+      {fr:"Tu m'as vraiment déçu cette fois.",en:["You really let me down this time."]},
+      {fr:"On a fini par prendre un taxi.",en:["We ended up taking a taxi."]},
+      {fr:"Elle se lève à 6h tous les matins.",en:["She gets up at 6 every morning.","She gets up at 6 am every morning."]},
+      {fr:"Tu peux venir me chercher à la gare ?",en:["Can you pick me up at the station?","Could you pick me up at the station?"]},
+      {fr:"Allume la télé, s'il te plaît.",en:["Turn on the TV, please.","Turn the TV on, please."]},
+      {fr:"N'oublie pas d'éteindre la lumière.",en:["Don't forget to turn off the light.","Don't forget to turn the light off."]},
+      {fr:"Il a jeté tous ses vieux livres.",en:["He threw away all his old books.","He threw all his old books away."]},
+      {fr:"Elle a refusé notre offre.",en:["She turned down our offer.","She turned our offer down."]},
+      {fr:"Ma voiture est tombée en panne hier.",en:["My car broke down yesterday."]},
+      {fr:"Ça ne s'est pas passé comme prévu.",en:["It didn't work out as planned."]},
+      {fr:"J'ai vraiment hâte de te voir.",en:["I'm really looking forward to seeing you.","I am really looking forward to seeing you."]},
+      {fr:"On n'a plus de café.",en:["We have run out of coffee.","We've run out of coffee.","We ran out of coffee."]},
+      {fr:"Il s'est vite remis de sa blessure.",en:["He quickly got over his injury."]},
+      {fr:"Ils ont créé une nouvelle entreprise.",en:["They set up a new company.","They set a new company up."]}
+    ]
   }
 };

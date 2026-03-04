@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phrasal Verbs — ENG Hub</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="theory.css">
+<style>
+.pv-what{background:#1e293b;border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;}
+.pv-what p{font-size:.92rem;color:#cbd5e1;line-height:1.7;}
+.pv-example-big{background:#0f172a;border-radius:12px;padding:1.1rem 1.4rem;margin:1rem 0;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;}
+.pv-verb{font-size:1.2rem;font-weight:900;color:#94a3b8;}
+.pv-plus{font-size:1rem;color:#475569;}
+.pv-particle{font-size:1.2rem;font-weight:900;color:#8b5cf6;}
+.pv-arrow{font-size:1rem;color:#475569;}
+.pv-meaning{font-size:1.1rem;font-weight:700;color:#f59e0b;}
+.pv-base-meaning{font-size:.78rem;color:#475569;margin-top:.15rem;}
+
+.sep-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;}
+@media(max-width:500px){.sep-grid{grid-template-columns:1fr;}}
+.sep-card{background:#1e293b;border-radius:14px;padding:1.25rem;border-top:4px solid var(--sc,#10b981);}
+.sep-card h4{font-size:1rem;font-weight:800;color:var(--sc,#10b981);margin-bottom:.75rem;}
+.sep-ex{font-size:.88rem;color:#cbd5e1;margin-bottom:.5rem;line-height:1.5;}
+.sep-ex .en{color:#60a5fa;font-weight:600;}
+.sep-ex .note{font-size:.76rem;color:#64748b;margin-top:.15rem;}
+.sep-rule{background:#0f172a;border-radius:8px;padding:.5rem .85rem;font-size:.82rem;color:#94a3b8;margin-top:.75rem;line-height:1.5;}
+
+.trap-block{margin-bottom:1rem;}
+.trap-wrong{background:#1c0505;border:1px solid #7f1d1d;border-radius:10px 10px 0 0;padding:.65rem 1rem;}
+.trap-right{background:#052e16;border:1px solid #14532d;border-radius:0 0 10px 10px;padding:.65rem 1rem;}
+.trap-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem;}
+.trap-label.bad{color:#ef4444;}
+.trap-label.good{color:#10b981;}
+.trap-phrase{font-size:.9rem;color:#f1f5f9;font-weight:600;}
+.trap-reason{font-size:.76rem;margin-top:.15rem;}
+.trap-reason.bad{color:#fca5a5;}
+.trap-reason.good{color:#4ade80;}
+
+.pv-cat{margin-bottom:2rem;}
+.pv-cat-title{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;margin-bottom:.5rem;padding:.4rem .75rem;background:#1e293b;border-radius:8px;}
+.pv-tbl{width:100%;border-collapse:separate;border-spacing:0;border-radius:10px;overflow:hidden;}
+.pv-tbl th{background:#1e293b;padding:.45rem .8rem;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;text-align:left;}
+.pv-tbl th:nth-child(1){color:#8b5cf6;}
+.pv-tbl th:nth-child(2){color:#f59e0b;}
+.pv-tbl th:nth-child(3){color:#64748b;}
+.pv-tbl td{background:#0f172a;padding:.45rem .8rem;font-size:.85rem;border-top:1px solid #1e293b;}
+.pv-tbl tr:nth-child(even) td{background:#0a1120;}
+.pv-tbl td:nth-child(1){color:#8b5cf6;font-weight:700;}
+.pv-tbl td:nth-child(2){color:#f59e0b;font-weight:600;}
+.pv-tbl td:nth-child(3){color:#64748b;font-size:.8rem;font-style:italic;}
+</style>
+</head>
+<body>
+<div class="reading-bar" id="reading-bar"></div>
+<div class="theory-page">
+  <a href="phrasal-hub.html" class="back-btn">← Phrasal Verbs</a>
+  <div class="theory-hero">
+    <h1>🔗 Phrasal Verbs</h1>
+    <p>Les combinaisons verbe + particule indispensables à l'oral</p>
+  </div>
+
+  <nav class="sticky-nav">
+    <div class="sticky-nav-inner">
+      <button class="nav-tab active" data-target="cest-quoi">C'est quoi ?</button>
+      <button class="nav-tab" data-target="types">Séparables</button>
+      <button class="nav-tab" data-target="pieges">Pièges</button>
+      <button class="nav-tab" data-target="liste">Liste complète</button>
+    </div>
+  </nav>
+
+  <!-- C'EST QUOI -->
+  <section class="theory-section" id="cest-quoi">
+    <h2><span>❓</span> C'est quoi un phrasal verb ?</h2>
+    <div class="pv-what">
+      <p>Un <strong style="color:#8b5cf6">phrasal verb</strong> = un verbe + une particule (préposition ou adverbe) qui ensemble créent un sens <strong style="color:#f1f5f9">complètement différent</strong> du verbe seul.</p>
+    </div>
+
+    <div class="pv-example-big">
+      <div><span class="pv-verb">give</span><div class="pv-base-meaning">donner</div></div>
+      <span class="pv-plus">+</span>
+      <div><span class="pv-particle">up</span></div>
+      <span class="pv-arrow">→</span>
+      <div><span class="pv-meaning">abandonner</span></div>
+    </div>
+    <div class="pv-example-big">
+      <div><span class="pv-verb">look</span><div class="pv-base-meaning">regarder</div></div>
+      <span class="pv-plus">+</span>
+      <div><span class="pv-particle">for</span></div>
+      <span class="pv-arrow">→</span>
+      <div><span class="pv-meaning">chercher</span></div>
+    </div>
+    <div class="pv-example-big">
+      <div><span class="pv-verb">run</span><div class="pv-base-meaning">courir</div></div>
+      <span class="pv-plus">+</span>
+      <div><span class="pv-particle">into</span></div>
+      <span class="pv-arrow">→</span>
+      <div><span class="pv-meaning">tomber sur quelqu'un</span></div>
+    </div>
+
+    <div class="tip-block" style="margin-top:1.25rem">
+      <div class="tip-icon">🎯</div>
+      <p>Les anglophones les utilisent <strong>constamment</strong> à l'oral. Sans les connaître, tu peux comprendre chaque mot d'une phrase et rater le sens global.</p>
+    </div>
+  </section>
+
+  <!-- SÉPARABLES -->
+  <section class="theory-section" id="types">
+    <h2><span>✂️</span> Séparables vs inséparables</h2>
+    <div class="sep-grid">
+      <div class="sep-card" style="--sc:#10b981">
+        <h4>✅ Séparables</h4>
+        <p style="font-size:.8rem;color:#64748b;margin-bottom:.75rem;">L'objet peut se mettre <em>avant ou après</em> la particule.</p>
+        <div class="sep-ex"><div class="en">Pick <strong>up</strong> the book.</div></div>
+        <div class="sep-ex"><div class="en">Pick the book <strong>up</strong>. ✅</div></div>
+        <div class="sep-rule">⚠️ Avec un <strong>pronom</strong> (it, him, her…) → obligatoirement séparé :<br><span style="color:#4ade80">Pick <strong>it</strong> up.</span> &nbsp;/&nbsp; <span style="color:#f87171">❌ Pick up it.</span></div>
+      </div>
+      <div class="sep-card" style="--sc:#f59e0b">
+        <h4>🔒 Inséparables</h4>
+        <p style="font-size:.8rem;color:#64748b;margin-bottom:.75rem;">L'objet vient <em>toujours après</em> la particule.</p>
+        <div class="sep-ex"><div class="en">I'm looking <strong>for</strong> my keys. ✅</div></div>
+        <div class="sep-ex"><div class="en" style="color:#f87171">❌ I'm looking my keys for.</div><div class="note">Jamais séparable</div></div>
+        <div class="sep-rule">Exemples inséparables : <strong>look for, run into, get over, look forward to, run out of</strong></div>
+      </div>
+    </div>
+    <div class="tip-block">
+      <div class="tip-icon">💡</div>
+      <p>Au début, <strong>ne te prends pas trop la tête</strong> avec la règle séparable/inséparable. Le plus important c'est de connaître le sens. La structure viendra avec la pratique.</p>
+    </div>
+  </section>
+
+  <!-- PIÈGES -->
+  <section class="theory-section" id="pieges">
+    <h2><span>⚠️</span> Les pièges à éviter</h2>
+
+    <p style="color:#94a3b8;font-size:.88rem;margin-bottom:1.25rem;">Le même phrasal verb peut avoir <strong style="color:#f1f5f9">plusieurs sens</strong> selon le contexte.</p>
+
+    <div class="trap-block">
+      <div class="trap-wrong"><div class="trap-label bad">⚠️ make up — 3 sens différents</div><div class="trap-phrase">She <strong style="color:#8b5cf6">made up</strong> an excuse. → Elle a <span style="color:#f59e0b">inventé</span> une excuse.</div></div>
+      <div class="trap-right"><div class="trap-phrase">They <strong style="color:#8b5cf6">made up</strong> after the fight. → Ils se sont <span style="color:#4ade80">réconciliés</span> après la dispute.</div></div>
+    </div>
+    <div class="trap-block">
+      <div class="trap-wrong"><div class="trap-label bad">⚠️ break down — 2 sens courants</div><div class="trap-phrase">My car <strong style="color:#8b5cf6">broke down</strong>. → Ma voiture est <span style="color:#f59e0b">tombée en panne</span>.</div></div>
+      <div class="trap-right"><div class="trap-phrase">She <strong style="color:#8b5cf6">broke down</strong> in tears. → Elle a <span style="color:#4ade80">craqué</span> en larmes.</div></div>
+    </div>
+    <div class="trap-block">
+      <div class="trap-wrong"><div class="trap-label bad">⚠️ put off — à ne pas confondre</div><div class="trap-phrase"><span style="color:#f87171">put off</span> = reporter dans le temps</div></div>
+      <div class="trap-right"><div class="trap-phrase"><span style="color:#4ade80">put on</span> = mettre (vêtement) · allumer<br><span style="color:#4ade80">put back</span> = remettre à sa place<br><span style="color:#4ade80">put out</span> = éteindre (feu)</div></div>
+    </div>
+    <div class="tip-block">
+      <div class="tip-icon">🔑</div>
+      <p>La particule donne souvent un indice : <strong>up</strong> = complétion/finir, <strong>out</strong> = vers l'extérieur, <strong>back</strong> = retour, <strong>down</strong> = vers le bas/réduction.</p>
+    </div>
+  </section>
+
+  <!-- LISTE COMPLÈTE -->
+  <section class="theory-section" id="liste">
+    <h2><span>📋</span> Liste complète à connaître</h2>
+
+    <div class="pv-cat">
+      <div class="pv-cat-title">🏃 Action & quotidien</div>
+      <table class="pv-tbl">
+        <thead><tr><th>Phrasal verb</th><th>Sens</th><th>Exemple</th></tr></thead>
+        <tbody>
+          <tr><td>give up</td><td>abandonner</td><td>I gave up smoking.</td></tr>
+          <tr><td>carry on</td><td>continuer</td><td>Carry on, you're doing great.</td></tr>
+          <tr><td>pick up</td><td>ramasser · aller chercher · apprendre</td><td>Can you pick me up?</td></tr>
+          <tr><td>put off</td><td>reporter</td><td>Don't put it off.</td></tr>
+          <tr><td>end up</td><td>finir par</td><td>We ended up taking a taxi.</td></tr>
+          <tr><td>show up</td><td>se pointer / se présenter</td><td>He didn't show up.</td></tr>
+          <tr><td>go out</td><td>sortir</td><td>Let's go out tonight.</td></tr>
+          <tr><td>come back</td><td>revenir</td><td>She came back late.</td></tr>
+          <tr><td>wake up</td><td>se réveiller</td><td>I woke up at 7.</td></tr>
+          <tr><td>get up</td><td>se lever</td><td>She gets up early.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pv-cat">
+      <div class="pv-cat-title">💡 Objets & contrôle</div>
+      <table class="pv-tbl">
+        <thead><tr><th>Phrasal verb</th><th>Sens</th><th>Exemple</th></tr></thead>
+        <tbody>
+          <tr><td>turn on</td><td>allumer</td><td>Turn on the TV.</td></tr>
+          <tr><td>turn off</td><td>éteindre</td><td>Turn off the light.</td></tr>
+          <tr><td>throw away</td><td>jeter</td><td>Don't throw it away.</td></tr>
+          <tr><td>fill in</td><td>remplir (un formulaire)</td><td>Fill in the form.</td></tr>
+          <tr><td>try on</td><td>essayer (vêtement)</td><td>Can I try it on?</td></tr>
+          <tr><td>put on</td><td>mettre (vêtement) · allumer</td><td>Put on your coat.</td></tr>
+          <tr><td>take off</td><td>enlever · décoller</td><td>Take off your shoes.</td></tr>
+          <tr><td>give back</td><td>rendre</td><td>Give back my book.</td></tr>
+          <tr><td>set up</td><td>mettre en place · créer</td><td>They set up a company.</td></tr>
+          <tr><td>look up</td><td>chercher (en ligne/dico)</td><td>Look it up online.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pv-cat">
+      <div class="pv-cat-title">👥 Relations & émotions</div>
+      <table class="pv-tbl">
+        <thead><tr><th>Phrasal verb</th><th>Sens</th><th>Exemple</th></tr></thead>
+        <tbody>
+          <tr><td>look for</td><td>chercher</td><td>I'm looking for my keys.</td></tr>
+          <tr><td>run into</td><td>tomber sur (par hasard)</td><td>I ran into an old friend.</td></tr>
+          <tr><td>get along with</td><td>bien s'entendre avec</td><td>They get along well.</td></tr>
+          <tr><td>hang out</td><td>traîner · passer du temps</td><td>We hung out all day.</td></tr>
+          <tr><td>let down</td><td>décevoir</td><td>Don't let me down.</td></tr>
+          <tr><td>cheer up</td><td>remonter le moral</td><td>Cheer up, it's fine!</td></tr>
+          <tr><td>calm down</td><td>se calmer</td><td>Calm down!</td></tr>
+          <tr><td>make up</td><td>se réconcilier · inventer</td><td>They made up after the fight.</td></tr>
+          <tr><td>fall out with</td><td>se fâcher avec</td><td>She fell out with her sister.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pv-cat">
+      <div class="pv-cat-title">🧠 Expressions avancées</div>
+      <table class="pv-tbl">
+        <thead><tr><th>Phrasal verb</th><th>Sens</th><th>Exemple</th></tr></thead>
+        <tbody>
+          <tr><td>find out</td><td>découvrir · apprendre (une info)</td><td>I found out the truth.</td></tr>
+          <tr><td>bring up</td><td>élever (enfant) · mentionner</td><td>He was brought up in Paris.</td></tr>
+          <tr><td>turn down</td><td>refuser · baisser le volume</td><td>She turned down the offer.</td></tr>
+          <tr><td>break down</td><td>tomber en panne · craquer</td><td>My car broke down.</td></tr>
+          <tr><td>work out</td><td>s'entraîner · résoudre · bien se passer</td><td>It all worked out fine.</td></tr>
+          <tr><td>look forward to</td><td>avoir hâte de</td><td>I look forward to seeing you.</td></tr>
+          <tr><td>run out of</td><td>manquer de · ne plus avoir</td><td>We ran out of milk.</td></tr>
+          <tr><td>get over</td><td>surmonter · se remettre de</td><td>She got over her illness.</td></tr>
+          <tr><td>take on</td><td>prendre en charge · embaucher</td><td>He took on more work.</td></tr>
+          <tr><td>point out</td><td>signaler · faire remarquer</td><td>She pointed out the mistake.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <button class="cta-btn" onclick="location.href='phrasal-hub.html'">✏️ S'entraîner →</button>
+  </div>
+</div>
+
+<script>
+window.addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+    document.getElementById('reading-bar').style.width=pct+'%';
+});
+(function(){
+    const tabs=document.querySelectorAll('.nav-tab');
+    const sections=document.querySelectorAll('.theory-section');
+    const observer=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+            if(e.isIntersecting){tabs.forEach(t=>t.classList.toggle('active',t.dataset.target===e.target.id));}
+        });
+    },{threshold:0.2});
+    sections.forEach(s=>observer.observe(s));
+    tabs.forEach(tab=>tab.addEventListener('click',()=>{
+        document.getElementById(tab.dataset.target)?.scrollIntoView({behavior:'smooth'});
+    }));
+})();
+</script>
+</body>
+</html>
