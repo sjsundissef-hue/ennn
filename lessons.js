@@ -117,6 +117,46 @@ const LESSONS = {
       {fr:"WIN",en:["won"],combined:false}
     ]
   },
+  "irreg-verbs-1b": {
+    id:"irreg-verbs-1b",hidden:true,title:"Verbes irréguliers — Groupe 1b",subtitle:"⚠️ V2 ≠ V3 — tape les deux formes",icon:"⚠️",color:"#ef4444",questionCount:20,hasQuiz:true,
+    questions:[
+      {fr:"BE",en:["was / been","were / been"],combined:true},
+      {fr:"BECOME",en:["became / become"],combined:true},
+      {fr:"BEGIN",en:["began / begun"],combined:true},
+      {fr:"CHOOSE",en:["chose / chosen"],combined:true},
+      {fr:"COME",en:["came / come"],combined:true},
+      {fr:"DO",en:["did / done"],combined:true},
+      {fr:"DRAW",en:["drew / drawn"],combined:true},
+      {fr:"DRIVE",en:["drove / driven"],combined:true},
+      {fr:"FALL",en:["fell / fallen"],combined:true},
+      {fr:"FLY",en:["flew / flown"],combined:true},
+      {fr:"FORGET",en:["forgot / forgotten"],combined:true},
+      {fr:"GROW",en:["grew / grown"],combined:true},
+      {fr:"RIDE",en:["rode / ridden"],combined:true},
+      {fr:"RUN",en:["ran / run"],combined:true},
+      {fr:"SHOW",en:["showed / shown"],combined:true},
+      {fr:"SING",en:["sang / sung"],combined:true},
+      {fr:"SWIM",en:["swam / swum"],combined:true},
+      {fr:"THROW",en:["threw / thrown"],combined:true},
+      {fr:"WAKE",en:["woke / woken"],combined:true},
+      {fr:"WEAR",en:["wore / worn"],combined:true}
+    ]
+  },
+  "irreg-verbs-2b": {
+    id:"irreg-verbs-2b",hidden:true,title:"Verbes irréguliers — Groupe 2b",subtitle:"✅ V2 = V3 — une seule forme à taper",icon:"🟩",color:"#059669",questionCount:10,hasQuiz:true,
+    questions:[
+      {fr:"GET",en:["got"],combined:false},
+      {fr:"HOLD",en:["held"],combined:false},
+      {fr:"LEND",en:["lent"],combined:false},
+      {fr:"READ",en:["read"],combined:false},
+      {fr:"SIT",en:["sat"],combined:false},
+      {fr:"SLEEP",en:["slept"],combined:false},
+      {fr:"SPEND",en:["spent"],combined:false},
+      {fr:"STAND",en:["stood"],combined:false},
+      {fr:"TEACH",en:["taught"],combined:false},
+      {fr:"UNDERSTAND",en:["understood"],combined:false}
+    ]
+  },
   "irreg-verbs-3": {
     id:"irreg-verbs-3",hidden:true,title:"Verbes irréguliers — Groupe 3",subtitle:"🟢 V1 = V2 = V3 — une seule forme",icon:"🟢",color:"#22c55e",questionCount:5,hasQuiz:true,
     questions:[
