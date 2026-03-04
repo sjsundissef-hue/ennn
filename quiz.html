@@ -25,6 +25,7 @@
       <span class="streak-badge" id="streak-display" style="display:none"></span>
     </div>
     <div class="question-card">
+      <button class="heart-btn" id="heart-btn" onclick="toggleFav()">🤍</button>
       <span class="structure-badge" id="structure-badge" style="display:none"></span>
       <div class="question-text" id="question-text"></div>
       <div class="answer-area">
@@ -69,7 +70,11 @@
 <script>
 const params = new URLSearchParams(location.search);
 const lid = params.get('lesson');
-if (lid && LESSONS[lid]) {
+if (lid === 'favorites') {
+    const fl = getFavLesson();
+    if (fl) { document.getElementById('quiz-title').textContent = fl.title; initQuiz(fl); }
+    else { document.getElementById('quiz-container').innerHTML = '<p style="color:#94a3b8;text-align:center;padding:2rem;line-height:1.7">Aucun favori pour l\'instant.<br>Appuie sur 🤍 pendant le quiz pour en ajouter !</p>'; document.getElementById('quiz-container').style.display='block'; }
+} else if (lid && LESSONS[lid]) {
     document.getElementById('quiz-title').textContent = LESSONS[lid].title;
     initQuiz(LESSONS[lid]);
 } else {
