@@ -232,37 +232,41 @@ function openHelp(){
 function closeHelp(e){if(e)e.stopPropagation();document.getElementById('help-modal').style.display='none';if(quiz.state==="typing")setTimeout(()=>document.getElementById('answer-input')?.focus(),80);}
 
 const IRREG_VERBS=[
-    ["be","been","être"],["become","become","devenir"],["begin","begun","commencer"],
-    ["break","broken","casser"],["bring","brought","apporter"],["build","built","construire"],
-    ["buy","bought","acheter"],["catch","caught","attraper"],["choose","chosen","choisir"],
-    ["come","come","venir"],["cut","cut","couper"],["do","done","faire"],
-    ["draw","drawn","dessiner"],["drink","drunk","boire"],["drive","driven","conduire"],
-    ["eat","eaten","manger"],["fall","fallen","tomber"],["feel","felt","ressentir"],
-    ["find","found","trouver"],["fly","flown","voler"],["forget","forgotten","oublier"],
-    ["get","got","obtenir"],["give","given","donner"],["go","gone","aller"],
-    ["grow","grown","grandir/pousser"],["have","had","avoir"],["hear","heard","entendre"],
-    ["hold","held","tenir"],["keep","kept","garder"],["know","known","savoir/connaître"],
-    ["leave","left","partir/laisser"],["lend","lent","prêter"],["lose","lost","perdre"],
-    ["make","made","faire/fabriquer"],["meet","met","rencontrer"],["pay","paid","payer"],
-    ["put","put","mettre"],["read","read","lire"],["ride","ridden","vélo/cheval"],
-    ["run","run","courir"],["say","said","dire"],["see","seen","voir"],
-    ["sell","sold","vendre"],["send","sent","envoyer"],["show","shown","montrer"],
-    ["sing","sung","chanter"],["sit","sat","s'asseoir"],["sleep","slept","dormir"],
-    ["speak","spoken","parler"],["spend","spent","dépenser/passer"],["stand","stood","se lever"],
-    ["swim","swum","nager"],["take","taken","prendre"],["teach","taught","enseigner"],
-    ["tell","told","dire/raconter"],["think","thought","penser"],["throw","thrown","lancer"],
-    ["understand","understood","comprendre"],["wake","woken","réveiller"],
-    ["wear","worn","porter"],["win","won","gagner"],["write","written","écrire"]
+    // [infinitif, passé simple, participe passé, sens]
+    ["be","was/were","been","être"],["become","became","become","devenir"],["begin","began","begun","commencer"],
+    ["break","broke","broken","casser"],["bring","brought","brought","apporter"],["build","built","built","construire"],
+    ["buy","bought","bought","acheter"],["catch","caught","caught","attraper"],["choose","chose","chosen","choisir"],
+    ["come","came","come","venir"],["cut","cut","cut","couper"],["do","did","done","faire"],
+    ["draw","drew","drawn","dessiner"],["drink","drank","drunk","boire"],["drive","drove","driven","conduire"],
+    ["eat","ate","eaten","manger"],["fall","fell","fallen","tomber"],["feel","felt","felt","ressentir"],
+    ["find","found","found","trouver"],["fly","flew","flown","voler"],["forget","forgot","forgotten","oublier"],
+    ["get","got","got","obtenir"],["give","gave","given","donner"],["go","went","gone","aller"],
+    ["grow","grew","grown","grandir/pousser"],["have","had","had","avoir"],["hear","heard","heard","entendre"],
+    ["hold","held","held","tenir"],["keep","kept","kept","garder"],["know","knew","known","savoir/connaître"],
+    ["leave","left","left","partir/laisser"],["lend","lent","lent","prêter"],["lose","lost","lost","perdre"],
+    ["make","made","made","faire/fabriquer"],["meet","met","met","rencontrer"],["pay","paid","paid","payer"],
+    ["put","put","put","mettre"],["read","read","read","lire"],["ride","rode","ridden","vélo/cheval"],
+    ["run","ran","run","courir"],["say","said","said","dire"],["see","saw","seen","voir"],
+    ["sell","sold","sold","vendre"],["send","sent","sent","envoyer"],["show","showed","shown","montrer"],
+    ["sing","sang","sung","chanter"],["sit","sat","sat","s'asseoir"],["sleep","slept","slept","dormir"],
+    ["speak","spoke","spoken","parler"],["spend","spent","spent","dépenser/passer"],["stand","stood","stood","se lever"],
+    ["swim","swam","swum","nager"],["take","took","taken","prendre"],["teach","taught","taught","enseigner"],
+    ["tell","told","told","dire/raconter"],["think","thought","thought","penser"],["throw","threw","thrown","lancer"],
+    ["understand","understood","understood","comprendre"],["wake","woke","woken","réveiller"],
+    ["wear","wore","worn","porter"],["win","won","won","gagner"],["write","wrote","written","écrire"]
 ];
 function openIrreg(){
     const box=document.getElementById('irreg-modal-box');
     let html='<div class="irreg-title">📚 Verbes irréguliers</div>';
-    html+='<p class="irreg-subtitle">Participe passé — utilisé après <em>should have</em>, <em>could have</em>, <em>have</em>…</p>';
+    html+='<p class="irreg-subtitle">Passé simple (prétérit) &amp; participe passé — les 3 formes essentielles</p>';
     html+='<div class="irreg-rule"><strong>Règle générale — verbes réguliers :</strong> base + <strong>-ed</strong><div class="irreg-rule-ex">work → work<strong>ed</strong> &nbsp;·&nbsp; call → call<strong>ed</strong> &nbsp;·&nbsp; study → studi<strong>ed</strong></div></div>';
     html+='<div class="irreg-section-label">Verbes irréguliers à connaître</div>';
-    html+='<div class="irreg-cols-head"><span>Infinitif</span><span>Part. passé</span><span>Sens</span></div>';
+    html+='<div class="irreg-cols-head irreg-cols-head-4"><span>Infinitif</span><span>Passé simple</span><span>Part. passé</span><span>Sens</span></div>';
     html+='<div class="irreg-list">';
-    for(const[b,pp,fr]of IRREG_VERBS){html+=`<div class="irreg-row"><span class="irreg-base">${b}</span><span class="irreg-pp">${pp}</span><span class="irreg-fr">${fr}</span></div>`;}
+    for(const[b,ps,pp,fr]of IRREG_VERBS){
+        const samePs=ps===pp?'irreg-pp same':'irreg-pp';
+        html+=`<div class="irreg-row irreg-row-4"><span class="irreg-base">${b}</span><span class="irreg-ps">${ps}</span><span class="${samePs}">${pp}</span><span class="irreg-fr">${fr}</span></div>`;
+    }
     html+='</div><button class="modal-close" onclick="closeIrreg()">Fermer</button>';
     box.innerHTML=html;
     document.getElementById('irreg-modal').style.display='flex';
