@@ -82,9 +82,9 @@ const quiz={lesson:null,questions:[],currentIndex:0,score:0,streak:0,maxStreak:0
 function normalizeText(t){ return t.toLowerCase().replace(/[.,?!]/g,'').replace(/\s+/g,' ').trim(); }
 function checkCombined(ua, expected){
     const exp=expected.split(' / ').map(s=>s.trim().toLowerCase());
-    const parts=ua.trim().split(/\s*[\/,]\s*|\s+/).filter(s=>s);
-    if(parts.length<2)return false;
-    return parts[0].toLowerCase()===exp[0]&&parts[1].toLowerCase()===exp[1];
+    const parts=ua.trim().split(/\s*[\/,]\s*/).map(s=>s.trim().toLowerCase()).filter(s=>s);
+    if(parts.length<exp.length)return false;
+    return exp.every((e,i)=>parts[i]===e);
 }
 function buildVariantHTML(q, usedAnswer){
     if(!q.en||q.en.length<=1||!q.variantNote)return'';
@@ -144,7 +144,7 @@ function loadQuestion(){
     qEl.style.opacity='0';qEl.style.transform='translateY(12px)';
     setTimeout(()=>{qEl.textContent=q.fr;qEl.style.transition='opacity 0.3s ease,transform 0.3s ease';qEl.style.opacity='1';qEl.style.transform='translateY(0)';},50);
     const inp=document.getElementById('answer-input');inp.value='';inp.disabled=false;inp.className='answer-input';
-    inp.placeholder=q.combined===true?'V2 / V3 — ex: went / gone':q.combined===false?'V2 (= V3) — ex: brought':'Écris la traduction...';
+    inp.placeholder=q.combined?'V1 / V2 / V3 — ex: go / went / gone':'Écris la traduction...';
     const lb=document.getElementById('live-feedback');lb.style.display='none';lb.innerHTML='';
     document.getElementById('submit-btn').textContent='Vérifier ✓';document.getElementById('submit-btn').className='action-btn';
     document.getElementById('skip-btn').style.display='inline-flex';
@@ -288,10 +288,14 @@ function toggleSound(){quiz.soundEnabled=!quiz.soundEnabled;const b=document.get
         if(!q||!ut){lb.style.display='none';lb.innerHTML='';return;} lb.style.display='block';
         if(q.combined){
             const exp=q.en[0].split(' / ');
-            const parts=ut.split(/\s*[\/,]\s*|\s+/).filter(s=>s);
+            const parts=ut.split(/\s*\/\s*/).map(s=>s.trim()).filter(s=>s);
             let html='';
-            if(parts[0]!==undefined){const ok0=parts[0].toLowerCase()===exp[0].toLowerCase();html+=`<span class="${ok0?'char-correct':'char-incorrect'}">${escapeChar(parts[0])}</span>`;}
-            if(parts[1]!==undefined){html+=' <span style="color:#475569">/</span> ';const ok1=parts[1].toLowerCase()===exp[1].toLowerCase();html+=`<span class="${ok1?'char-correct':'char-incorrect'}">${escapeChar(parts[1])}</span>`;}
+            exp.forEach((e,i)=>{
+                if(parts[i]===undefined)return;
+                if(i>0)html+=' <span style="color:#475569">/</span> ';
+                const ok=parts[i].toLowerCase()===e.toLowerCase();
+                html+=`<span class="${ok?'char-correct':'char-incorrect'}">${escapeChar(parts[i])}</span>`;
+            });
             lb.innerHTML=html;
         }else{
             let best=q.en[0],max=-1;
