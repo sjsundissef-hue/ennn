@@ -100,19 +100,23 @@ function checkCombined(ua, expected){
     return exp.every((e,i)=>parts[i]===e);
 }
 function buildVariantHTML(q, usedAnswer){
-    let html='';
-    if(q.en&&q.en.length>1&&q.variantNote){
-        const others=usedAnswer?q.en.filter(a=>normalizeText(a)!==normalizeText(usedAnswer)):q.en.slice(1);
-        if(others.length){
-            const list=others.map(a=>`<span class="variant-phrase">"${a}"</span>`).join(' ou ');
-            html+=`<div class="variant-also">Tu aurais aussi pu dire : ${list}</div><div class="variant-diff">${q.variantNote}</div>`;
-        }
-    }
-    if(q.note){html+=`<div class="variant-diff">📝 ${q.note}</div>`;}
-    return html;
+    if(!q.en||q.en.length<=1||!q.variantNote)return'';
+    const others=usedAnswer?q.en.filter(a=>normalizeText(a)!==normalizeText(usedAnswer)):q.en.slice(1);
+    if(!others.length)return'';
+    const list=others.map(a=>`<span class="variant-phrase">"${a}"</span>`).join(' ou ');
+    return`<div class="variant-also">Tu aurais aussi pu dire : ${list}</div><div class="variant-diff">${q.variantNote}</div>`;
 }
 function buildExplainHTML(q){
     if(!q||!q.structure)return'';
+    if(q.explain){
+        let html='<div class="explain-panel">';
+        html+=`<div class="explain-row"><div class="explain-icon">💡</div><div><div class="explain-label">À noter sur cette phrase</div><div class="explain-body">${q.explain.why}</div></div></div>`;
+        if(q.explain.active){
+            html+=`<div class="explain-row"><div class="explain-icon">🔄</div><div><div class="explain-label">À la voix active</div><div class="explain-body"><span class="explain-alt-en">${q.explain.active.en}</span>&ensp;→&ensp;<span class="explain-alt-fr">${q.explain.active.fr}</span></div></div></div>`;
+        }
+        html+='</div>';
+        return html;
+    }
     const sh=STRUCTURE_HELP[q.structure];if(!sh)return'';
     let html='<div class="explain-panel">';
     html+=`<div class="explain-row"><div class="explain-icon">❓</div><div><div class="explain-label">Pourquoi cette structure ?</div><div class="explain-body">${sh.why}</div></div></div>`;
