@@ -100,11 +100,16 @@ function checkCombined(ua, expected){
     return exp.every((e,i)=>parts[i]===e);
 }
 function buildVariantHTML(q, usedAnswer){
-    if(!q.en||q.en.length<=1||!q.variantNote)return'';
-    const others=usedAnswer?q.en.filter(a=>normalizeText(a)!==normalizeText(usedAnswer)):q.en.slice(1);
-    if(!others.length)return'';
-    const list=others.map(a=>`<span class="variant-phrase">"${a}"</span>`).join(' ou ');
-    return`<div class="variant-also">Tu aurais aussi pu dire : ${list}</div><div class="variant-diff">${q.variantNote}</div>`;
+    let html='';
+    if(q.en&&q.en.length>1&&q.variantNote){
+        const others=usedAnswer?q.en.filter(a=>normalizeText(a)!==normalizeText(usedAnswer)):q.en.slice(1);
+        if(others.length){
+            const list=others.map(a=>`<span class="variant-phrase">"${a}"</span>`).join(' ou ');
+            html+=`<div class="variant-also">Tu aurais aussi pu dire : ${list}</div><div class="variant-diff">${q.variantNote}</div>`;
+        }
+    }
+    if(q.note){html+=`<div class="variant-diff">📝 ${q.note}</div>`;}
+    return html;
 }
 function buildExplainHTML(q){
     if(!q||!q.structure)return'';

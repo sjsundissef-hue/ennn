@@ -215,7 +215,7 @@ const LESSONS = {
     ]
   },
   "pp-passive": {
-    id:"pp-passive",hidden:true,title:"Voix passive",subtitle:"be + participe passé",icon:"🔄",color:"#ec4899",questionCount:10,theoryPage:"theory-pp-passive.html",hasQuiz:true,
+    id:"pp-passive",hidden:true,title:"Voix passive",subtitle:"be + participe passé",icon:"🔄",color:"#ec4899",questionCount:30,theoryPage:"theory-pp-passive.html",hasQuiz:true,
     questions:[
       {fr:"La fenêtre a été cassée.",en:["The window was broken."],structure:7},
       {fr:"La lettre a été envoyée hier.",en:["The letter was sent yesterday."],structure:7},
@@ -226,7 +226,27 @@ const LESSONS = {
       {fr:"La maison a été construite en 1990.",en:["The house was built in 1990."],structure:7},
       {fr:"Le message a été lu.",en:["The message was read."],structure:7},
       {fr:"Le gâteau a été mangé.",en:["The cake was eaten."],structure:7},
-      {fr:"La décision a été prise hier.",en:["The decision was made yesterday.","The decision was taken yesterday."],structure:7,variantNote:"Même sens — <em>made</em> est plus courant, <em>taken</em> aussi correct."}
+      {fr:"La décision a été prise hier.",en:["The decision was made yesterday.","The decision was taken yesterday."],structure:7,variantNote:"Même sens — <em>made</em> est plus courant, <em>taken</em> aussi correct."},
+      {fr:"Le pont a été construit par des ingénieurs.",en:["The bridge was built by engineers."],structure:7,note:"<strong>bridge</strong> = pont. On précise qui a fait l'action avec <strong>by</strong> → <em>by engineers</em>. À retenir !"},
+      {fr:"Les règles sont respectées ici.",en:["The rules are followed here.","The rules are obeyed here."],structure:7,variantNote:"<em>follow the rules</em> et <em>obey the rules</em> = respecter les règles. <em>Obey</em> insiste davantage sur l'obéissance."},
+      {fr:"Le contrat a été signé ce matin.",en:["The contract was signed this morning."],structure:7,note:"<strong>contract</strong> = contrat — même mot, même orthographe ! <strong>signed</strong> = signé (verbe régulier : sign → signed)."},
+      {fr:"Les résultats seront annoncés demain.",en:["The results will be announced tomorrow."],structure:7,note:"Futur passif : <strong>will be + PP</strong>. <strong>announced</strong> = annoncé — à retenir !"},
+      {fr:"Ce tableau a été peint au 17ème siècle.",en:["This painting was painted in the 17th century."],structure:7,note:"<strong>painting</strong> = tableau/peinture. <strong>17th century</strong> = 17ème siècle. Le PP de <em>paint</em> est régulier : <em>painted</em>."},
+      {fr:"Le suspect a été arrêté par la police.",en:["The suspect was arrested by the police."],structure:7,note:"<strong>suspect</strong> = suspect — même mot ! <strong>arrested</strong> = arrêté. À retenir !"},
+      {fr:"Les billets ont été vendus en quelques minutes.",en:["The tickets were sold in a few minutes."],structure:7,note:"<strong>in a few minutes</strong> = en quelques minutes. <strong>tickets</strong> = billets. PP de <em>sell</em> : <em>sold</em> (irrégulier !)."},
+      {fr:"Le problème a été résolu.",en:["The problem was solved.","The problem has been solved."],structure:7,variantNote:"<em>was solved</em> = passé simple passif. <em>has been solved</em> = present perfect passif — insiste sur le résultat encore valable maintenant."},
+      {fr:"Ces chaussures sont fabriquées en Italie.",en:["These shoes are made in Italy."],structure:7,note:"<strong>made in</strong> = fabriqué en — expression qu'on voit sur tous les produits ! Présent simple passif : <strong>are + PP</strong>."},
+      {fr:"La réunion a été annulée.",en:["The meeting was cancelled.","The meeting was canceled."],structure:7,variantNote:"<em>cancelled</em> = orthographe britannique, <em>canceled</em> = orthographe américaine. Les deux sont correctes."},
+      {fr:"Le film a été tourné à Los Angeles.",en:["The movie was filmed in Los Angeles.","The movie was shot in Los Angeles."],structure:7,variantNote:"<em>filmed</em> est le terme neutre. <em>shot</em> (PP de <em>shoot</em>) est plus courant dans l'industrie cinéma — à retenir !"},
+      {fr:"L'email a été envoyé à tous les employés.",en:["The email was sent to all the employees."],structure:7,note:"<strong>employees</strong> = les employés — à retenir ! <strong>all the employees</strong> = tous les employés."},
+      {fr:"Le voleur a été condamné à deux ans de prison.",en:["The thief was sentenced to two years in prison."],structure:7,note:"<strong>sentenced to</strong> = condamné à — à retenir ! <strong>in prison</strong> = en prison."},
+      {fr:"La nouvelle a été partagée sur les réseaux sociaux.",en:["The news was shared on social media."],structure:7,note:"<strong>social media</strong> = les réseaux sociaux. <strong>news</strong> est toujours singulier en anglais — jamais <em>a news</em> !"},
+      {fr:"Ce roman a été traduit en vingt langues.",en:["This novel was translated into 20 languages."],structure:7,note:"<strong>translated into</strong> (pas <em>in</em> !) — à retenir. <strong>novel</strong> = roman."},
+      {fr:"Les blessés ont été transportés à l'hôpital.",en:["The injured were taken to the hospital."],structure:7,note:"<strong>the injured</strong> = les blessés. En anglais, <strong>the + adjectif</strong> peut désigner un groupe de personnes."},
+      {fr:"Le rapport a été rédigé par le directeur.",en:["The report was written by the manager.","The report was written by the director."],structure:7,variantNote:"<em>manager</em> = responsable/chef dans un contexte pro. <em>director</em> = directeur, plus hiérarchique."},
+      {fr:"La fête a été organisée par ses amis.",en:["The party was organised by her friends.","The party was organized by her friends."],structure:7,variantNote:"<em>organised</em> = orthographe britannique, <em>organized</em> = américaine. Les deux sont correctes."},
+      {fr:"Le médicament a été approuvé par les autorités.",en:["The medicine was approved by the authorities."],structure:7,note:"<strong>approved</strong> = approuvé — à retenir ! <strong>authorities</strong> = les autorités."},
+      {fr:"Ce musée est visité par des millions de personnes chaque année.",en:["This museum is visited by millions of people every year."],structure:7,note:"<strong>museum</strong> = musée — à retenir ! Présent simple passif : <strong>is + PP</strong>."}
     ]
   },
   "prepositions-1": {
