@@ -1,4 +1,13 @@
 const LESSONS = {
+  "past-tenses": {
+    id: "past-tenses",
+    title: "Les 5 temps du passé",
+    subtitle: "Past Simple, Continuous, Perfect & plus",
+    icon: "⏳",
+    color: "#f59e0b",
+    theoryPage: "theory-past-tenses.html",
+    hasQuiz: false
+  },
   "structures-1": {
     id: "structures-1",
     title: "Structures Clés",

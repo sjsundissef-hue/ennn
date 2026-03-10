@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Les 5 temps du passé — ENG Hub</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="theory.css">
+<style>
+/* ── Tense block ── */
+.tense-block{background:#1e293b;border-radius:20px;padding:1.5rem;margin-bottom:1.5rem;border-top:5px solid var(--tc,#3b82f6);}
+.tense-num{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--tc,#3b82f6);margin-bottom:.25rem;}
+.tense-title{font-size:1.4rem;font-weight:900;color:var(--tc,#3b82f6);margin-bottom:.5rem;}
+.tense-formula{background:#0f172a;border-radius:10px;padding:.7rem 1.1rem;font-family:monospace;font-size:.95rem;color:#e2e8f0;margin-bottom:1rem;border-left:3px solid var(--tc,#3b82f6);}
+.tense-formula strong{color:var(--tc,#3b82f6);}
+.tense-when{background:#0f172a;border-radius:10px;padding:.85rem 1.1rem;margin-bottom:1rem;font-size:.88rem;color:#cbd5e1;line-height:1.6;}
+.tense-when strong{color:#f1f5f9;}
+.tense-examples{display:flex;flex-direction:column;gap:.55rem;}
+.tense-ex{background:#0f172a;border-radius:10px;padding:.7rem 1rem;}
+.tense-ex .en{font-weight:700;color:var(--tc,#3b82f6);font-size:.95rem;}
+.tense-ex .fr{font-size:.8rem;color:#64748b;margin-top:.2rem;}
+.tense-ex .why{font-size:.78rem;color:#94a3b8;margin-top:.3rem;font-style:italic;}
+.keywords{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem;}
+.kw{background:#0f172a;border:1px solid #334155;border-radius:999px;padding:.25rem .75rem;font-size:.78rem;color:#94a3b8;font-family:monospace;}
+.kw strong{color:var(--tc,#3b82f6);}
+
+/* ── Timeline ── */
+.tl-strip{display:flex;align-items:center;gap:0;background:#0f172a;border-radius:12px;padding:1rem 1.25rem;overflow-x:auto;margin:1rem 0;}
+.tl-node{text-align:center;flex:1;min-width:80px;}
+.tl-dot{width:13px;height:13px;border-radius:50%;margin:0 auto .35rem;background:var(--dc,#334155);}
+.tl-lbl{font-size:.72rem;color:#94a3b8;line-height:1.4;}
+.tl-lbl strong{display:block;font-size:.78rem;color:#f1f5f9;}
+.tl-arr{font-size:1.1rem;color:#334155;flex-shrink:0;padding:0 .35rem;margin-bottom:1.2rem;}
+
+/* ── Intro section ── */
+.intro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.65rem;margin:1.25rem 0;}
+.intro-pill{border-radius:12px;padding:.85rem 1rem;text-align:center;background:#1e293b;border-top:3px solid var(--ic,#3b82f6);}
+.intro-pill .name{font-size:.82rem;font-weight:800;color:var(--ic,#3b82f6);}
+.intro-pill .struct{font-size:.7rem;color:#64748b;margin-top:.2rem;font-family:monospace;}
+
+/* ── Exercise ── */
+.ex-section{margin-top:3rem;}
+.ex-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem;}
+.ex-counter{font-size:.85rem;color:#94a3b8;}
+.shuffle-btn{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:.45rem 1rem;font-size:.83rem;color:#94a3b8;cursor:pointer;transition:color .15s,border-color .15s;}
+.shuffle-btn:hover{color:#f1f5f9;border-color:#4b5563;}
+
+.ex-card{background:#1e293b;border-radius:16px;padding:1.3rem;margin-bottom:.85rem;border-left:4px solid var(--ec,#3b82f6);position:relative;}
+.ex-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;}
+.ex-num{font-size:.7rem;font-weight:700;color:#64748b;flex-shrink:0;margin-top:.15rem;}
+.ex-fr{font-size:1rem;font-weight:600;color:#f1f5f9;line-height:1.5;flex:1;}
+.reveal-btn{background:#0f172a;border:1px solid #334155;border-radius:10px;padding:.45rem .9rem;font-size:.82rem;color:#94a3b8;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s;}
+.reveal-btn:hover{border-color:#4b5563;color:#f1f5f9;}
+.reveal-btn.done{background:var(--ec,#3b82f6);border-color:var(--ec,#3b82f6);color:#fff;}
+
+.ex-answer{display:none;margin-top:1rem;}
+.ex-answer.visible{display:block;animation:fadeIn .25s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+.ex-en{font-size:1.05rem;font-weight:800;color:var(--ec,#3b82f6);background:#0f172a;border-radius:10px;padding:.7rem 1rem;margin-bottom:.75rem;font-family:monospace;}
+.ex-tense-badge{display:inline-block;background:var(--ec,#3b82f6);color:#fff;border-radius:999px;padding:.2rem .75rem;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.85rem;}
+
+.ex-explain{display:flex;flex-direction:column;gap:.6rem;}
+.ex-row{display:flex;gap:.55rem;align-items:flex-start;}
+.ex-icon{font-size:.95rem;flex-shrink:0;width:1.3rem;text-align:center;margin-top:.05rem;}
+.ex-label{font-size:.7rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.15rem;}
+.ex-body{font-size:.83rem;color:#94a3b8;line-height:1.55;}
+.ex-body strong{color:#cbd5e1;}
+.ex-body em{color:var(--ec,#3b82f6);font-style:normal;}
+
+.ex-alt{background:#0f172a;border-radius:10px;padding:.7rem 1rem;}
+.alt-wrong{font-size:.85rem;color:#fca5a5;margin-bottom:.3rem;}
+.alt-right{font-size:.82rem;color:#4ade80;}
+
+/* ── Progress dots ── */
+.progress-dots{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1.5rem;}
+.prog-dot{width:12px;height:12px;border-radius:50%;background:#1e293b;border:1px solid #334155;transition:all .2s;}
+.prog-dot.done{background:var(--prog-c,#3b82f6);border-color:var(--prog-c,#3b82f6);}
+</style>
+</head>
+<body>
+<div class="reading-bar" id="reading-bar"></div>
+<div class="theory-page">
+  <a href="index.html" class="back-btn">← Accueil</a>
+
+  <div class="theory-hero">
+    <h1>⏳ Les 5 temps du passé</h1>
+    <p>Maîtrise les 5 temps essentiels pour parler du passé en anglais</p>
+  </div>
+
+  <!-- Sticky nav -->
+  <nav class="sticky-nav">
+    <div class="sticky-nav-inner">
+      <button class="nav-tab active" onclick="scrollTo('intro')">Intro</button>
+      <button class="nav-tab" onclick="scrollTo('ps')">Past Simple</button>
+      <button class="nav-tab" onclick="scrollTo('pc')">Past Continuous</button>
+      <button class="nav-tab" onclick="scrollTo('prp')">Present Perfect</button>
+      <button class="nav-tab" onclick="scrollTo('pperf')">Past Perfect</button>
+      <button class="nav-tab" onclick="scrollTo('wb')">Was / Were</button>
+      <button class="nav-tab" onclick="scrollTo('ex')">Exercices</button>
+    </div>
+  </nav>
+
+  <!-- ── INTRO ── -->
+  <section class="theory-section" id="intro">
+    <h2><span>🗺️</span> Vue d'ensemble</h2>
+    <div style="background:#1e293b;border-radius:16px;padding:1.25rem;margin-bottom:1.25rem;font-size:.9rem;color:#94a3b8;line-height:1.7;">
+      En anglais, il n'existe pas qu'un seul passé — il en existe <strong style="color:#f1f5f9;">plusieurs</strong>, et chacun a un rôle précis. Ce n'est pas compliqué une fois qu'on comprend <em style="color:#60a5fa;">pourquoi</em> chaque temps existe. Voici les <strong style="color:#f1f5f9;">5 incontournables</strong> à maîtriser pour comprendre et parler l'anglais du passé.
+    </div>
+    <div class="intro-grid">
+      <div class="intro-pill" style="--ic:#f59e0b">
+        <div class="name">Past Simple</div>
+        <div class="struct">V2 (prétérit)</div>
+      </div>
+      <div class="intro-pill" style="--ic:#3b82f6">
+        <div class="name">Past Continuous</div>
+        <div class="struct">was/were + -ing</div>
+      </div>
+      <div class="intro-pill" style="--ic:#10b981">
+        <div class="name">Present Perfect</div>
+        <div class="struct">have/has + V3</div>
+      </div>
+      <div class="intro-pill" style="--ic:#6366f1">
+        <div class="name">Past Perfect</div>
+        <div class="struct">had + V3</div>
+      </div>
+      <div class="intro-pill" style="--ic:#ec4899">
+        <div class="name">Was / Were</div>
+        <div class="struct">être au passé</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 1. PAST SIMPLE ── -->
+  <section class="theory-section" id="ps">
+    <h2><span>🟡</span> Past Simple</h2>
+    <div class="tense-block" style="--tc:#f59e0b">
+      <div class="tense-num">Temps n°1</div>
+      <div class="tense-title">Past Simple</div>
+      <div class="tense-formula">Sujet + <strong>V2</strong> (forme prétérit du verbe)<br><small style="color:#94a3b8;">V2 = verbe irrégulier (went, ate, saw…) ou verbe + <strong>-ed</strong> (worked, played…)</small></div>
+      <div class="tense-when">
+        <strong>À quoi ça sert ?</strong><br>
+        Le Past Simple décrit une <strong>action terminée dans le passé</strong>, à un moment précis ou une période définie. L'action est <strong>complètement finie</strong> — elle n'a plus de lien avec le présent. C'est le temps du passé le plus fréquent.
+      </div>
+      <div class="tense-examples">
+        <div class="tense-ex">
+          <div class="en">I watched a movie last night.</div>
+          <div class="fr">J'ai regardé un film hier soir.</div>
+          <div class="why">→ "last night" = moment précis et terminé dans le passé</div>
+        </div>
+        <div class="tense-ex">
+          <div class="en">She went to Paris in 2019.</div>
+          <div class="fr">Elle est allée à Paris en 2019.</div>
+          <div class="why">→ "in 2019" = période passée et révolue</div>
+        </div>
+        <div class="tense-ex">
+          <div class="en">They finished their work at 5 o'clock.</div>
+          <div class="fr">Ils ont fini leur travail à 5h.</div>
+          <div class="why">→ Action ponctuelle, terminée, heure précise</div>
+        </div>
+      </div>
+      <div class="keywords">
+        <span class="kw"><strong>yesterday</strong> → hier</span>
+        <span class="kw"><strong>last night / week / year</strong></span>
+        <span class="kw"><strong>ago</strong> → il y a</span>
+        <span class="kw"><strong>in 2010…</strong></span>
+        <span class="kw"><strong>this morning</strong></span>
+      </div>
+    </div>
+    <div style="background:#1e293b;border-radius:12px;padding:.9rem 1.1rem;font-size:.85rem;color:#94a3b8;line-height:1.6;">
+      <strong style="color:#f59e0b;">Astuce clé :</strong> Si tu peux ajouter <em style="color:#fbbf24;">"hier"</em>, <em style="color:#fbbf24;">"il y a X temps"</em> ou une date précise → c'est souvent le <strong style="color:#f1f5f9;">Past Simple</strong>.
+    </div>
+  </section>
+
+  <!-- ── 2. PAST CONTINUOUS ── -->
+  <section class="theory-section" id="pc">
+    <h2><span>🔵</span> Past Continuous</h2>
+    <div class="tense-block" style="--tc:#3b82f6">
+      <div class="tense-num">Temps n°2</div>
+      <div class="tense-title">Past Continuous</div>
+      <div class="tense-formula">Sujet + <strong>was / were</strong> + verbe<strong>-ing</strong></div>
+      <div class="tense-when">
+        <strong>À quoi ça sert ?</strong><br>
+        Le Past Continuous décrit une <strong>action en train de se dérouler</strong> à un moment précis dans le passé. C'est une action <strong>en cours, pas encore terminée</strong> à ce moment-là. On l'utilise souvent avec le Past Simple pour dire qu'une action a interrompu une autre.
+      </div>
+      <div class="tl-strip">
+        <div class="tl-node"><div class="tl-dot" style="--dc:#3b82f6;background:#3b82f6"></div><div class="tl-lbl"><strong style="color:#3b82f6;">Début</strong>Past Cont.</div></div>
+        <div class="tl-arr">──────</div>
+        <div class="tl-node"><div class="tl-dot" style="background:#f59e0b"></div><div class="tl-lbl"><strong style="color:#f59e0b;">Interruption</strong>Past Simple</div></div>
+        <div class="tl-arr">──</div>
+        <div class="tl-node"><div class="tl-dot" style="background:#334155"></div><div class="tl-lbl">maintenant</div></div>
+      </div>
+      <div class="tense-examples">
+        <div class="tense-ex">
+          <div class="en">I was reading when he arrived.</div>
+          <div class="fr">Je lisais quand il est arrivé.</div>
+          <div class="why">→ "lisais" = action en cours, interrompue par "il est arrivé" (Past Simple)</div>
+        </div>
+        <div class="tense-ex">
+          <div class="en">It was raining all day.</div>
+          <div class="fr">Il pleuvait toute la journée.</div>
+          <div class="why">→ Action qui durait dans le passé (toute une période)</div>
+        </div>
+        <div class="tense-ex">
+          <div class="en">She was working at 9 pm.</div>
+          <div class="fr">Elle travaillait à 21h.</div>
+          <div class="why">→ À ce moment précis (9 pm), l'action était en cours</div>
+        </div>
+      </div>
+      <div class="keywords">
+        <span class="kw"><strong>when</strong> → quand (+ Past Simple)</span>
+        <span class="kw"><strong>while</strong> → pendant que</span>
+        <span class="kw"><strong>at that moment</strong></span>
+        <span class="kw"><strong>all day / night</strong></span>
+      </div>
+    </div>
+    <div style="background:#1e293b;border-radius:12px;padding:.9rem 1.1rem;font-size:.85rem;color:#94a3b8;line-height:1.6;">
+      <strong style="color:#3b82f6;">Astuce clé :</strong> "While I <em style="color:#60a5fa;">was doing</em> X, Y happened" — le Past Continuous = le décor, le Past Simple = l'événement qui surgit.
+    </div>
+  </section>
+
+  <!-- ── 3. PRESENT PERFECT ── -->
+  <section class="theory-section" id="prp">
+    <h2><span>🟢</span> Present Perfect</h2>
+    <div class="tense-block" style="--tc:#10b981">
+      <div class="tense-num">Temps n°3</div>
+      <div class="tense-title">Present Perfect</div>
+      <div class="tense-formula">Sujet + <strong>have / has</strong> + <strong>V3</strong> (participe passé)<br><small style="color:#94a3b8;">I/you/we/they → <strong>have</strong> | he/she/it → <strong>has</strong></small></div>
+      <div class="tense-when">
+        <strong>À quoi ça sert ?</strong><br>
+        Le Present Perfect parle d'une <strong>action passée qui a un lien avec le présent</strong>. Soit l'action a eu lieu <em style="color:#4ade80;">récemment</em>, soit son résultat <em style="color:#4ade80;">se ressent encore maintenant</em>. Le moment exact n'est pas important — ou il n'est pas mentionné. C'est ce qui le différencie fondamentalement du Past Simple.
+      </div>
+      <div class="tl-strip">
+        <div class="tl-node"><div class="tl-dot" style="background:#10b981"></div><div class="tl-lbl"><strong style="color:#10b981;">Action passée</strong>(moment flou)</div></div>
+        <div class="tl-arr">──────────</div>
+        <div class="tl-node"><div class="tl-dot" style="background:#3b82f6"></div><div class="tl-lbl"><strong style="color:#3b82f6;">Présent</strong>lien / résultat<br>encore visible</div></div>
+      </div>
+      <div class="tense-examples">
+        <div class="tense-ex">
+          <div class="en">I have already seen this movie.</div>
+          <div class="fr">J'ai déjà vu ce film.</div>
+          <div class="why">→ "already" = l'expérience compte, pas quand exactement</div>
+        </div>
+        <div class="tense-ex">
+          <div class="en">She has never eaten sushi.</div>
+          <div class="fr">Elle n'a jamais mangé de sushis.</div>
+          <div class="why">→ Expérience de vie : lien avec le présent (elle n'en a toujours pas mangé)</div>
+        </div>
+        <div class="tense-ex">
+          <div class="en">He has just arrived.</div>
+          <div class="fr">Il vient d'arriver.</div>
+          <div class="why">→ "just" = tout à l'heure, résultat visible maintenant</div>
+        </div>
+      </div>
+      <div class="keywords">
+        <span class="kw"><strong>already</strong> → déjà</span>
+        <span class="kw"><strong>just</strong> → venir de</span>
+        <span class="kw"><strong>never / ever</strong></span>
+        <span class="kw"><strong>yet</strong> → encore / déjà (négatif/question)</span>
+        <span class="kw"><strong>since / for</strong></span>
+      </div>
+    </div>
+    <div style="background:#052e16;border:1px solid #166534;border-radius:12px;padding:.9rem 1.1rem;font-size:.85rem;color:#94a3b8;line-height:1.6;margin-bottom:.75rem;">
+      <strong style="color:#4ade80;">Différence clé avec le Past Simple :</strong><br>
+      <span style="color:#fca5a5;">✗</span> <span style="color:#fca5a5;font-family:monospace;">I went to London last year.</span> → date précise = Past Simple<br>
+      <span style="color:#4ade80;">✓</span> <span style="color:#4ade80;font-family:monospace;">I have been to London.</span> → expérience de vie, pas de date = Present Perfect
+    </div>
+    <div style="background:#1e293b;border-radius:12px;padding:.9rem 1.1rem;font-size:.85rem;color:#94a3b8;line-height:1.6;">
+      <strong style="color:#10b981;">Astuce clé :</strong> Si tu peux dire <em style="color:#4ade80;">"je/il vient de…"</em> ou <em style="color:#4ade80;">"déjà / jamais / encore"</em>, ou si il n'y a pas de date précise → pense <strong style="color:#f1f5f9;">Present Perfect</strong>.
+    </div>
+  </section>
+
+  <!-- ── 4. PAST PERFECT ── -->
+  <section class="theory-section" id="pperf">
+    <h2><span>🟣</span> Past Perfect</h2>
+    <div class="tense-block" style="--tc:#6366f1">
+      <div class="tense-num">Temps n°4</div>
+      <div class="tense-title">Past Perfect</div>
+      <div class="tense-formula">Sujet + <strong>had</strong> + <strong>V3</strong> (participe passé)<br><small style="color:#94a3b8;"><strong>had</strong> est invariable — il ne change jamais selon le sujet</small></div>
+      <div class="tense-when">
+        <strong>À quoi ça sert ?</strong><br>
+        Le Past Perfect est le <strong>"passé du passé"</strong>. Quand deux choses se sont passées dans le passé, le Past Perfect marque <em style="color:#818cf8;">la première action</em> (la plus ancienne), et le Past Simple marque la seconde. C'est comme le plus-que-parfait français.
+      </div>
+      <div class="tl-strip">
+        <div class="tl-node"><div class="tl-dot" style="background:#6366f1"></div><div class="tl-lbl"><strong style="color:#6366f1;">Past Perfect</strong>1ère action<br>(la plus ancienne)</div></div>
+        <div class="tl-arr">→</div>
+        <div class="tl-node"><div class="tl-dot" style="background:#f59e0b"></div><div class="tl-lbl"><strong style="color:#f59e0b;">Past Simple</strong>2ème action<br>(plus récente)</div></div>
+        <div class="tl-arr">→</div>
+        <div class="tl-node"><div class="tl-dot" style="background:#3b82f6"></div><div class="tl-lbl"><strong style="color:#3b82f6;">Maintenant</strong></div></div>
+      </div>
+      <div class="tense-examples">
+        <div class="tense-ex">
+          <div class="en">He had already eaten when I arrived.</div>
+          <div class="fr">Il avait déjà mangé quand je suis arrivé.</div>
+          <div class="why">→ Manger (had eaten) = avant mon arrivée (arrived)</div>
+        </div>
+        <div class="tense-ex">
+          <div class="en">She had studied all night before the exam.</div>
+          <div class="fr">Elle avait étudié toute la nuit avant l'examen.</div>
+          <div class="why">→ Étudier est terminé avant que l'examen commence</div>
+        </div>
+        <div class="tense-ex">
+          <div class="en">When he arrived, the film had already started.</div>
+          <div class="fr">Quand il est arrivé, le film avait déjà commencé.</div>
+          <div class="why">→ Le film a commencé avant qu'il arrive</div>
+        </div>
+      </div>
+      <div class="keywords">
+        <span class="kw"><strong>before</strong> → avant</span>
+        <span class="kw"><strong>after</strong> → après</span>
+        <span class="kw"><strong>when</strong> → quand</span>
+        <span class="kw"><strong>already</strong> → déjà</span>
+        <span class="kw"><strong>by the time</strong> → au moment où</span>
+        <span class="kw"><strong>never</strong> → jamais</span>
+      </div>
+    </div>
+    <div style="background:#1e293b;border-radius:12px;padding:.9rem 1.1rem;font-size:.85rem;color:#94a3b8;line-height:1.6;">
+      <strong style="color:#6366f1;">Astuce clé :</strong> Si tu racontes deux événements passés et que l'un est <em style="color:#818cf8;">clairement avant l'autre</em>, mets le plus ancien au <strong style="color:#f1f5f9;">Past Perfect</strong> (had + V3) et le plus récent au Past Simple.
+    </div>
+  </section>
+
+  <!-- ── 5. WAS / WERE ── -->
+  <section class="theory-section" id="wb">
+    <h2><span>🩷</span> Was / Were</h2>
+    <div class="tense-block" style="--tc:#ec4899">
+      <div class="tense-num">Temps n°5</div>
+      <div class="tense-title">Was / Were — To Be au passé</div>
+      <div class="tense-formula">
+        <strong>was</strong> → I / he / she / it<br>
+        <strong>were</strong> → you / we / they
+      </div>
+      <div class="tense-when">
+        <strong>À quoi ça sert ?</strong><br>
+        <em>Was</em> et <em>were</em> sont simplement le verbe "être" au passé. On les utilise pour <strong>décrire un état, une caractéristique ou une situation</strong> dans le passé. Ce n'est pas une action, c'est une <em style="color:#f9a8d4;">description</em>. C'est aussi la base du Past Continuous.
+      </div>
+      <div class="tense-examples">
+        <div class="tense-ex">
+          <div class="en">He was very tired last night.</div>
+          <div class="fr">Il était très fatigué hier soir.</div>
+          <div class="why">→ État dans le passé (fatigué = description, pas une action)</div>
+        </div>
+        <div class="tense-ex">
+          <div class="en">We were late for the meeting.</div>
+          <div class="fr">Nous étions en retard pour la réunion.</div>
+          <div class="why">→ Situation passée décrivant un état</div>
+        </div>
+        <div class="tense-ex">
+          <div class="en">They were not at home.</div>
+          <div class="fr">Ils n'étaient pas à la maison.</div>
+          <div class="why">→ Localisation / état passé</div>
+        </div>
+      </div>
+      <div style="background:#0f172a;border-radius:10px;padding:.85rem 1rem;margin-top:1rem;font-size:.85rem;">
+        <div style="color:#94a3b8;margin-bottom:.5rem;font-weight:700;">Forme négative :</div>
+        <div style="color:#f9a8d4;font-family:monospace;">was not = wasn't &nbsp;|&nbsp; were not = weren't</div>
+        <div style="color:#94a3b8;margin-top:.6rem;margin-bottom:.5rem;font-weight:700;">Question :</div>
+        <div style="color:#f9a8d4;font-family:monospace;">Was he tired? &nbsp;|&nbsp; Were they late?</div>
+      </div>
+    </div>
+    <div style="background:#1e293b;border-radius:12px;padding:.9rem 1.1rem;font-size:.85rem;color:#94a3b8;line-height:1.6;">
+      <strong style="color:#ec4899;">Astuce clé :</strong> Traduit mentalement le verbe en français — si c'est <em style="color:#f9a8d4;">"était / étaient / étais"</em> → c'est <strong style="color:#f1f5f9;">was / were</strong>. Si c'est une action → Past Simple.
+    </div>
+  </section>
+
+  <!-- ── EXERCICES ── -->
+  <section class="ex-section" id="ex">
+    <h2 style="font-size:1.35rem;font-weight:800;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem;"><span style="font-size:1.5rem;">✏️</span> 20 phrases d'entraînement</h2>
+    <div style="background:#1e293b;border-radius:12px;padding:1rem 1.25rem;font-size:.87rem;color:#94a3b8;line-height:1.6;margin-bottom:1.25rem;">
+      Lis la phrase en français, essaie de la former en anglais dans ta tête, puis clique sur <strong style="color:#f1f5f9;">"Voir la réponse"</strong>. Tu verras la traduction, le temps utilisé, <em>pourquoi</em> ce temps, et ce qui se passerait si tu utilisais un autre temps.
+    </div>
+    <div class="ex-header">
+      <div class="ex-counter" id="ex-counter">0 / 20 révélées</div>
+      <button class="shuffle-btn" onclick="shuffleCards()">🔀 Mélanger</button>
+    </div>
+    <div id="ex-cards"></div>
+    <div class="progress-dots" id="progress-dots"></div>
+  </section>
+
+  <div class="cta-section">
+    <a href="index.html" class="cta-btn" style="background:linear-gradient(135deg,#f59e0b,#d97706);text-decoration:none;display:inline-block;">🏠 Retour à l'accueil</a>
+  </div>
+</div>
+
+<script>
+// ── Data ──
+const TENSES = {
+  ps:    { label: 'Past Simple',        color: '#f59e0b', dot: '#fbbf24' },
+  pc:    { label: 'Past Continuous',    color: '#3b82f6', dot: '#60a5fa' },
+  prp:   { label: 'Present Perfect',   color: '#10b981', dot: '#34d399' },
+  pperf: { label: 'Past Perfect',      color: '#6366f1', dot: '#818cf8' },
+  wb:    { label: 'Was / Were',         color: '#ec4899', dot: '#f9a8d4' },
+};
+
+const SENTENCES = [
+  // ── Past Simple ──
+  {
+    tense: 'ps',
+    fr: 'J\'ai regardé un film hier soir.',
+    en: 'I watched a movie last night.',
+    why: 'L\'action est <strong>complètement terminée</strong> dans le passé. "Last night" est un marqueur de temps précis et révolu — parfait pour le Past Simple.',
+    if_other: {
+      wrong: 'I was watching a movie last night.',
+      effect: 'Ce serait le Past Continuous — ça laisserait entendre que tu regardais le film et qu\'il s\'est passé quelque chose à ce moment. Ici, l\'action est juste terminée, pas interrompue.',
+    },
+    tip: '"Last night / yesterday / ago" → presque toujours Past Simple.',
+  },
+  {
+    tense: 'ps',
+    fr: 'Ils ont terminé le projet la semaine dernière.',
+    en: 'They finished the project last week.',
+    why: '"Last week" est une période passée et précise. L\'action est <strong>finie</strong>, plus aucun lien avec le présent.',
+    if_other: {
+      wrong: 'They have finished the project last week.',
+      effect: 'Present Perfect + date précise = INTERDIT en anglais. Le Present Perfect ne s\'utilise jamais avec une date passée définie comme "last week".',
+    },
+    tip: 'Dès qu\'il y a une date / période passée précise → Past Simple obligatoire.',
+  },
+  {
+    tense: 'ps',
+    fr: 'Il a appelé sa mère ce matin.',
+    en: 'He called his mother this morning.',
+    why: 'Action ponctuelle passée, moment précis mentionné ("this morning"). L\'appel est terminé.',
+    if_other: {
+      wrong: 'He has called his mother this morning.',
+      effect: 'Si "this morning" est révolu (la matinée est finie), le Present Perfect est incorrect — on passe au Past Simple. Si la matinée n\'est pas encore finie, le Present Perfect peut s\'utiliser en anglais britannique.',
+    },
+    tip: 'En anglais américain, "this morning" passé → Past Simple. En anglais britannique, les deux sont acceptables.',
+  },
+  {
+    tense: 'ps',
+    fr: 'Nous avons mangé une pizza samedi.',
+    en: 'We ate a pizza on Saturday.',
+    why: '"On Saturday" est un jour précis dans le passé. Le Past Simple s\'impose car l\'action est <strong>définie et terminée</strong>.',
+    if_other: {
+      wrong: 'We have eaten a pizza on Saturday.',
+      effect: 'Même erreur : on ne combine pas Present Perfect avec un jour/date précis du passé.',
+    },
+    tip: 'On + day (on Saturday, on Monday…) → Past Simple.',
+  },
+  {
+    tense: 'ps',
+    fr: 'Elle est arrivée il y a deux heures.',
+    en: 'She arrived two hours ago.',
+    why: '"Ago" est un marqueur classique du Past Simple — il indique un temps révolu, compté à partir de maintenant.',
+    if_other: {
+      wrong: 'She has arrived two hours ago.',
+      effect: '"Ago" est incompatible avec le Present Perfect. En anglais, on ne peut pas dire "have/has + ago". C\'est une erreur très courante.',
+    },
+    tip: '"Ago" = Past Simple TOUJOURS. Jamais de Present Perfect avec "ago".',
+  },
+
+  // ── Past Continuous ──
+  {
+    tense: 'pc',
+    fr: 'Je lisais quand il est arrivé.',
+    en: 'I was reading when he arrived.',
+    why: 'La lecture était <strong>en cours</strong> (Past Continuous) quand l\'arrivée l\'a interrompue (Past Simple). Deux temps différents pour deux rôles différents.',
+    if_other: {
+      wrong: 'I read when he arrived.',
+      effect: 'Avec deux Past Simple, les deux actions auraient l\'air d\'arriver l\'une après l\'autre (d\'abord lire, puis il arrive). La nuance "en cours + interruption" disparaît.',
+    },
+    tip: '"While I was doing X, Y happened" = schéma classique Past Continuous + Past Simple.',
+  },
+  {
+    tense: 'pc',
+    fr: 'Il pleuvait toute la journée.',
+    en: 'It was raining all day.',
+    why: 'La pluie était une situation <strong>en cours sur une durée</strong> dans le passé. Past Continuous = action qui durait.',
+    if_other: {
+      wrong: 'It rained all day.',
+      effect: 'Ce n\'est pas faux techniquement, mais "it was raining" insiste sur la durée continue et le fait que ça durait vraiment tout le long. "Rained" est plus neutre et factuel.',
+    },
+    tip: 'Pour insister sur le déroulement et la durée d\'une action passée → Past Continuous.',
+  },
+  {
+    tense: 'pc',
+    fr: 'Ils jouaient au foot quand le téléphone a sonné.',
+    en: 'They were playing football when the phone rang.',
+    why: 'Le foot était <strong>en train de se passer</strong> (Past Continuous = action de fond) quand le téléphone a sonné (Past Simple = événement soudain).',
+    if_other: {
+      wrong: 'They played football when the phone rang.',
+      effect: 'Avec Past Simple + Past Simple, on lirait "ils ont joué au foot, puis le téléphone a sonné" — deux actions séquentielles. La notion "en cours au moment où" disparaît.',
+    },
+    tip: 'Action de fond (en cours) → Past Continuous. Événement soudain → Past Simple.',
+  },
+  {
+    tense: 'pc',
+    fr: 'Tu dormais quand je suis rentré.',
+    en: 'You were sleeping when I came home.',
+    why: '"Tu dormais" = action en cours au moment de mon retour. Perfect pour Past Continuous + Past Simple.',
+    if_other: {
+      wrong: 'You slept when I came home.',
+      effect: 'Indiquerait que tu t\'es endormi au moment même où je suis rentré — ce qui change complètement le sens.',
+    },
+    tip: 'En français, l\'imparfait (dormais, lisais, pleuvait…) → souvent Past Continuous en anglais.',
+  },
+  {
+    tense: 'pc',
+    fr: 'Elle travaillait à 21h hier soir.',
+    en: 'She was working at 9 pm last night.',
+    why: '"À 21h" = un moment précis dans le passé. L\'action était <strong>en cours à ce moment-là</strong>.',
+    if_other: {
+      wrong: 'She worked at 9 pm last night.',
+      effect: 'Past Simple ici serait bizarre — "she worked at 9 pm" dirait qu\'elle a commencé (et fini ?) son travail à 9 pm, pas qu\'elle était en train de travailler à ce moment.',
+    },
+    tip: '"À [heure précise] dans le passé" + action en cours → Past Continuous.',
+  },
+
+  // ── Present Perfect ──
+  {
+    tense: 'prp',
+    fr: 'J\'ai déjà vu ce film.',
+    en: 'I have already seen this movie.',
+    why: '"Already" indique une <strong>expérience passée</strong> dont le résultat compte maintenant (je n\'ai pas besoin de le voir). Pas de date précise → Present Perfect.',
+    if_other: {
+      wrong: 'I already saw this movie.',
+      effect: 'Techniquement compris, mais beaucoup moins naturel en anglais standard. Avec "already", le Present Perfect est la forme standard.',
+    },
+    tip: '"Already" → quasi toujours Present Perfect.',
+  },
+  {
+    tense: 'prp',
+    fr: 'Elle n\'a jamais mangé de sushis.',
+    en: 'She has never eaten sushi.',
+    why: '"Never" parle d\'une <strong>expérience de vie entière</strong> jusqu\'au présent. C\'est du Present Perfect.',
+    if_other: {
+      wrong: 'She never ate sushi.',
+      effect: 'Suggérerait qu\'on parle d\'une période passée précise et révolue (elle ne mange plus de sushis ?). "Has never eaten" parle de toute sa vie jusqu\'à maintenant.',
+    },
+    tip: '"Never / ever" pour les expériences de vie → Present Perfect.',
+  },
+  {
+    tense: 'prp',
+    fr: 'Il vient juste d\'arriver.',
+    en: 'He has just arrived.',
+    why: '"Just" (venir de) indique une action <strong>très récente</strong> dont le résultat est visible maintenant.',
+    if_other: {
+      wrong: 'He just arrived.',
+      effect: 'Correct en anglais américain courant. Mais en anglais britannique et dans un registre standard, "has just arrived" est la forme correcte.',
+    },
+    tip: '"Just" = Present Perfect en anglais britannique. En anglais américain, les deux s\'entendent.',
+  },
+  {
+    tense: 'prp',
+    fr: 'Nous travaillons ici depuis 3 ans.',
+    en: 'We have worked here for 3 years.',
+    why: 'L\'action a commencé dans le passé et <strong>continue jusqu\'au présent</strong>. "For + durée" avec Present Perfect = ça dure encore.',
+    if_other: {
+      wrong: 'We worked here for 3 years.',
+      effect: 'Past Simple + "for 3 years" signifierait que ça s\'est terminé — vous n\'y travaillez plus. La nuance est importante !',
+    },
+    tip: '"For + durée" qui continue jusqu\'à maintenant → Present Perfect. Si c\'est terminé → Past Simple.',
+  },
+  {
+    tense: 'prp',
+    fr: 'Tu as déjà visité Londres ?',
+    en: 'Have you ever visited London?',
+    why: '"Ever" dans une question = as-tu un jour, dans ta vie, fait X ? C\'est une question d\'expérience → Present Perfect.',
+    if_other: {
+      wrong: 'Did you ever visit London?',
+      effect: 'Grammaticalement possible, mais beaucoup moins naturel. "Have you ever" est la formule standard pour les questions d\'expérience.',
+    },
+    tip: 'Question d\'expérience de vie → "Have you ever…?" est la formule classique.',
+  },
+
+  // ── Past Perfect ──
+  {
+    tense: 'pperf',
+    fr: 'Il avait déjà mangé quand je suis arrivé.',
+    en: 'He had already eaten when I arrived.',
+    why: 'Manger s\'est passé <strong>avant</strong> mon arrivée. Le Past Perfect marque la première action (la plus ancienne). "I arrived" = Past Simple pour la deuxième.',
+    if_other: {
+      wrong: 'He already ate when I arrived.',
+      effect: 'Deux Past Simple = les deux actions ont l\'air simultanées ou séquentielles sans ordre clair. On perd la notion "ça s\'était passé avant".',
+    },
+    tip: 'Deux événements dans le passé + l\'un est avant l\'autre → le plus ancien = Past Perfect.',
+  },
+  {
+    tense: 'pperf',
+    fr: 'Je n\'avais jamais vu la mer avant ce voyage.',
+    en: 'I had never seen the sea before this trip.',
+    why: '"Before this trip" indique que ne jamais avoir vu la mer est une situation qui existait <strong>avant</strong> un moment passé précis.',
+    if_other: {
+      wrong: 'I never saw the sea before this trip.',
+      effect: 'Pas incorrect, mais moins précis. "Had never seen" insiste sur le fait que cette absence d\'expérience existait jusqu\'à ce moment passé spécifique.',
+    },
+    tip: '"Before + événement passé" → souvent Past Perfect pour l\'action la plus ancienne.',
+  },
+  {
+    tense: 'pperf',
+    fr: 'Ils avaient vendu la maison avant de partir.',
+    en: 'They had sold the house before they left.',
+    why: 'Vendre (had sold) est arrivé <strong>avant</strong> partir (left). Past Perfect + Past Simple pour clarifier l\'ordre.',
+    if_other: {
+      wrong: 'They sold the house before they left.',
+      effect: '"Before" peut parfois rendre le Past Perfect optionnel — le sens reste clair avec deux Past Simple. Mais le Past Perfect insiste sur la séquence et est plus précis grammaticalement.',
+    },
+    tip: 'Avec "before" + deux événements passés, le Past Perfect est recommandé pour la clarté.',
+  },
+  {
+    tense: 'pperf',
+    fr: 'Quand elle est arrivée, tout le monde était déjà parti.',
+    en: 'When she arrived, everyone had already left.',
+    why: 'Tout le monde est parti <strong>avant</strong> son arrivée. Son arrivée = Past Simple. Le départ de tout le monde = Past Perfect.',
+    if_other: {
+      wrong: 'When she arrived, everyone already left.',
+      effect: 'Sans "had", le sens peut être ambigu — est-ce qu\'ils partaient au même moment ? "Had already left" est sans ambiguïté.',
+    },
+    tip: '"Had already" + V3 = quelqu\'un l\'avait fait avant — très courant.',
+  },
+  {
+    tense: 'pperf',
+    fr: 'Elle n\'avait pas dormi avant l\'entretien.',
+    en: 'She had not slept before the interview.',
+    why: 'Le manque de sommeil s\'est produit <strong>avant</strong> l\'entretien (moment passé de référence). Past Perfect pour l\'action antérieure.',
+    if_other: {
+      wrong: 'She didn\'t sleep before the interview.',
+      effect: 'Past Simple est possible et compréhensible. Mais "hadn\'t slept" signale explicitement que c\'est antérieur à l\'entretien — c\'est plus précis.',
+    },
+    tip: 'Past Perfect = passé du passé. Quand tu racontes dans le passé et qu\'une chose est encore plus loin dans le passé → Past Perfect.',
+  },
+
+  // ── Was / Were ──
+  {
+    tense: 'wb',
+    fr: 'Il était très fatigué hier soir.',
+    en: 'He was very tired last night.',
+    why: '"Fatigué" est un <strong>état</strong>, pas une action. On utilise "was" (to be au passé) pour décrire des états passés.',
+    if_other: {
+      wrong: 'He tired last night.',
+      effect: 'Incorrect — en anglais, on ne peut pas omettre le verbe "to be". "Tired" est un adjectif, pas un verbe. Il faut obligatoirement "was".',
+    },
+    tip: 'Adjectif (tired, happy, late, cold…) au passé → was/were + adjectif.',
+  },
+  {
+    tense: 'wb',
+    fr: 'Nous n\'étions pas à l\'heure pour la réunion.',
+    en: 'We were not at the meeting on time. / We weren\'t on time for the meeting.',
+    why: '"Être à l\'heure" = état/situation. "Were not" est la négation de "were" pour "we".',
+    if_other: {
+      wrong: 'We didn\'t be at the meeting on time.',
+      effect: 'Erreur classique ! On ne met jamais "do/did/don\'t/didn\'t" avec le verbe "to be". La négation de "was/were" c\'est "was not / were not", jamais "didn\'t be".',
+    },
+    tip: 'Jamais "didn\'t be" — la négation de was/were c\'est was not / were not.',
+  },
+  {
+    tense: 'wb',
+    fr: 'Le ciel était bleu ce matin.',
+    en: 'The sky was blue this morning.',
+    why: '"Bleu" est un adjectif = état descriptif → "was". Sujet singulier "the sky" → "was" (pas "were").',
+    if_other: {
+      wrong: 'The sky were blue this morning.',
+      effect: '"Were" s\'utilise avec you/we/they. Pour I/he/she/it/singulier → "was". Le ciel = it → "was".',
+    },
+    tip: 'Was → I, he, she, it (singulier). Were → you, we, they (pluriel).',
+  },
+  {
+    tense: 'wb',
+    fr: 'Est-ce qu\'ils étaient à la maison ?',
+    en: 'Were they at home?',
+    why: 'Question avec "to be" au passé : on inverse simplement le sujet et "was/were". Pas de "did".',
+    if_other: {
+      wrong: 'Did they be at home?',
+      effect: 'Encore une erreur fréquente ! "Did" ne s\'utilise jamais avec "to be". Pour les questions avec "to be" → inversion directe (Were they…? Was she…?).',
+    },
+    tip: 'Question avec to be → Was/Were + sujet ? Jamais Did + be.',
+  },
+  {
+    tense: 'wb',
+    fr: 'Elle était heureuse quand elle était enfant.',
+    en: 'She was happy when she was a child.',
+    why: 'Deux états descriptifs dans le passé → deux "was". "Happy" et "a child" décrivent des états, pas des actions.',
+    if_other: {
+      wrong: 'She was happy when she had a child.',
+      effect: '"Had a child" voudrait dire qu\'elle avait un enfant (elle était mère) — sens complètement différent ! "Was a child" = elle était enfant.',
+    },
+    tip: 'Pour les descriptions passées (âge, état physique, situation) → was/were est le seul temps possible.',
+  },
+];
+
+// ── State ──
+let order = [];
+let revealed = new Set();
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function renderCards() {
+  const container = document.getElementById('ex-cards');
+  const dotsContainer = document.getElementById('progress-dots');
+  container.innerHTML = '';
+  dotsContainer.innerHTML = '';
+
+  order.forEach((idx, pos) => {
+    const s = SENTENCES[idx];
+    const t = TENSES[s.tense];
+    const cardId = 'card-' + idx;
+
+    const card = document.createElement('div');
+    card.className = 'ex-card';
+    card.id = cardId;
+    card.style.setProperty('--ec', t.color);
+    card.style.borderLeftColor = t.color;
+
+    const isRev = revealed.has(idx);
+
+    card.innerHTML = `
+      <div class="ex-card-top">
+        <div class="ex-num">${pos + 1}.</div>
+        <div class="ex-fr">${s.fr}</div>
+        <button class="reveal-btn ${isRev ? 'done' : ''}" id="btn-${idx}" onclick="revealCard(${idx})">
+          ${isRev ? '✓ Vu' : 'Voir la réponse'}
+        </button>
+      </div>
+      <div class="ex-answer ${isRev ? 'visible' : ''}" id="ans-${idx}">
+        <div class="ex-en">${s.en}</div>
+        <span class="ex-tense-badge" style="background:${t.color}">${t.label}</span>
+        <div class="ex-explain">
+          <div class="ex-row">
+            <div class="ex-icon">🎯</div>
+            <div>
+              <div class="ex-label">Pourquoi ce temps ?</div>
+              <div class="ex-body">${s.why}</div>
+            </div>
+          </div>
+          <div class="ex-row">
+            <div class="ex-icon">⚠️</div>
+            <div>
+              <div class="ex-label">Si j'avais mis un autre temps…</div>
+              <div class="ex-alt">
+                <div class="alt-wrong">✗ ${s.if_other.wrong}</div>
+                <div class="alt-right">→ ${s.if_other.effect}</div>
+              </div>
+            </div>
+          </div>
+          <div class="ex-row">
+            <div class="ex-icon">💡</div>
+            <div>
+              <div class="ex-label">Astuce</div>
+              <div class="ex-body">${s.tip}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+
+    // Dot
+    const dot = document.createElement('div');
+    dot.className = 'prog-dot' + (isRev ? ' done' : '');
+    dot.id = 'dot-' + idx;
+    dot.style.setProperty('--prog-c', t.color);
+    dotsContainer.appendChild(dot);
+  });
+
+  updateCounter();
+}
+
+function revealCard(idx) {
+  revealed.add(idx);
+  const ans = document.getElementById('ans-' + idx);
+  const btn = document.getElementById('btn-' + idx);
+  const dot = document.getElementById('dot-' + idx);
+  if (ans) { ans.style.display = 'block'; ans.classList.add('visible'); }
+  if (btn) { btn.classList.add('done'); btn.textContent = '✓ Vu'; }
+  if (dot) dot.classList.add('done');
+  updateCounter();
+}
+
+function updateCounter() {
+  const el = document.getElementById('ex-counter');
+  if (el) el.textContent = revealed.size + ' / ' + SENTENCES.length + ' révélées';
+}
+
+function shuffleCards() {
+  order = shuffle(SENTENCES.map((_, i) => i));
+  renderCards();
+}
+
+// ── Nav scroll ──
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+
+// ── Reading bar ──
+const bar = document.getElementById('reading-bar');
+window.addEventListener('scroll', function () {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  if (bar) bar.style.width = Math.min(pct, 100) + '%';
+});
+
+// ── Init ──
+order = shuffle(SENTENCES.map((_, i) => i));
+renderCards();
+</script>
+</body>
+</html>
